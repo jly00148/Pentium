@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+
+	}
+	console.log('Person.prototype',Person.prototype);
+	console.log('Person.prototype.constructor',Person.prototype.constructor);
+	console.log(Person.prototype.constructor === Person);//true
+	console.log('Person.prototype.__proto__',Person.prototype.__proto__);
+	console.log(Person.prototype.__proto__ === Object.prototype);
+	console.log('Object.prototype',Object.prototype);
+	console.log('Object.prototype.__proto__',Object.prototype.__proto__);//null
+	console.log('Object.prototype.construtor',Object.prototype.constructor);
+	console.log(Object.prototype.constructor === Object);//true
+	Person.prototype.showName = function(){
+		console.log('i am ' + this.name);
+	}
+	Person.prototype.showAge = function(){
+		console.log('i am '+   this.age + ' years old');
+	}
+	var person1 = new Person('jly',18);
+	console.log(person1);
+	person1.showAge();
+	person1.showName();
+	console.log('person1.__proto__',person1.__proto__);
+	console.log(person1.__proto__ === Person.prototype);
+</script>
+</html>
