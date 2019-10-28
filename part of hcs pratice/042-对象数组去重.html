@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [11,22,33,11,55,66,44,55,77];
+	function uniqueArray(arr){
+		var result = [];
+		var obj = {};
+		for(var i = 0; i < arr.length;i++){
+			obj[arr[i]] = '';
+		}
+		//console.log(obj);
+		for(var attr in obj){
+			result.push(attr);
+		}
+		return result;
+	}
+	console.log(uniqueArray(arr));
+</script>
+</html>

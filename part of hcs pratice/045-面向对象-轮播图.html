@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		.leftArrow,.rightArrow{
+			position: absolute;
+			width: 40px;
+			height: 80px;
+			background-color: rgba(100, 100, 100, 0.3);
+			line-height: 80px;
+			text-align: center;
+			cursor: pointer;
+		}
+		.leftArrow{
+			top: 230px;
+			left: 0px;
+		}
+		.rightArrow{
+			top: 230px;
+			right: 0px;
+		}
+		.bottomBtn li{
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			border: 5px solid #000;
+			float: left;
+			margin-left: 5px;
+		}
+		.bottomBtn li.active{
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+
+	</div>
+</body>
+<script src="js/util.js"></script>
+<script>
+	function Carousel(options){
+		this.oBox = document.getElementById(options.id);
+		this.aImg = options.aImg;
+		this.width = options.width;
+		this.height = options.height;
+		this.oLeftArrow = null;
+		this.oRightArrow = null;
+		this.now = 0;
+		this.playDuration = options.playDuration;
+		this.init();
+		this.bindEvent();
+		this.auto();
+	}
+	Carousel.prototype.init = function(){
+		this.oUl = document.createElement('ul');
+		this.oUlBtn = document.createElement('ul');
+		this.oUlBtn.style.position = 'absolute';
+		this.oUlBtn.style.zIndex = 999;
+		this.oUlBtn.style.bottom = '20px';
+		this.oUlBtn.style.left = '50%';
+		this.oUlBtn.className = 'bottomBtn';
+		//处理外层父容器
+		this.oBox.style.position = 'relative';
+		this.oBox.style.width = this.width + 'px';
+		this.oBox.style.height = this.height + 'px';
+		this.oBox.style.top = '100px';
+		this.oBox.style.left = '50%';
+		this.oBox.style.marginLeft = -this.oBox.offsetWidth * 0.5 + 'px';
+		for(var i = 0;i<this.aImg.length;i++){
+			//生成图片容器
+			var aLi = document.createElement('li');
+			aLi.style.position = 'absolute';
+			//底部按钮生成
+			var aLiBtn = document.createElement('li');
+			this.oUlBtn.appendChild(aLiBtn);
+			if(i == 0){
+				aLi.style.zIndex = 10;
+				aLi.style.opacity = 1;
+				aLiBtn.className = 'active';
+			}else{
+				aLi.style.zIndex = 0;
+				aLi.style.opacity = 0.5;
+			}
+
+			var oImg = document.createElement('img');
+			oImg.src = this.aImg[i];
+			aLi.appendChild(oImg);
+			this.oUl.appendChild(aLi);
+			this.oBox.appendChild(this.oUl);
+
+		}
+		//处理左右箭头
+		this.oLeftArrow = document.createElement('span');
+		this.oRightArrow = document.createElement('span');
+		this.oLeftArrow.style.zIndex = '20';
+		this.oRightArrow.style.zIndex = '20';
+		this.oLeftArrow.innerHTML = '&lt';
+		this.oRightArrow.innerHTML = '&gt';
+		this.oLeftArrow.className = 'leftArrow';
+		this.oRightArrow.className = 'rightArrow';
+		this.oBox.appendChild(this.oLeftArrow);
+		this.oBox.appendChild(this.oRightArrow);
+		//处理底部按钮
+		this.oBox.appendChild(this.oUlBtn);
+	}
+	Carousel.prototype.bindEvent = function(){
+		//console.log(this);
+		var _this = this;
+		this.oRightArrow.onclick = function(){
+			_this.now++;
+			if(_this.now == _this.aImg.length){
+				_this.now = 0;
+			}			
+			_this.tab();
+		}
+		this.oLeftArrow.onclick = function(){
+			_this.now--;
+			if(_this.now == -1){
+			_this.now = _this.aImg.length - 1;
+			}
+			_this.tab();
+		}
+		for(var i = 0;i < this.oUlBtn.children.length;i++){
+			//console.log(this);
+			this.oUlBtn.children[i].index = i;
+			this.oUlBtn.children[i].onclick = function(){
+				//console.log(this);
+				_this.now = this.index;
+				_this.tab();
+			}
+		}
+	}
+	Carousel.prototype.tab = function(){
+		for(var i = 0; i<this.aImg.length;i++){
+			this.oUl.children[i].style.zIndex = 0;
+			this.oUl.children[i].style.opacity = 0.5;
+			this.oUlBtn.children[i].className = '';
+		}
+		this.oUl.children[this.now].style.zIndex = 10;
+		this.oUl.children[this.now].style.opacity = 1;
+		this.oUlBtn.children[this.now].className = 'active';
+	}
+	Carousel.prototype.auto = function(){
+		var timer = 0;
+		var _this = this;
+		timer = setInterval(this.oRightArrow.onclick,this.playDuration);
+		this.oBox.onmouseover = function(){
+		clearInterval(timer);
+		}
+		this.oBox.onmouseout = function(){
+		timer = setInterval(_this.oRightArrow.onclick,_this.playDuration);
+		}
+	}
+	new Carousel({
+		id:'box',
+		aImg:['images/bird.jpg','images/bm.png','images/lqd.jpeg'],
+		width:1024,
+		height: 508,
+		playDuration:500
+	});
+</script>
+</html>

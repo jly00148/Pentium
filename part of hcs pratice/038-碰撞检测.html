@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box1{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+		#box2{
+			position: absolute;
+			left: 50%;
+			margin-left: -200px;
+			top: 200px;
+			width: 400px;
+			height: 400px;
+			background-color: grey;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="box1"></div>
+	<div id="box2"></div>
+</body>
+<script>
+		var oBox1 = document.getElementById('box1');
+		var oBox2 = document.getElementById('box2');
+		var disX = 0;
+		var disY = 0;
+		function checkBump(obj1,obj2){
+		return obj1.offsetLeft > obj2.offsetLeft - obj1.offsetWidth
+				&&
+				obj1.offsetTop > obj2.offsetTop - obj1.offsetHeight
+				&&
+				obj1.offsetLeft < obj2.offsetWidth + obj2.offsetLeft
+				 &&
+				obj1.offsetTop < obj2.offsetHeight + obj2.offsetTop
+		}
+		oBox1.onmousedown = function(ev){
+			disX = ev.clientX - oBox1.offsetLeft;
+			disY = ev.clientY - oBox1.offsetTop;
+			// console.log(ev);
+			document.onmousemove = function(ev){
+				oBox1.style.left = ev.clientX - disX + 'px';
+				oBox1.style.top = ev.clientY - disY + 'px';
+			if(checkBump(oBox1,oBox2)){
+				oBox2.style.backgroundColor = 'green';
+			}else{
+				oBox2.style.backgroundColor = 'grey';
+			}
+		}
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			}			
+		}
+</script>
+</html>

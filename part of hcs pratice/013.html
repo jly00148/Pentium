@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击页关闭</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		#BIGBOX{
+			width: 1920px;
+			height: 100px;
+			background: red;
+			margin: 0 auto;
+		}
+		.close{
+			width: 15px;
+			height: 15px;
+			border-radius: 1px;
+			float: right;
+			background: white;
+			cursor: pointer;
+			line-height: 15px;
+		}
+		.open{
+			width: 15px;
+			height: 15px;
+			background: grey;
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			display: none;
+			line-height: 15px;
+			font-size: 20px;
+			cursor: pointer;
+		}
+		.test{
+			width: 1920px;
+			height: 100px;
+			background: yellow;
+			font-size: 48px;
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="BIGBOX">
+		<div class="close">X</div>
+		<div class="open">+</div>
+	</div>
+	<div class="test"></div>
+</body>
+<script>
+	closeAndOpen();
+	function closeAndOpen(){
+		var oBigbox = document.getElementById('BIGBOX');
+		var deleted = document.querySelector('.close');
+		var opend = document.querySelector('.open');
+		/*console.log(deleted);*/
+		/*console.log(oBigbox);*/
+		deleted.onclick = function(){
+			oBigbox.style.height = '0px';
+			deleted.style.display = 'none';
+			opend.style.display = 'block';
+		}
+		opend.onclick = function(){
+			oBigbox.style.height = '100px';
+			deleted.style.display = 'block';
+			opend.style.display = 'none';
+		}
+	}
+</script>
+</html>

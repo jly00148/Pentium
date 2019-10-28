@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#father{
+			position: relative;
+			width: 800px;
+			height: 800px;
+			border: 1px solid #000;
+			margin: 100px auto;
+			overflow: hidden;
+		}
+		#bird{
+			position: absolute;
+			left: 50%;
+			top: 0px;
+			margin-left: -25px;
+			width: 50px;
+			height: 50px;
+			background-image: url('images/lqd.jpeg');
+			background-repeat: no-repeat;
+			background-size: 50px 50px;
+		}
+		.top{
+			position: absolute;
+			top: 0px;
+			left: 100%;
+			width: 20px;
+			background-color: green;
+		}
+		.bottom{
+			position: absolute;
+			bottom: 0px;
+			left: 100%;
+			width: 20px;
+			background-color: green;
+		}		
+	</style>
+</head>
+<body>
+	<div id="father">
+		<div id="bird"></div>
+	</div>
+</body>
+<script>
+	var oFather = document.getElementById('father');
+	var oBox = document.getElementById('bird');
+	var spaceHeigt = 300;
+	var birdTimer = 0;
+	var lineTimer = 0;
+	var moveLineTimer = 0;
+	var isPeed = 0.1;
+	var isDie = false;
+	
+	function getRandom(min,max){
+		return Math.round((min+(max-min) * Math.random()));
+	}
+
+	function checkBump(obj1,obj2){
+	if(obj1.offsetLeft > obj2.offsetLeft - obj1.offsetWidth
+		&&
+		obj1.offsetTop > obj2.offsetTop - obj1.offsetHeight
+		&&
+		obj1.offsetLeft < obj2.offsetWidth + obj2.offsetLeft
+		 &&
+		obj1.offsetTop < obj2.offsetHeight + obj2.offsetTop){
+		return true;
+	}else{
+		return false;
+	}
+}
+	function addLine(){
+		var topLine = document.createElement('div');
+		var bottomLine = document.createElement('div');
+		var h = getRandom(100,400);
+		topLine.style.height = h + 'px';
+		bottomLine.style.height = oFather.offsetHeight - 2 - h - spaceHeigt + 'px';
+		topLine.className = 'top';
+		bottomLine.className = 'bottom';
+		topLine.leftData = 100;
+		bottomLine.leftData = 100;
+		oFather.appendChild(topLine);
+		oFather.appendChild(bottomLine);
+	}
+	clearInterval(lineTimer);
+	lineTimer = setInterval(addLine,800);
+
+	clearInterval(moveLineTimer);
+	moveLineTimer = setInterval(function(){
+		var aTopLine = document.querySelectorAll('.top');
+		var aBottomLine = document.querySelectorAll('.bottom');
+		for(var i = 0;i<aTopLine.length;i++){
+			aTopLine[i].style.left = aBottomLine[i].style.left = aTopLine[i].leftData - 4 + '%';
+			aTopLine[i].leftData = aTopLine[i].leftData - 4;
+			if(aTopLine[i].leftData < -10){
+				oFather.removeChild(aTopLine[i]);
+				oFather.removeChild(aBottomLine[i]);
+			}
+			if(checkBump(bird,aTopLine[i]) || checkBump(bird,aBottomLine[i])){
+				die();
+			}
+		}
+	},160);
+
+	clearInterval(birdTimer);
+	birdTimer = setInterval(function(){
+		isPeed = isPeed + 0.1;		
+		oBox.style.top = oBox.offsetTop + isPeed +'px';
+		if(oBox.offsetTop < 0){
+			oBox.style.top = 0 + 'px';
+			die();
+		}
+		if(oBox.offsetTop > oFather.offsetHeight - oBox.offsetHeight-2){
+			oBox.style.top = oFather.offsetHeight - oBox.offsetHeight -2  + 'px';
+			die();
+		}			
+	},10);
+
+	function die(){
+		isDie = true;
+		clearInterval(birdTimer);
+		clearInterval(lineTimer);
+		clearInterval(moveLineTimer);
+	}
+
+	document.onkeydown = function(){
+		if(isDie){
+			return false;
+		}
+		isPeed -= 3;
+	}	
+</script>
+</html>

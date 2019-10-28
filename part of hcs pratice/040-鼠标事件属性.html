@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 3000px;
+			height: 3000px;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+	document.onclick = function(ev){
+		console.log('ev.clientX,ev.clientY',ev.clientX,ev.clientY);
+		console.log('ev.pageX,ev.pageY',ev.pageX,ev.pageY);
+		console.log('ev.screenX,ev.screenY',ev.screenX,ev.screenY);
+	}
+</script>
+</html>

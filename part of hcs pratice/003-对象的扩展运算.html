@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象的扩展运算</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	let obj = {name:'jly',age:18,friend:{username:'leo'}};
+	console.log({...obj});
+	console.log(obj);
+	*/
+	let obj = {name:'jly',age:18,friend:{username:'leo'}};
+	let obj1 = ({...obj});
+	obj1.username ='peter';
+	console.log(obj,obj1)
+</script>
+</html>

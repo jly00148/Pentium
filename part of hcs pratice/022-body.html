@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>body</title>
+</head>
+<body text="red" link="#0066FF">
+	<p>因此适时发展钧瓷理论研究以应对日新月异的时代潮流</p>
+	<a href="#">超连接</a>
+	<a href="#">超连接</a>
+</body>
+<script>
+	//1对象的结构解析
+	let {age,uesrname,friend={uesrname:'leo'}} = {uesrname:'tom',age:18,friend:{uesrname:"peter"}};
+	console.log(friend,age,uesrname);
+	//数组扩展运算
+	let arr1 = [11,22];	
+	function sum(n1,n2){
+		return n1 + n2;
+	}
+	//2console.log(sum(11,22));
+	console.log(sum(...arr1));
+
+	function sum(...arr){
+		var total = 0;
+		for(let i = 0;i<arr.length;i++){
+			total += arr[i];
+		}
+		return total;
+	}
+	console.log(sum(11,12,33));	
+	//3参数列表筛选最大值
+	console.log(Math.max(11,22,33));
+	//4求数组中最大值
+	console.log(Math.max.apply(Math,arr1));
+	//5对象扩展运算
+	let obj1 = {uesrname1:'tom',friend:{uesrname1:'leo'}};
+	let obj2 = {...obj1};
+
+	obj2.uesrname1= "peter";//ok
+	obj2.friend.uesrname1= "mike";//no
+	console.log(obj1);
+	console.log(obj2);
+	//6Set数组去重
+	let arr3 = [11,22,33,44,11];
+	let s1 = new Set(arr3);
+	console.log(s1);
+	let arr4 = [...s1];
+	console.log(arr4);
+</script>
+</html>

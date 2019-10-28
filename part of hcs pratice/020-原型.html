@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>020-原型</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name=name;
+		this.age =age;
+	}
+	console.log('Person.prototype:::',Person.prototype);
+	var person1 = new Person();
+	console.log(person1);
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>内置对象</title>
+</head>
+<body>
+	<button onclick="mybtn('李','老师')">button</button>
+</body>
+<script>
+	var current = new Date();
+	console.log(current);
+	var str = "my name is jly";
+	console.log(str.length);//14,包括空格
+	var i = 13;
+	var a = i++;
+	console.log(a);//13
+	var e = 14;
+	var b = ++e;
+	console.log(b);//15
+	function mybtn(name,obj){
+		alert("欢迎" + name + ","+"尊敬的" + obj);
+	}
+</script>
+</html>

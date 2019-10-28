@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格</title>
+</head>
+<body>
+	<table border="0px" width="500px" height="400px" cellspacing="1px" cellpadding="100px" align="center" bgcolor="red">
+		<tr bgcolor="white">
+			<td width="100px">武大郎</td>
+			<td>烧</td>
+			<td>烧饼</td>
+		</tr>
+		<tr bgcolor="white">
+			<td>武大郎</td>
+			<td>30</td>
+			<td>烧饼</td>
+		</tr>
+		<tr bgcolor="white">
+			<td>武大郎</td>
+			<td>30</td>
+			<td>烧饼</td>
+		</tr>
+	</table>
+</body>
+</html>
+		oSearchHotWord.onclick = function(event){
+			this.style.display = "none";
+			oInputBox.focus();
+			event.stopPropagation();
+		}
+		oBody.onclick = function(event){
+			oKeyWord.style.display = "none";
+			oSearchHotWord.style.display = "block";
+			event.stopPropagation();
+		}
+		oKeyWord.onclick = function(event){
+			this.style.display = "block";
+			event.stopPropagation();
+		}

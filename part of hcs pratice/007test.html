@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="author" content="张三">
+	<title>test</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 3000px;
+			height: 3000px;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background: red;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="按钮" id="btn">
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		oBox.style.display = 'block';
+	}
+	
+	/*console.log(oScrollTop);*/
+	window.onscroll = function(){
+		var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+		console.log(scrollTop);
+	}
+	var df = window.innertWidth;
+	console.log(df);
+</script>
+</html>

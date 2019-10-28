@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005set遍歷</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let s = new Set([11,22,33,44]);
+	console.log(s);
+	for(let key of s.keys()){
+		console.log(key);
+	}
+	for(let value of s.values()){
+		console.log(value);
+	}
+	for(let value of s){
+		console.log(value);
+	}
+	for(let entry of s.entries()){
+		console.log('d',entry);
+	}		
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 3000px;
+			height: 3000px;
+		}
+		#top{
+			position: fixed;
+			top: 0px;
+			left: 0;
+			width: 100%;
+			height: 100px;
+			background-color: #f75;
+		}
+		#box{
+			position: fixed;
+			top: 100px;
+			left: 0px;
+			width: 100%;
+			height: 0px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="top"></div>
+	<div id="box"></div>
+</body>
+<script src="js/util.js"></script>
+<script>
+	var oBox = document.getElementById('box');
+	var isShow = false;
+	window.onscroll = function(){
+			var distence = getScrollTop();	
+			if(distence >= 400){
+				if(!isShow){
+					console.log('a');
+					animate(oBox,'height',100);
+					isShow = true;
+				}
+			}else{
+				if(isShow){
+				console.log('b');				
+				animate(oBox,'height',0);
+				isShow = false;
+				}
+			}			
+	}	
+</script>
+</html>

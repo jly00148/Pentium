@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组的扩展运算</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	var arr = [11,22,33,44,55];
+	console.log(arr);
+	console.log(...arr);
+	console.log(11,22,33,44,55);
+	*/
+	/*
+	function sum(...arr){
+		console.log(arr);
+	}
+	sum(11,22);
+	*/
+	/*function sum(...arr){
+		var total = 0;
+		for(let i = 0;i<arr.length;i++){
+			total += arr[i]
+		}
+		return total;
+	}
+	console.log(sum(11,22,33));
+	*/
+	/*console.log(Math.max(11,22,33))*/
+	/*var arr1 = [11,22,33,55]
+	console.log(Math.max.apply(Math,arr1));*/
+	/*
+	var arr2 = [11,22,33]
+	console.log(Math.max(...arr2))
+	*/
+	var arr1 = [11,22,33];
+	arr2 = [...arr1];
+	arr2.push(44);
+	console.log(arr1,arr2);
+</script>
+</html>

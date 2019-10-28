@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>huawei</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			position: absolute;
+			top: 50px;
+			left: 800px;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+		.line{
+			position: absolute;
+			top: 0px;
+			left: 400px;
+			width: 1px;
+			height: 400px;
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="按钮" id="btn">	
+	<div id="box"></div>
+	<div class="line"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box');
+	var oBtn = document.getElementById('btn');
+	var timer = 0;
+	var isPeed = 0;
+	oBtn.onclick = function(){
+		clearInterval(timer);
+		timer = setInterval(function(){
+			if(oBox.offsetLeft < 400){
+				isPeed = 10;
+			}else{
+				isPeed = -10;
+			};
+			if(Math.abs(400 - oBox.offsetLeft) < Math.abs(isPeed)){
+				oBox.style.left = '400px';
+				clearInterval(timer);
+			}else{
+				oBox.style.left = oBox.offsetLeft + isPeed + 'px';
+			}
+		},50)
+	}
+</script>
+</html>

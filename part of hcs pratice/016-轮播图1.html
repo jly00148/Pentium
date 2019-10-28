@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>        
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            width: 200px;
+            margin:100px;
+            height:200px; 
+            border:1px solid red;
+            overflow:hidden;
+            background-color: yellow;
+        }
+        li{
+            width: 200px;
+            height: 200px;
+            font-size:12px;
+            background-color: red;
+        }
+    </style>        
+</head>
+<body bgcolor="white">
+    <ul id="a">
+        <li>2月15日，习近平主席会见来华进行新一轮中美经贸高级别磋商的美国贸易代表莱特希泽和财政部长姆努钦，肯定两国经贸团队的磋商又取得了重要阶段性进展。这是中美经贸磋商开始数月来，习近平主席首次会见美方经贸团队成员，既是对前期经贸磋商进展的肯定，又为下一阶段中美经贸关系发展指明了大方向、注入了新动力。</li>
+        <li style="background-color: green">2月15日，习近平主席会见来华进行新一轮中美经贸高级别磋商的美国贸易代表莱特希泽和财政部长姆努钦，肯定两国经贸团队的磋商又取得了重要阶段性进展。这是中美经贸磋商开始数月来，习近平主席首次会见美方经贸团队成员，既是对前期经贸磋商进展的肯定，又为下一阶段中美经贸关系发展指明了大方向、注入了新动力。</li>
+        <li style="background-color: yellow">2月15日，习近平主席会见来华进行新一轮中美经贸高级别磋商的美国贸易代表莱特希泽和财政部长姆努钦，肯定两国经贸团队的磋商又取得了重要阶段性进展。这是中美经贸磋商开始数月来，习近平主席首次会见美方经贸团队成员，既是对前期经贸磋商进展的肯定，又为下一阶段中美经贸关系发展指明了大方向、注入了新动力。</li>
+        <li style="background-color: pink">2月15日，习近平主席会见来华进行新一轮中美经贸高级别磋商的美国贸易代表莱特希泽和财政部长姆努钦，肯定两国经贸团队的磋商又取得了重要阶段性进展。这是中美经贸磋商开始数月来，习近平主席首次会见美方经贸团队成员，既是对前期经贸磋商进展的肯定，又为下一阶段中美经贸关系发展指明了大方向、注入了新动力。</li>
+    </ul>
+</body>
+<script>
+    //document.getElementById()的最简化应用
+    function $(element){
+        if(arguments.length>1){
+            for(var i=0,length=arguments.length,elements=[];i<length;i++){
+                elements.push($(arguments[i]));
+            }
+            return elements;
+        }
+        if(typeof element=="string"){
+            return document.getElementById(element);
+        }else{
+            return element;
+        }
+    }
+    //类创建函数
+    var Class={
+        create:function(){
+            return function(){
+                this.initialize.apply(this,arguments);
+            }
+        }
+    }
+    //对象属性方法扩展
+    Function.prototype.bind=function(object){
+        var method=this;
+        return function(){
+            method.apply(object,arguments);
+        }
+    }
+    var Scroll=Class.create();
+    Scroll.prototype={
+        //第一个参数定义要滚动的区域,第二个参数定义每次滚动的高度
+        initialize:function(element,height,delay,speed){
+            this.element=$(element);
+            this.element.innerHTML+=this.element.innerHTML;
+            this.height=height;
+            this.delay=delay*1000;
+            this.speed=speed;
+            this.maxHeight=this.element.scrollHeight/2;
+            this.counter=0;
+            this.scroll();
+            this.timer="";
+            this.element.onmouseover=this.stop.bind(this);
+            this.element.onmouseout=function(){this.timer=setTimeout(this.scroll.bind(this),1000);}.bind(this);
+        },
+        scroll:function(){
+            if(this.element.scrollTop<this.maxHeight){
+                this.element.scrollTop++;
+                this.counter++;
+            }else{
+                this.element.scrollTop=0;
+                this.counter=0;
+            }
+                    
+            if(this.counter<this.height){
+                this.timer=setTimeout(this.scroll.bind(this),this.speed);
+            }else{
+                this.counter=0;
+                this.timer=setTimeout(this.scroll.bind(this),this.delay);
+            }
+        },
+        stop:function(){
+            clearTimeout(this.timer);
+        }
+    }
+     new Scroll('a', 200,2,15)
+</script>
+</html>

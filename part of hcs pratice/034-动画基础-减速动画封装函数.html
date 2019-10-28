@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			opacity: 0.5;
+			text-align: center;
+			line-height: 100px;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">变宽</div>
+	<div id="div2">变高</div>
+	<div id="div3">变色</div>
+</body>
+<script>
+	var oDiv1 = document.getElementById('div1');
+	var oDiv2 = document.getElementById('div2');
+	var oDiv3 = document.getElementById('div3');
+	var timer = 0;
+	function animate(obj,attr,target){
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function(){
+			var current = parseFloat(getComputedStyle(obj,true)[attr]);
+			if(attr == 'opacity'){
+				current = current * 100;
+			}
+			if(attr == 'opacity'){
+				
+				var isPeed = ((target - current) / 10);
+				
+				isPeed = isPeed > 0 ? isPeed = Math.ceil(isPeed) : isPeed = Math.floor(isPeed);
+			}
+			else{
+				var isPeed = Math.ceil((target - current) / 10);
+			}
+			if(!isPeed) {
+				clearInterval(obj.timer);
+			}else{
+				if(attr == 'opacity'){			
+					
+					obj.style.opacity = (current + isPeed) / 100;
+				}else{
+					
+					obj.style[attr] = current + isPeed + 'px';
+				}				
+			}
+		},10)
+	}
+	oDiv1.onmouseover = function(){
+		animate(oDiv1,'width',400);
+	}
+	oDiv2.onmouseover = function(){
+		animate(oDiv2,'height',400);
+	}
+	oDiv3.onmouseover = function(){
+		animate(oDiv3,'opacity',100);
+	}	
+</script>
+</html>

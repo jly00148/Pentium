@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>banner轮播</title>
+		<style type="text/css">
+			*{margin: 0px; padding: 0px;}
+			#banner{
+				width: 500px; height: 360px;
+				margin: 88px auto;
+				border: 1px solid red;
+				position: relative;
+			}
+			#pic{
+				width: 500px; height: 360px;
+				overflow:  hidden;
+			}
+			#pic ul{
+				width: 1000%;
+				height: 360px;
+			}
+			#pic ul li{
+				list-style: none;
+				float: left;
+			}
+			#btn div{
+				width: 23px; height: 36px; background: rgba(0,0,0,.5);
+				font-size: 18px; font-weight: bold; color: #FFFFFF;
+				text-align: center; line-height: 36px;
+				position: absolute; top: 50%; margin-top: -18px;
+				cursor: pointer;
+			}
+			#left{left: 0;}
+			#right{right: 0px;}
+			#tab {
+				width: 70px; height: 14px;
+				background: #FFFFFF; background: rgba(255,255,255,.5);
+				position: absolute; bottom: 15px; left: 50%;
+				margin-left: -35px;
+				border-radius: 7px;
+			}
+			#tab ul li{
+				list-style: none; cursor: pointer;
+				width: 10px; height: 10px; background: #999;
+				border-radius: 100%;
+				float: left;
+				margin: 2px 2px;
+			}
+			#tab .on{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="banner">
+			<div id="pic">
+				<ul>
+					<li>
+						<img src="img/2.jpg" alt="">
+						<img src="img/1.jpg" alt="">
+						<img src="img/3.jpg" alt="">
+						<img src="img/4.jpg" alt="">
+						<img src="img/5.jpg" alt="">
+					</li>
+				</ul>
+			</div>
+			<div id="btn">
+				<div id="left">&lt;</div>
+				<div id="right">&gt;</div>
+			</div>
+			<div id="tab">
+				<ul>
+					<li class="on"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		<script src="js/move.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function(){
+				var tabLi = document.getElementById('tab').getElementsByTagName('li');
+				var oUl = document.getElementById('pic').getElementsByTagName('ul')[0];
+				var oRight = document.getElementById('right');
+				var oLeft = document.getElementById('left');
+				var oBanner = document.getElementById('banner');
+				var ligoudaner = 0;
+				var timer;
+				var nowTime = 0;
+		
+				for ( var i=0;i<tabLi.length;i++ )
+				{
+					tabLi[i].wangdachui = i;
+					tabLi[i].onclick = function(){
+						tabLi[ligoudaner].className = ''; // 前一个变到没有
+						ligoudaner = this.wangdachui;
+						change();
+					};
+				};
+		
+				oRight.onclick = function(){
+					if ( new Date() - nowTime > 300 )
+					{
+						nowTime = new Date();
+						tabLi[ligoudaner].className = '';
+						ligoudaner ++;
+						ligoudaner %= tabLi.length;
+						change();
+					}
+					
+				};
+		
+				oLeft.onclick = function(){
+					if ( new Date() - nowTime > 300 )
+					{
+						nowTime = new Date();
+						tabLi[ligoudaner].className = '';
+						ligoudaner = ligoudaner<=0?tabLi.length-1:ligoudaner-1;
+						change();
+					};
+				};
+				
+				auto();
+				
+				oBanner.onmouseenter = function(){
+					clearInterval( timer );
+				};
+		
+				oBanner.onmouseleave = function(){
+					auto();
+				};
+		
+				function auto(){
+					timer = setInterval(function(){
+						tabLi[ligoudaner].className = '';
+						ligoudaner ++;
+						ligoudaner %= tabLi.length;
+						change();
+					},3000);
+				};
+		
+				function change(){
+					tabLi[ligoudaner].className = ''; // 前一个变到没有
+					tabLi[ligoudaner].className = 'on'; // 当前这个加上on
+					move( oUl , {marginLeft : -500*ligoudaner + 'px'} , 300 );
+				};
+			})();
+			
+		
+		
+		
+		
+		</script>
+			+function(){
+				
+				
+				var tabLi = document.getElementById('tab').getElementsByTagName('li');
+				var oUl = document.getElementById('pic').getElementsByTagName('ul')[0];
+				var oRight = document.getElementById('right');
+				var oLeft = document.getElementById('left');
+				var index = 0;
+				var timer;
+				var oBanner = document.getElementById('banner');
+				var newTime = new Date;
+				for(var i=0; i<tabLi.length; i++){
+					tabLi[i].a = i;
+					tabLi[i].onclick = function(){
+						tabLi[index].className = ' ';
+						index = this.a;
+						tabLi[index].className = 'on';
+						move(oUl, {marginLeft: -500*index +'px'}, 300 )
+					}
+				}
+				
+				oRight.onclick = function(){
+					if(new Date  newTime)
+					tabLi[index].className = ' ';
+					index++;
+					if(index >= tabLi.length){
+						index = 0;
+					}
+					tabLi[index].className = 'on';
+					move(oUl, {marginLeft: -500*index +'px'}, 300 )
+				}
+				
+				oLeft.onclick = function(){
+					tabLi[index].className = ' ';
+					// index--;
+					index = index<=0 ? tabLi.length-1: index-1;
+					/* if(index <= tabLi.length){
+						index = tabLi.length-1;
+					} */
+					tabLi[index].className = 'on';
+					move(oUl, {marginLeft: -500*index +'px'}, 300 )
+				}
+				auto();
+				oBanner.onmouseenter = function(){
+					clearInterval(timer);
+				}
+				oBanner.onmouseleave = function(){
+					auto();
+				}
+				function auto(){
+					timer = setInterval(function(){
+					tabLi[index].className = ' ';
+					index++;
+					if(index >= tabLi.length){
+						index = 0;
+					}
+					tabLi[index].className = 'on';
+					move(oUl, {marginLeft: -500*index +'px'}, 300 )
+				},2000);
+				}
+			}()
+		</script>
+	</body>
+</html>

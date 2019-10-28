@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		.carousel{
+			width: 830px;
+			height: 482px;
+			float: left;
+			position: relative;
+		}
+		.carousel .carousel-imgs .carousel-imgs-item{
+			position: absolute;
+			transition: all 2s;
+		}
+		.carousel .left-arrow{
+			display: block;
+			width: 32px;
+			height: 65px;
+			background-image: url('../wizard/wizard.png');
+			background-position: -161px -144px;
+			position: absolute;
+			top: 208.5px;
+			display: none;
+			z-index: 999;
+		}
+		.carousel .left-arrow:hover{
+			cursor: pointer
+		}
+		.carousel .right-arrow{
+			display: block;
+			width: 32px;
+			height: 65px;
+			background-image: url('../wizard/wizard.png');
+			background-position: -196px -144px;
+			position: absolute;
+			top: 208.5px;
+			right: 0px;
+			display: none;
+			z-index: 999;
+		}
+		.carousel .right-arrow:hover{
+			cursor: pointer;
+		}
+		.carousel .carousel-btn{
+			position: absolute;
+			top: 335px;
+			left: 300px;
+			z-index: 999;
+		}
+		.carousel .carousel-btn .active{
+			background-color: #fa980d;
+		}
+		.carousel .carousel-btn li{
+			width: 17px;
+			height: 17px;
+			background-color: white;
+			float: left;
+			margin-right: 14px;
+			border-radius: 50%;
+			text-align: center;
+			z-index: 999;
+		}
+	</style>
+</head>
+<body>
+	<div class="carousel">
+		<ul class="carousel-imgs">
+			<li class="carousel-imgs-item" style="z-index: 2"><a href=""><img src="" alt="" style="width: 800px;height: 600px;background-color: black"></a></li>
+			<li class="carousel-imgs-item"><a href=""><img src="" alt="" style="display: block;width: 800px;height: 600px;background-color: red"></a></li>
+			<li class="carousel-imgs-item"><a href=""><img src="" alt="" style="display: block;width: 800px;height: 600px;background-color: blue"></a></li>
+			<li class="carousel-imgs-item"><a href=""><img src="" alt="" style="display: block;width: 800px;height: 600px;background-color: green"></a></li>
+			<li class="carousel-imgs-item"><a href=""><img src="" alt="" style="display: block;width: 800px;height: 600px;background-color: grey"></a></li>
+			<li class="carousel-imgs-item"><a href=""><img src="" alt="" style="display: block;width: 800px;height: 600px;background-color: pink"></a></li>
+			<li class="carousel-imgs-item"><a href=""><img src="" alt="" style="display: block;width: 800px;height: 600px;background-color: purple"></a></li>
+			<li class="carousel-imgs-item"><a href=""><img src="" alt="" style="display: block;width: 800px;height: 600px;background-color: yellow"></a></li>
+		</ul>
+		<span class="left-arrow"></span>
+		<span class="right-arrow"></span>
+		<ul class="carousel-btn">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+<script>
+	handCraousel();
+	function handCraousel(){
+		var aImg = document.querySelectorAll('.carousel-imgs-item');
+		var oLeftArrow = document.querySelector('.left-arrow');
+		var oRightArrow = document.querySelector('.right-arrow');
+		var aBtn = document.querySelector('.carousel-btn').children;
+		var oCarousel = document.querySelector('.carousel');
+		/*console.log(aImg);
+		console.log(oLeftArrow);
+		console.log(oRightArrow);
+		console.log(aBtn);
+		console.log(oCarousel);*/
+		var now = 0;
+		function tab(){
+		 	for(var i = 0; i<aImg.length;i++){
+		 		aImg[i].style.zIndex = '0';
+		 		aBtn[i].className = '';
+		 		aImg[i].style.opacity = '0';
+		 	}
+		 	aImg[now].style.zIndex = '99';
+		 	aImg[now].style.opacity = '1';
+		 	aBtn[now].className = 'active';	 	
+		}
+		oRightArrow.onclick = function(){
+		 	now++;
+		 	if(now >= aImg.length){
+		 		now = 0;
+		 	}
+		 	tab();
+		}
+		oLeftArrow.onclick = function(){
+		 	now--;
+		 	if(now<0){
+		 		now = aImg.length-1;
+		 	}
+		 	tab();
+		}
+		for(var i = 0;i<aBtn.length;i++){
+		 	aBtn[i].index = i;
+		 	aBtn[i].onclick = function(){
+		 		now = this.index;
+		 		tab();
+		 	}
+		}
+		timer = setInterval(oRightArrow.onclick,2000);
+		oCarousel.onmouseover = function(){
+			oLeftArrow.style.display = 'block';
+			oRightArrow.style.display = 'block';
+		 	clearInterval(timer);
+		}
+		oCarousel.onmouseout = function(){
+			oLeftArrow.style.display = 'none';
+			oRightArrow.style.display = 'none';
+		 	timer = setInterval(oRightArrow.onclick,2000);
+		}
+	}
+</script>
+</html>

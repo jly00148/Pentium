@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>input</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+.search{
+	float: right;
+	width: 296px;
+	height: 50px;
+	margin-top: 34px;
+	margin-right: 239px;
+	position: relative;
+}
+.search .search-text{
+	float: left;
+	width: 246px;
+	height: 50px;
+	border: 1px solid #e0e0e0;
+	border-right: none; 
+	outline: none;
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+.search  .search-text:hover{
+	border-color: #999;
+}
+.search  .search-text:hover + .search-btn{
+	border-color: #999;
+}
+.search .search-btn{
+	float: left;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	border: 1px solid #e0e0e0;
+	box-sizing: border-box;
+	text-align: center;
+	font-size: 18px;
+}
+.search:focus + .search-btn{
+	border-color: #ff6700;
+}
+
+.search .search-btn:hover{
+	background: #ff6700;
+	cursor: pointer;
+	color: #fff;
+}
+.search .search-text:focus {
+	border-color: #ff6700;
+}
+.search .search-text:focus + .search-btn {
+	border-color: #ff6700;
+}
+.search .search-hot-words{
+	position: absolute;
+	left: 100px;
+	line-height: 50px;
+}
+.search .search-text:focus ~ .search-hot-words{
+	display: none;
+}
+.search .search-hot-words .search-hot-words-item:hover{
+	background: #ff6700;
+	line-height: 18px;
+	height: 18px;
+
+}
+.search .search-hot-words .search-hot-words-item{
+	display: inline-block;
+	height: 12px;
+	font-size: 12px;
+	line-height: 12px;
+	padding: 0 3px;
+	color: #757575;
+	background: #eee;
+	text-decoration: none;
+}
+.search .search-keyword-list{
+	display: none;
+	position: absolute;
+	top: 50px;
+	left: 0px;
+	width: 247px;
+	border: 1px solid #ff6700;
+	border-top: none;
+	box-sizing: border-box;
+	background: #fff;
+	font-size: 12px;
+	z-index: 2
+}
+.search-text:focus~.search-keyword-list{
+	display: block;
+	border-color: #ff6700;
+}
+.search-keyword-list .keyword-item{
+	height: 30px;
+	line-height: 30px;
+	list-style: none;
+}
+.search .search-keyword-list .keyword-item a{
+	width: 100%;
+	height: 30px;
+	box-sizing: border-box;
+	padding: 0 10px;
+	text-decoration: none;
+}
+.search .search-keyword-list .keyword-item:hover{
+	background: #ff6700;
+
+}
+.keyword{
+	color: #333;
+}
+.search .search-keyword-list .keyword-item .num{
+	float: right;
+	color: #b0b0b0;
+}
+	</style>
+</head>
+<body>
+	<div class="search">
+		<input type="text" class="search-text">
+		<div class="search-btn">
+			<i class="iconfont icon-fangdajing"></i>
+		</div>
+		<div class="search-hot-words">
+			<a class="search-hot-words-item" href="#">小米8</a>
+			<a class="search-hot-words-item" href="#">小米MIX 2S</a>
+		</div>	
+		<div class="search-keyword-list">
+			<ul>
+				<li class="keyword-item"><a href="#"><span class="keyword">小米6X</span><span class="num">约有6件</span></a></li>
+				<li class="keyword-item"><a href="#"><span class="keyword">小米MIX 2S</span><span class="num">约有5件</span></a></li>
+				<li class="keyword-item"><a href="#"><span class="keyword">黑鲨游戏手机</span><span class="num">约有3件</span></a></li>
+				<li class="keyword-item"><a href="#"><span class="keyword">红米Note 5</span><span class="num">约有6件</span></a></li>
+				<li class="keyword-item"><a href="#"><span class="keyword">红米5A</span><span class="num">约有13件</span></a></li>
+				<li class="keyword-item"><a href="#"><span class="keyword">小米电视4C</span><span class="num">约有5件</span></a></li>
+				<li class="keyword-item"><a href="#"><span class="keyword">电视32英寸</span><span class="num">约有3件</span></a></li>
+				<li class="keyword-item"><a href="#"><span class="keyword">笔记本pro</span><span class="num">约有5件</span></a></li>
+				<li class="keyword-item"><a href="#"><span class="keyword">空气净化器</span><span class="num">约有11件</span></a></li>
+				<li class="keyword-item"><a href="#"><span class="keyword">净水器</span><span class="num">约有8件</span></a></li>
+			</ul>
+		</div>
+	</div>	
+</body>
+</html>
