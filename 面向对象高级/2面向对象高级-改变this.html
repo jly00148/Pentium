@@ -12,10 +12,10 @@
 		console.log(this,n1,n2);
 	}
 	//show(1,2);
-	//show.call(1,2,3);
+	show.call({name:'jly'},2,3);
 	//show.apply({name:'jly'},[2,3]);
-	var fn = show.bind({name:'jly'},1,2);
-	fn();
-console.log(fn);
+	// var fn = show.bind({name:'jly'},1,2);
+	// fn();
+	// console.log(fn);
 </script>
 </html>
