@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Drag(options){
+		//罗列
+		this.oBox = null;
+		this.disX = 0;
+		this.disY = 0;
+		this.width = options.width;
+		this.height = options.height;
+		this.background = options.background;
+		//初始化
+		this.init();
+		//绑定
+		this.bindEvent();
+		this.fnMove();
+		this.fnStop();
+	};
+
+
+	Drag.prototype.init = function(){
+		this.oBox = document.createElement('div');
+		this.oBox.style.position = 'absolute';
+		this.oBox.style.left = 0;
+		this.oBox.style.top = 0;
+		this.oBox.style.width = this.width + 'px';
+		this.oBox.style.height = this.height + 'px';
+		this.oBox.style.background = this.background;
+		document.body.appendChild(this.oBox);
+	}
+
+
+	Drag.prototype.bindEvent = function(ev){
+		this.oBox.onmousedown = function(ev){
+			var oEvent = ev || event;
+			this.disX = oEvent.clientX - this.oBox.offsetLeft;
+			this.disY = oEvent.clientY - this.oBox.offsetTop;
+			/*
+			document.onmousemove = function(ev){
+				var oEvent = ev || event;
+				this.oBox.style.left = oEvent.clientX - this.disX + 'px';
+				this.oBox.style.top = oEvent.clientY - this.disY + 'px';
+			}.bind(this);
+			document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+			}
+			*/
+			document.onmousemove = this.fnMove.bind(this);
+			document.onmouseup = this.fnStop;
+		}.bind(this);
+	}
+
+
+	Drag.prototype.fnMove = function(ev){
+		var oEvent = ev || event;
+		this.oBox.style.left = oEvent.clientX - this.disX + 'px';
+		this.oBox.style.top = oEvent.clientY - this.disY + 'px';
+	}
+	Drag.prototype.fnStop = function(){
+		document.onmousemove = null;
+		document.onmouseup = null;		
+
+	}
+	function limiteDrag(options){
+		Drag.call(this,options);
+	}
+	limiteDrag.prototype = Object.create(Drag.prototype);
+	limiteDrag.prototype.constructor = limiteDrag;
+	new limiteDrag({
+		width:300,
+		height:300,
+		background:'green'
+	});
+	new Drag({
+		width:100,
+		height:100,
+		background:'red'
+	});
+</script>
+</html>
