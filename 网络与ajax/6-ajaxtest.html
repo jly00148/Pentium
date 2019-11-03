@@ -14,16 +14,19 @@
 
 			//1.生成ajax对象(购买电话);oAjax是ajax对象.
 			var oAjax = new XMLHttpRequest();
-			console.log(oAjax.readyState);
+			//console.log(oAjax.readyState);0,没有初始化，还没有调用open方法
 			//2.用ajax对象和服务建立连接(拨打电话)
 			oAjax.open('GET','http://127.0.0.1:3000/5-test.json',true)//true是异步请求
-
+			//console.log(oAjax.readyState)//1,启动,已经调用open方法，但是还没有调用send方法
 			//3.用ajax对象发送请求到服务端(说话)
 			oAjax.send();
-
+			//console.log(oAjax.readyState);
 			//4.用ajax对象接收服务器返回的数据(听)
 			oAjax.onreadystatechange = function(){
 				//console.log(oAjax.readyState);
+				//2,已经调用send方法但是还没有返回数据
+				//3,接收返回部分数据
+				//4,数据完全返回
 				if(oAjax.readyState == 4){
 
 					if(oAjax.status == 200){
