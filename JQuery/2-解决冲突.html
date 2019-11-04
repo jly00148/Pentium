@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	(function(){
+		window.$ = function(){
+			console.log('test')
+		}
+	})(window)
+</script>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	//方法一
+	//jQuery.noConflict();//释放$权限
+	window.$();
+
+
+	//方法二
+	var kz = jQuery.noConflict();//console.log(jQuery.noConflict())返回值为$
+	$();
+	kz(function(){
+		console.log('hello');
+	})
+</script>
+</html>
