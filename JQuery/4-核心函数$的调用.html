@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div></div>
+	<div id="box"></div>
+	<div class="box1"></div>
+	<div id="box2"></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	var fs = $(function(){
+		console.log($("div"));
+		console.log($("#box"));
+		console.log($(".div"));
+		console.log($("<h1>hello</h1>"));
+		var oDiv = document.getElementById('box2');
+		console.log($(oDiv));
+		console.log($('-----'))
+		console.log($(''))
+		console.log($(0))
+		console.log($(false))
+		console.log($(true))
+		console.log($(undefined))
+		console.log($(null));
+		console.log($(NaN));
+	})
+
+</script>
+</html>
