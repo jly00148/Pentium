@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<button>按钮</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	// $('button').on('click',100,function(){
+	// 	$('div').animate({width:'200px'},1000);
+	// 	$('div').animate({height:'200px'},1000);
+	// 	$('div').animate({opacity:'0.6'},1000);
+	// })
+
+	// $('div').animate({width:'200px'},1000,function(){
+	// 	$('div').animate({height:'200px'},1000,function(){
+	// 			$('div').animate({opacity:'0.6'},1000);
+	// 	})
+	// })
+	$('div')
+	
+	.animate({width:'200px'},1000)
+	.animate({height:'200px'},1000)
+	.animate({opacity:'0.6'},1000)
+</script>
+</html>

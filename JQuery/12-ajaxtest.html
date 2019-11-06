@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>获取数据</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').on('click',function(){
+			$.ajax({
+				url:"12-data.json",
+				type:"GET",
+				dataType:"json",//字符串转json
+				//data:{name:"amy",age:88},
+				success:function(data,statusMsg,jqXHR){
+					//console.log("data::",JSON.parse(data).name);JSON.parse字符串转对象
+					console.log(data.name);
+					console.log("statusMsg11::",statusMsg,);
+					console.log("jqXHR11::",jqXHR);
+				},
+				error:function(jqXHR,statusMsg){
+					console.log("jqXHR22:::",jqXHR);
+					console.log("statusMsg22:::",statusMsg);
+				},
+				complete:function(jqXHR,statusMsg){
+					console.log("jqXHR33:::",jqXHR);
+					console.log("statusMsg33:::",statusMsg);
+				},
+				timeout:1000,
+				statusCode:{
+					404:function(){
+						console.log("404::: not found");
+					}
+				},
+				headers:{test:"test"}
+			});
+		});
+	});
+</script>
+</html>
