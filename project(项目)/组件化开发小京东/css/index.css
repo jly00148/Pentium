@@ -1,0 +1,42 @@
+/*顶部导航头开始*/
+.nav{
+	height: 40px;
+	background-color: #f3f5f7;
+}
+.nav-login{
+	color: #ea675a;
+}
+.nav-left li{
+	height: 40px;
+	line-height: 40px;
+	margin-right: 5px;
+}
+.nav-right .drop-toggle{
+	line-height: 40px;
+	display: block;
+}
+.dropdown{
+	position: relative;
+}
+.dropdown .dropdown-layer{
+	line-height: 40px;
+	background-color: #fff;
+	border: 1px solid #f3f5f7;
+	border-radius: 2px;
+	border-top: none;
+	text-align: center;
+	position: absolute;
+	display: none;
+
+}
+.menu-item{
+	white-space: nowrap;/*不换行*/
+}
+.dropdown-layer li:hover{
+	background-color: #f3f5f7;
+}
+.header{
+	height: 150px;
+	background-color: green;	
+}
+/*顶部导航头结束*/
