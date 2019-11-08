@@ -20,7 +20,7 @@ var server = http.createServer(function(req,res) {
 			res.end(body);
 		})
 	}else if(req.method == 'GET'){
-		if(urlStr.search(/\?/)! = -1){
+		if(urlStr.search(/\?/) != -1){
 			var parm = url.parse(urlStr,true).query;
 			var json = JSON.stringify(parm);
 			res.end(json);
