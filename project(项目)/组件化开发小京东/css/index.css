@@ -20,6 +20,7 @@
 }
 .dropdown{
 	position: relative;
+	margin-left: 10px;
 }
 .dropdown .dropdown-layer{
 	line-height: 40px;
