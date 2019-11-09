@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	var str = ' a bc d ';
+	console.log(str);
+	console.log($.trim(str));//去除字符串两边空格
+	console.log($.isWindow(window));
+	console.log($.isWindow({}));
+	console.log($.isArray([1,2,3]));//真数组
+	console.log($.isArray({0:"aa",1:"bb",2:"cc",length:3}));//伪数组
+	console.log($.isFunction(function(){}));
+	console.log($.isFunction({}));
+	var obj1 = {name:'jly',age:18};
+	var obj2 = {name:'leo',age:88};
+
+	// console.log($.extend(obj1,obj2));
+	// console.log(obj1);
+	console.log($.extend({},obj1,obj2));
+	console.log(obj1);
+</script>
+</html>
