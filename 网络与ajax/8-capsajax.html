@@ -13,6 +13,8 @@
 		//1.生成ajax对象(购买电话);oAjax是ajax对象.
 		var oAjax = new XMLHttpRequest();
 		//console.log(oAjax.readyState);0,没有初始化，还没有调用open方法
+
+
 		if(method.toUpperCase() == 'POST'){
 			oAjax.open(method,url,true);
 			oAjax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
@@ -44,7 +46,8 @@
 							//var obj = JSON.parse(oAjax.responseText);//JSON转对象
 							//console.log(obj.name);
 							var obj = JSON.parse(oAjax.responseText);
-							typeof fnSucc == 'function' && fnSucc(obj);					
+							typeof fnSucc == 'function' && fnSucc(obj);
+							//console.log(fnSucc);
 					}catch(e){
 						console.log(e);
 					}
@@ -53,10 +56,14 @@
 				}else{
 					//console.log('failed request,status code == '+ oAjax.status);
 						typeof fnFailed == 'function' && fnSucc(oAjax.status);
+						console.log(fnFailed);
 				}
 			}
 		}
 	}
+
+
+
 	var oBtn = document.getElementById('btn');
 
 		oBtn.onclick = function(){
@@ -73,15 +80,22 @@
 			)
 			*/
 			ajax('GET',
-			'http://127.0.0.1:3000/5-test.json',
-			'{"name":"jly","age":88}',
-			function(obj){
-				console.log(obj);
-			},
-			function(status){
-				console.log(status);
-			}
-			)			
+				'http://127.0.0.1:3000/5-test.json',
+				'',
+				function(arr){
+					var oUl  = document.createElement('ul');					
+					for(var i = 0;i<arr.length;i++){
+						var aLi = document.createElement('li');
+						aLi.innerHTML = "姓名: "+arr[i].name + " 年龄:"+arr[i].age;
+						oUl.appendChild(aLi);						
+					}
+
+					document.body.appendChild(oUl);
+				},
+				function(status){
+					console.log(status);
+				}
+			)
 		}
 </script>
 </html>
