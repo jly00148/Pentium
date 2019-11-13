@@ -5,6 +5,9 @@ var url = require('url');
 
 var server = http.createServer(function(req,res) {
 	res.setHeader("Access-Control-Allow-Origin",'http://127.0.0.1:3000');
+	res.setHeader("Content-Type",'type/html');
+	res.setHeader("Access-Control-Expose-Headers",'Date,Access-Control-Allow-Origin,Kuazhu-test');
+	//res.setHeader("Kuazhu-test",'Kuazhu-test-Content');
 	var urlStr = req.url;
 	if(urlStr == '/favicon.ico'){
 		res.end('favicon.ico');
