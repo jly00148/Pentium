@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// console.log(localStorage);
+	// console.log(sessionStorage);
+
+	//setItem(key,value)设置
+	localStorage.setItem('username','jly');
+	localStorage.setItem('age','18');
+	localStorage.setItem('xx','aaa');
+	sessionStorage.setItem('username','jly');
+	sessionStorage.setItem('age','18');
+	sessionStorage.setItem('xx','aaa');	
+
+	//getItem(key) 获取
+	console.log(localStorage.getItem('username'));
+	console.log(localStorage.getItem('age'));
+	console.log(sessionStorage.getItem('username'));
+	console.log(sessionStorage.getItem('age'));	
+
+	//removeItem(key) 删除
+	localStorage.removeItem('username');
+	sessionStorage.removeItem('username');
+
+	//清除所有
+	//localStorage.clear();
+
+	//内容个数
+	console.log(localStorage.length);
+	console.log(sessionStorage.length);
+
+	//ley(num) 获取的值
+	console.log(localStorage.key(0));
+	console.log(sessionStorage.key(0));
+</script>
+</html>
