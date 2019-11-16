@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.father{
+			width: 1600px;
+			height: 600px;
+			border: 1px solid #000;
+			margin: 100px auto;
+			display: flex;
+			/* flex-direction: row; 从左往右排*/
+			/* flex-direction: row-reverse; 从右往左排*/
+			/* flex-direction: column; 从上往右下*/
+			/* flex-direction: column-reverse; 从下往上排*/
+			/* flex-wrap: nowrap; */
+			/* flex-wrap: wrap; */
+			/* flex-wrap: wrap-reverse; */
+			flex-flow: row wrap-reverse;/*flex-direction,flex-wrap简写*/
+		}
+		.son{
+			height: 100px;
+		}
+		.son1{
+			background-color: red;
+			width: 200px;
+		}
+		.son2{
+			background-color: orange;
+			width: 300px;
+		}
+		.son3{
+			background-color: purple;
+			width: 1200px;
+		}				
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son son1">son1</div>
+		<div class="son son2">son2</div>
+		<div class="son son3">son3</div>
+	</div>
+</body>
+</html>
