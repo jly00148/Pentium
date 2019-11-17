@@ -3,6 +3,7 @@
 }
 .link:hover{
 	color: #f65a8a !important;
+	text-decoration: none;
 }
 #kuazhu .navbar-nav .active a{
 	color: #f65a8a;
@@ -19,15 +20,18 @@
 	color: #f65a8a;
 }
 main{
-	margin-top: 50px;
+	margin-top: 80px;
+}
+main .row .carousel-inner{
+	margin-bottom: 20px;
 }
 main .row .carousel-inner img{
 	height: 506px;
 }
 .ad .thumbnail{
 	border: none;
-	height: 245px;
-	padding: 0;
+	height: 243px;
+	padding: 0;`
 }
 .ad .thumbnail img{
 	width: 100%;
@@ -35,4 +39,21 @@ main .row .carousel-inner img{
 }
 .ad:hover{
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6)
+}
+.panel-body{
+	text-indent: 32px;
+}
+.panel-heading{
+	padding-left: 0px;
+}
+.panel-title{
+	border-left: 5px solid #f65a8a;
+	padding-left: 15px;
+}
+.panel-footer .text-muted{
+	margin-right: 15px;
+}
+.panel-footer .text-muted:hover{
+	color: #f65a8a;
+	cursor: pointer;
 }
