@@ -1,0 +1,18 @@
+#kuazhu{
+	opacity: 0.9;
+}
+#kuazhu .navbar-nav .active a{
+	color: #f65a8a;
+
+}
+.navbar-nav li{
+	font-size: 16px;
+	text-align: center;	
+}
+.navbar-nav li a{
+	margin-right: 20px;
+
+}
+#kuazhu .navbar-nav li a:hover{
+	color: #f65a8a;
+}
