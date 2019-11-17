@@ -1,9 +1,11 @@
 #kuazhu{
 	opacity: 0.9;
 }
+.link:hover{
+	color: #f65a8a !important;
+}
 #kuazhu .navbar-nav .active a{
 	color: #f65a8a;
-
 }
 .navbar-nav li{
 	font-size: 16px;
@@ -15,4 +17,15 @@
 }
 #kuazhu .navbar-nav li a:hover{
 	color: #f65a8a;
+}
+main{
+	margin-top: 50px;
+}
+main .row .carousel-inner{
+	width: 730px;
+	height: 410.88px;
+}
+main .row .carousel-inner img{
+	width: 100%;
+	height: 100%;
 }
