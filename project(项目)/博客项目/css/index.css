@@ -57,3 +57,6 @@ main .row .carousel-inner img{
 	color: #f65a8a;
 	cursor: pointer;
 }
+.pagination li:hover a{
+	color: #f65a8a;
+}
