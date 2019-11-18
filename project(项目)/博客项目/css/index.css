@@ -43,6 +43,26 @@ main .row .carousel-inner img{
 .panel-body{
 	text-indent: 32px;
 }
+.panel-body1{
+	text-indent: 0px;
+	padding: 0px;
+}
+.panel-body1 #news .new-item a{
+	display: block;
+	text-align: center;
+}
+.new-item{
+	list-style: none;
+	line-height: 30px;
+}
+.text-ellipsis{
+	text-overflow: ellipsis;
+	overflow: hidden;	
+	white-space: nowrap;
+}
+.text-ellipsis,.link{
+	list-style: none;
+}
 .panel-heading{
 	padding-left: 0px;
 }
