@@ -60,6 +60,10 @@ main .row .carousel-inner img{
 	float: left;
 	padding: 10px;
 }
+.panel-body .ewm{
+	width: 100%;
+	height: 100%;
+}
 .panel-default .panel-body{
 	padding: 5px;
 }
@@ -75,4 +79,7 @@ main .row .carousel-inner img{
 }
 .pagination li:hover a{
 	color: #f65a8a;
+}
+footer{
+	text-align: center;
 }
