@@ -46,9 +46,25 @@ main .row .carousel-inner img{
 .panel-heading{
 	padding-left: 0px;
 }
-.panel-title{
+.panel-title1{
 	border-left: 5px solid #f65a8a;
 	padding-left: 15px;
+}
+.panel-title{
+	padding-left: 15px;
+}
+.panel-body img{
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	float: left;
+	padding: 10px;
+}
+.panel-default .panel-body{
+	padding: 5px;
+}
+.panel-default .panel-body #wyz{
+	margin-left: 0px;
 }
 .panel-footer .text-muted{
 	margin-right: 15px;
