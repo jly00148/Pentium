@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+	//console.log(a);
+	//console.log('b',b);	
+	//var a = 1;
+	//var a = 2;
+
+	//let b = 1;
+	//let b = 2;b不能被重新定义
+
+	// if(true){
+	// 	var a = 1;
+	// 	console.log('in var::',a);
+	// }
+	// 	console.log('out var::',a);
+
+	// if(true){
+	// 	let b = 1;
+	// 	console.log('in let::',b);
+	// }
+		//console.log('out let::',b);001-let变量.html:30 Uncaught ReferenceError: b is not defined
+
+	function fn1(){
+		var a = 2;
+		function fn1(){
+			a = 3;
+			console.log('11',a);//3
+		}
+		console.log('22',a);//2
+		fn1();
+		console.log('33',a);//3
+	}
+	fn1();
+	//console.log('44',a);undefined
+
+
+	function fn1(){
+		var a = 2;
+		function fn1(){
+			var a = 3;
+			console.log('11',a);//3
+		}
+		console.log('22',a);//2
+		fn1();
+		console.log('33',a);//2
+	}
+	fn1();
+	//console.log('44',a);undefined
+
+
+	function fn1(){
+		let a = 2;
+		function fn1(){
+			a = 3;
+			console.log('11',a);//3
+		}
+		console.log('22',a);//2
+		fn1();
+		console.log('33',a);//3
+	}
+	fn1();
+	
+</script>
+</html>
