@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let s = new Set([11,22,33,44]);
+	for(let key of s.keys()){
+		console.log('key::',key);
+	}
+	for(let value of s.values()){
+		console.log('value::',value);
+	}
+	for(let value of s){
+		console.log('value::',value);
+	}
+	for(let entry of s.entries()){
+		console.log('entry::',entry);
+	}
+	s.forEach(function(val,index){//回調函數遍歷
+		console.log('val,index',val,index)
+	})
+	//set只有值沒有鍵		
+</script>
+</html>

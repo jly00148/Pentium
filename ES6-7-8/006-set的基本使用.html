@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [44,55,66,66,55,44];
+	let s = new Set();
+	s.add(11);
+	s.add(22);
+	s.add(33);
+	console.log(s);
+	console.log('s.size',s.size);
+
+	s.delete(33);
+	console.log();
+	console.log(s.has(33));
+	console.log(s);
+	console.log('s.size',s.size);
+
+
+
+	let s1 = new Set(arr);
+	console.log(s1);
+	s1.add(44,55);
+	console.log(s1);
+</script>
+</html>
