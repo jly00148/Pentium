@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let arr = [11,22];
+	/*
+	console.log(arr);
+	console.log(...arr);
+	console.log(11,22);
+
+	function sum(n1,n2){
+		return n1+n2;
+	}
+	console.log(sum(11,22));
+	console.log(sum(...arr));
+	function sum(...arr1){
+		console.log(arr1);
+	}
+	sum();
+
+	function sum(){
+		console.log(arguments);
+	}
+	sum(11,22,33);
+
+	console.log(Math.max(11,32));
+	console.log(Math.max.apply(null,arr));
+	console.log(Math.max(...arr));
+	let arr2 = arr;
+	arr2.push(33);
+	console.log(arr);
+
+	let arr3 = [];
+	for(let i = 0;i<arr.length;i++){
+		arr3.push(arr[i]);
+	}
+	arr3.push(33);
+	console.log(arr);
+	console.log(arr3);
+	*/
+	/*
+	let arr4 = arr.concat();
+	arr4.push(33);
+	console.log(arr);
+	console.log(arr4);
+
+	let arr5 = arr.slice();
+	arr5.push(33);
+	console.log(arr);
+	console.log(arr5)
+	*/
+	let arr6 = [...arr];
+	arr6.push(33);
+	console.log(arr);
+	console.log(arr6);
+</script>
+</html>
