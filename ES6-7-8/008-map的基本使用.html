@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let obj ={age:18};
+	let obj1 ={id:228};
+	let obj2 ={id:338};
+	/*
+	obj.name = 'jly';
+	obj[obj1] = "teacher";
+	obj[obj2] = "student";
+	console.log(obj);
+	for(let key in obj){
+		console.log(key,typeof key);
+	}*/
+	let map = new Map();
+	map.set('age',18);
+	map.set(obj1,'teacher');
+	map.set('obj2','student');
+	console.log(map);
+	console.log("map.get('age')",map.get('age'));
+	console.log("map.get('obj1')",map.get(obj1));
+	console.log("map.delete('age')",map.delete('age'));
+	console.log("map.has('age')",map.has('age'));
+	console.log("map.has('age1')",map.has('age1'));
+	console.log('map size',map.size);
+</script>
+</html>
