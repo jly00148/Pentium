@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	console.log(sum(2,3));
+
+	function sum(x,y){函数声明的提升
+		return x+ y;
+	}
+	*/
+
+	/*
+	let sum = function(x,y){//不存在函数声明的提升
+		return x + y;
+	}
+  	console.log(sum(2,3));
+  	*/
+  	/*
+  	let sum = (x,y)=>{
+  		return x + y;
+  	}
+  	console.log(sum(1,2));
+   	*/
+   	/*
+  	 let sum = (x,y)=> x + y;
+  	
+  	console.log(sum(1,2)); return 只有一句话
+  	*/
+  	/*
+  	let sum = x => x ;
+  	console.log(sum(1,2));
+  	*/
+  	let arr1 = [1,10,66,44,77,22,56];
+  	 console.log(arr1);
+  	/*
+  	let arr2 = arr1.sort();
+  	console.log(arr2);
+  	console.log(arr1);
+  	*/
+  	/*
+  	let arr2 = arr1.sort(function(n1,n2){
+  	  	return n1 - n2;
+  	  });
+	*/
+	let arr2 = arr1.sort((n1,n2)=>n1-n2);
+  	console.log(arr2);
+</script>
+</html>
