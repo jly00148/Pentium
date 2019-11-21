@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	
+	var img = new Image();
+	/*
+	img.onload = function(){
+	
+		console.log('../部分hcs练习/images/mn.jpg' + ' loaded');
+	}
+	img.onerror = function(){
+	
+		console.log('../部分hcs练习/images/mn.jpg ' + ' loaded failed');
+	
+	}
+
+	img.src = '../部分hcs练习/images/mn.jpg';
+	*/
+	/*
+	function laodImg(url){
+		img.onload = function(){
+		console.log(url + ' loaded');
+	}
+
+		img.onerror = function(){
+		console.log(url + ' loaded failed');
+	}	
+		img.src = url;	
+	}
+	laodImg('../部分hcs练习/images/mn.jpg');
+	*/
+
+	/*
+	function laodImg(url,success,failed){
+		img.onload = function(){
+		success(url);
+	}
+
+		img.onerror = function(){
+		failed(url);
+	}	
+		img.src = url;	
+	}
+	laodImg('../部分hcs练习/images/mn.jpg',
+		function(url){
+			console.log(url + ' loaded');
+		},
+		function(url){
+			console.log(url + ' loaded failed');
+		}		
+		);
+
+		*/
+		/*
+	let promise = new Promise((resolve,reject)=>{
+		img.onload = function(){
+			resolve();
+		}
+
+		img.onerror = function(){
+			reject();
+		}
+		img.src= '../部分hcs练习/images/mn.jpg';		
+	});
+
+	promise.then((url)=>{
+		console.log(url + ' loaded');
+	},(err)=>{
+		console.log(url + ' loaded failed');
+	})*/
+
+	let getLoadPromise = (url)=>{
+
+		return new Promise((resolve,reject)=>{
+			img.onload = function(){
+				resolve(url);
+			}
+
+			img.onerror = function(){
+				reject(url);
+			}
+			img.src= url;	
+		});	
+	}
+	getLoadPromise('../部分hcs练习/images/mn.jpg').then(url=>{
+		console.log(url + ' loaded');
+	},err=>{
+		console.log(url + ' loaded failed');
+	})
+</script>
+</html>
