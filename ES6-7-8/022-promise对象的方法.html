@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var p1 = new Promise((resolve,project)=>{
+		resolve('ok');
+	})
+
+	/*
+	let p2 = p1.then((data)=>{
+		return data;
+	})//then会返回新的一个promise
+
+	p2.then((data)=>{
+		console.log(data);
+	})//新的promise的成功时执行函数的参数由上一个promise的return决定
+
+	console.log(p1);
+	console.log(p2);//promise
+	//console.log(p1 === p2);false
+	*/
+	p3 = null;
+	let p2 = p1.then((data)=>{
+		console.log(data);
+		p3 =  new Promise((resolve,reject)=>{
+			resolve('hello');
+		})
+		return p3;
+	})
+
+	p2.then((data=>{
+		console.log(data);
+	//console.log('p2 === p3',p2 === p3)		
+	}))
+
+</script>
+</html>
