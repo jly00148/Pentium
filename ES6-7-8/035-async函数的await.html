@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	function fn(){
+		await 'hello';//Uncaught SyntaxError: await is only valid in async function。只能放到async函数里
+	}
+	*/
+
+	/*
+	async function fn(){
+		let data1 = await 'hello';//await表示后面的处理需要等待;'hello'不需要等待
+		console.log(data1);
+	}
+	fn();
+
+	*/
+
+	let promise = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			resolve('data');
+		},200)
+	})
+
+	/*
+	async function fn(){
+		let data1 = await promise;
+		console.log(data1);
+	}
+	fn();
+	*/
+
+	/*
+	async function fn(){
+		await Promise.reject('err');
+		let data1 = await promise;
+		console.log(data1);		
+	}
+	fn()
+	.catch(err=>{
+		console.log(err);
+	})
+	*/
+
+	async function fn(){
+		try{
+			await Promise.reject('err');
+		}
+		catch(err){
+			console.log(err);
+		};
+
+		try{
+			let data1 = await promise;
+			console.log(data1);
+		}
+		catch(err){
+			console.log(err);
+		}		
+	}
+	fn();
+</script>
+</html>
