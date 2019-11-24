@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let uesrname = "jly",
+		age = 18;
+
+	/*
+	let obj = {
+		uesrname:uesrname,
+		age:age,
+	}
+	console.log(obj);
+	*/
+	/*
+	let obj = {
+		uesrname,
+		age,
+	}
+	console.log(obj);
+	*/
+	let obj = {
+		uesrname,
+		age,
+
+		sayUsername:function(){
+			console.log('i am ' +this.uesrname);
+		},
+		sayUserage:function(){
+			console.log('i am '+this.sayUsername +' years old')
+		}
+	}
+	console.log(obj);
+	obj.sayUsername();
+	obj.sayUserage();
+	/*箭头函数不适用，箭头函数的定时决定的，this 是window调用*/
+</script>
+</html>
