@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	class Person{
+		constructor(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		sayName(){
+			console.log("i am "+ this.name);
+		}
+		sayAge(){
+			console.log("i am" + this.age + "years old");
+		}
+		static sayHi(){
+			console.log('Hi...');
+		}
+	}
+	let p = new Person();
+	console.log(p);
+	p.sayAge();
+	p.sayName();
+	Person.sayHi();
+</script>
+</html>
