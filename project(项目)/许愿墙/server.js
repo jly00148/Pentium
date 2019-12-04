@@ -2,13 +2,15 @@ const http = require('http');
 const url = require('url');
 const path = require('path');
 const fs = require('fs');
-const mime = require('./mime.json');
-const { getAll } = require('./WishModel.js');
+const querystring = require('querystring');
 const swig = require('swig');
+const mime = require('./mime.json');
+const { getAll,add } = require('./WishModel.js');
+
 
 
 const server = http.createServer((req,res)=>{
-	console.log('req=>',req.url);
+	//console.log('req=>',req.url);
 
 	let reqUrl = url.parse(req.url,true);
 	//console.log('reqUrl:::',reqUrl);
@@ -62,12 +64,45 @@ const server = http.createServer((req,res)=>{
 			let html = template({
 				data
 			});
-			res.setHeader('Content-Type',"text/html;charset=utf-8");			
+			res.setHeader('Content-Type',"text/html;charset=utf-8");	
 			res.end(html);			
+		})
+		.catch(err=>{
+			res.setHeader('Content-Type',"text/html;charset=utf-8");
+			console.log('err:::',err);
+			res.statusCode = 500;
+			res.end('<H1>出错了</H1>');
+		})
+
+
+	}else if(pathname == '/add' && req.method.toLowerCase() == 'post'){//处理添加
+		//获取参数
+		let body = '';
+		req.on('data',(chunk)=>{
+			body+=chunk;
+		});
+		req.on('end',()=>{
+			let obj = querystring.parse(body);
+			add(obj)
+			.then(data=>{
+				let result = JSON.stringify({
+					status:0,//代表成功
+					data:data
+				})
+				res.end(result);
+
+			})
+			.catch(err=>{
+				let result = JSON.stringify({
+					status:10,//代表失败
+					message:'添加失败'
+				})
+				res.end(result);				
+			})
+			res.end('ok');
 		});		
-
-
-	}else{
+	}
+	else{//请求静态资源
 		//console.log('pathname111',pathname); // /
 		let filePath = path.normalize(__dirname + '/static/' + pathname);
 		let extname = path.extname(filePath);
