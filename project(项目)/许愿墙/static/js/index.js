@@ -142,4 +142,21 @@
 			}
 		});
 	})
+
+	//监听删除事件
+	$wall.on('click','.close',function(){
+		let $this = $(this);
+		$.ajax({
+			url:'del',
+			dataType:'json',
+			data:'id='+$this.data('id')
+		})
+		.done(function(result){
+			if(result.status == 0){
+				$(this.parentNode).remove();
+			}else{
+				alert(result.message);
+			}
+		}.bind(this));
+	})
 })(jQuery);	

@@ -5,7 +5,7 @@ const fs = require('fs');
 const querystring = require('querystring');
 const swig = require('swig');
 const mime = require('./mime.json');
-const { getAll,add } = require('./WishModel.js');
+const { getAll,add,remove } = require('./WishModel.js');
 
 
 
@@ -95,12 +95,28 @@ const server = http.createServer((req,res)=>{
 			.catch(err=>{
 				let result = JSON.stringify({
 					status:10,//代表失败
-					message:'添加失败'
+					message:'删除失败'
 				})
 				res.end(result);				
 			})
 			res.end('ok');
 		});		
+	}else if(pathname == 'del'){
+		let id = reqUrl.query.id;
+		remove(id)
+		.then(data=>{
+			let result =JSON.stringify({
+				status:0,
+			})
+			res.end();
+		})
+		.catch(err=>{
+			let result =JSON.stringify({
+				status:10,
+				message:'添加失败'
+			})
+			res.end(result);		
+		})
 	}
 	else{//请求静态资源
 		//console.log('pathname111',pathname); // /
