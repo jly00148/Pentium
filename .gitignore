@@ -4,3 +4,4 @@ iconfont/
 bootstrap-3.3.7/
 node_modules/
 *json
+db/
