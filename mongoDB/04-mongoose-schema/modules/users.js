@@ -10,16 +10,29 @@ const UserSchema = new mongoose.Schema({
 	*/
 	name:{
 		type:String,
-		default:''
+		required:[true,'用户名必需输入'],
+		maxlength:[5,'最多五位字符'],
+		min:[3,'最少三位字符']
 	},
 	age:{
 		type:Number,
-		default:0
+		default:0,
+		min:[10,'最小年龄是岁'],
+		man:[20,'最大年龄是20岁']
 	},
 	major:{
 		type:String,
 		enum:['art','computer','music','chemical','sport'],
 		default:'art'
+	},
+	phone:{
+		type:String,
+		validate:{
+			validitor:function(val){
+				return /1[358]\d{9}/.test(val)
+			},
+			message:'{VALUE}不是合法手机号'
+		}
 	},
 	locked:{
 		type:Boolean,
