@@ -4,27 +4,82 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style>
-	*{
-		margin: 0;
-		padding: 0;
-	}
-	div{
-		width: 100px;
-		height: 100px;
-		border: 1px solid #000;
-		box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.6);
-		margin: 100px auto;
-	}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			background-color: red;
+		}
+		.clearfix:after{
+			display: block;
+			content: '';
+			clear: both;
+			height: 0px;
+			visibility: hidden;
+		}
+		.clearfix{
+			*zoom:1
+		}
+		.box1 p{
+			width: 300px;
+			background-color: yellow;
+			float: left;
+
+			
+		}
+		.box2{
+			background-color: blue;
+
+
+		}
+		.box2 p{
+			width: 300px;
+			background-color: pink;
+			float: left;
+
+			
+		}		
 	</style>
 </head>
 <body>
-	<div></div>
+	<div class="box1 clearfix">
+		<p>1</p>
+		<p>2</p>
+		<p>3</p>
+	</div>
+	<div class="box2 clearfix">
+		<p>4</p>
+		<p>5</p>
+		<p>6</p>
+	</div>
 </body>
 <script>
-	var obj = {
-		name:'jly',
-		age:18
+	var w = 9;
+	switch(w){
+		case 1:
+			alert('今天星期一');
+			break;
+		case 2:
+			alert('今天星期二');
+			break;
+		case 3:
+			alert('今天星期三');
+			break;
+		case 4:
+			alert('今天星期四');
+			break;
+		case 5:
+			alert('今天星期五');
+			break;
+		case 6:
+			alert('今天星期六');
+			break;
+		case 7:
+			alert('今天星期天');
+			break;
+		default:
+			alert('未找到');
 	}
-
 </script>
 </html>

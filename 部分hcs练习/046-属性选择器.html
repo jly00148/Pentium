@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/*以跨猪开始并且独立和短划横线连接的才可选中*/
+		/*
+		[title|=kuazhu]{
+			color: red;
+		}
+		*/
+
+
+		/*属性值以跨猪开头的都可以被选中*/
+		/*d
+		[title^=kuazhu]{
+			color: red;
+		}*/
+
+		/*属性值以com结尾的都可以被选中*/
+		/*d
+		[title$=com]{
+			color: red;
+		}*/	
+
+		/*属性只有com并且独立和有空格分开的都可以被选中（com位置可以在中间）*/
+		/*d
+		[title~=com]{
+			color: red;
+		}*/
+	img{
+			width: 800px;
+			height: 400px;
+	}
+	</style>
+</head>
+<body>
+	<a href="" title>none</a>
+	<p>p</p>
+	<a href="" title=''>title</a>
+	<a href="" title='kuazhu'>kuazhu</a>
+	<a href="" title='kuazhu-com'>kuazhu-com</a>
+	<a href="" title='kuazhu+com'>kuazhu+com</a>
+	<a href="" title='kuazhu com'>kuazhu com</a>
+	<img src="images/mn.jpg" alt="">
+</body>
+</html>
