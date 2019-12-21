@@ -1,3 +1,4 @@
+/*发送基本ajax请求*/
 const http = require('http');
 const fs = require('fs');
 const port = 3000;
@@ -17,7 +18,7 @@ const server = http.createServer((req,res)=>{
 			res.statusCode = 404;
 			res.end('not found');			
 		}else{
-			res.statusCode = 200;
+
 			res.end(data);
 		}
 	})
