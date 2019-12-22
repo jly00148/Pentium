@@ -13,7 +13,7 @@ const server = http.createServer((req,res)=>{
 			body+=chunk;
 		})
 		req.on('end',()=>{
-			console.log(body);
+			res.end(body);
 		})
 	}else if(req.method == 'GET'){
 		const strUrl = req.url;

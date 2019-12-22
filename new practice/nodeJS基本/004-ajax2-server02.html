@@ -19,7 +19,7 @@
 
 
 		//2.建立连接(拨号)
-		oAjax.open('POST','http://127.0.0.1:3000/data.json',true);
+		oAjax.open('POST','http://127.0.0.1:3000/',true);
 		//console.log('open after',oAjax.readyState);1
 
 
@@ -42,7 +42,7 @@
 				*/
 				try{
 					var obj = JSON.parse(oAjax.responseText);
-					console.log(obj.name);
+					console.log(obj);
 				}catch(e){
 					console.log(e);
 				}
