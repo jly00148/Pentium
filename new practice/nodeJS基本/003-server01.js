@@ -1,4 +1,4 @@
-/*发送基本ajax请求*/
+/*发送基本GET的ajax请求*/
 const http = require('http');
 const fs = require('fs');
 const port = 3000;
