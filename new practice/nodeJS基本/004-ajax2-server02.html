@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!--发送基本POST的ajax请求-->
+	<button id="btn">获取数据</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+
+	oBtn.onclick = function(){
+		//1.生成ajax对象(买电话)
+		var oAjax = new XMLHttpRequest();
+		//console.log('new after',oAjax.readyState); 0
+
+
+
+		//2.建立连接(拨号)
+		oAjax.open('POST','http://127.0.0.1:3000/data.json',true);
+		//console.log('open after',oAjax.readyState);1
+
+
+		//3.说话
+		oAjax.send('{"name":"jly","age":18}');
+		//console.log('send after',oAjax.readyState);	1	
+
+
+		//监听
+
+		oAjax.onreadystatechange = function(){
+		//console.log(oAjax.readyState);//2 3 4
+		if(oAjax.readyState == 4){
+			//console.log(oAjax.status);
+			if(oAjax.status == 200){
+				/*
+				//console.log(oAjax.responseText);typeof string
+				var obj = JSON.parse(oAjax.responseText);
+				console.log(obj.name);
+				*/
+				try{
+					var obj = JSON.parse(oAjax.responseText);
+					console.log(obj.name);
+				}catch(e){
+					console.log(e);
+				}
+			}else{
+				console.log('failed request,status code ' + oAjax.status);
+			}
+		}
+
+	}
+
+
+
+
+	}
+</script>
+</html>
