@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!--封装ajax-->
+	<button id="btn">获取数据</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+
+	function ajax(method,data,url,fnSuccess,fnFaild){
+
+		var oAjax = new XMLHttpRequest();
+		if(method.toUpperCase() == 'POST'){
+			oAjax.open(method,url,true);
+			oAjax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+
+			oAjax.send(data);			
+		}else if(method.toUpperCase() == 'GET'){
+			if(data){
+				url = url + '?' + data;
+				console.log('GET url::',url);
+			}
+			oAjax.open(method,url,true);
+
+			oAjax.send();
+		}
+
+
+		oAjax.onreadystatechange = function(){
+		if(oAjax.readyState == 4){
+			if(oAjax.status == 200){
+				try{
+					var obj = JSON.parse(oAjax.responseText);
+					typeof fnSuccess == 'function' && fnSuccess(obj);
+				}catch(e){
+					console.log(e);
+				}
+			}else{
+					typeof fnFaild == 'function' && fnFaild(oAjax.status);
+			}
+		}
+
+	}
+
+
+	}
+
+
+
+	oBtn.onclick = function(){
+		/*
+		ajax(
+				'POST',
+				'{"name":"jly","age":18}',
+				'http://127.0.0.1:3000/data.json',
+				function(obj){
+					console.log(obj);
+				},
+				function(status){
+					console.log(status);
+				}
+			)
+			*/
+		
+		ajax(
+				'GET',
+				'name=uu',
+				'http://127.0.0.1:3000/data.json',
+				function(obj){
+					console.log(obj);
+				},
+				function(status){
+					console.log(status);
+				}
+			)		
+		
+
+	}
+</script>
+</html>
