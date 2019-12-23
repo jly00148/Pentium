@@ -34,7 +34,9 @@
 		if(oAjax.readyState == 4){
 			if(oAjax.status == 200){
 				try{
+					//console.log('typeof oAjax.responseText:::',typeof oAjax.responseText); string
 					var obj = JSON.parse(oAjax.responseText);
+					//console.log('typeof obj:::',typeof obj); obj
 					typeof fnSuccess == 'function' && fnSuccess(obj);
 				}catch(e){
 					console.log(e);
@@ -68,10 +70,18 @@
 		
 		ajax(
 				'GET',
-				'name=uu',
+				'',
 				'http://127.0.0.1:3000/data.json',
-				function(obj){
-					console.log(obj);
+				function(arr){
+					//console.log(arr);
+					var oUl = document.createElement('ul');
+					for(var i = 0; i<arr.length;i++){
+						var aLi = document.createElement('li');
+						aLi.innerHTML = '姓名: '+ arr[i].name +' 年龄:'+ arr[i].age;
+						oUl.appendChild(aLi);						
+					}
+					document.body.appendChild(oUl);
+
 				},
 				function(status){
 					console.log(status);
