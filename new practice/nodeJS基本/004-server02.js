@@ -1,10 +1,15 @@
 /*发送基本POST的ajax请求*/
 const http = require('http');
 const fs = require('fs');
-const port = 3000;
+const port = 3001;
 const hostname = '127.0.0.1';
 
 const server = http.createServer((req,res)=>{
+	res.setHeader('Access-Control-Allow-Origin','http://127.0.0.1:3000');
+	//res.setHeader('Access-Control-Allow-Origin','*');
+	res.setHeader('Content-Type','text/html');
+	res.setHeader('test-kuazhu','kuazhu');
+	res.setHeader('Access-Control-Expose-headers','Date,test-kuazhu,Access-Control-Allow-Origin');
 	// console.log(req.url);
 	// console.log(req.method);
 	if(req.method == 'POST'){
