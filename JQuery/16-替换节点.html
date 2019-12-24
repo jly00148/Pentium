@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>替换1</button>
+	<button>替换2</button>
+	<button>替换3</button>
+	<div>内容</div>
+	<div>内容</div>
+	<div>内容</div>
+	<div>内容</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').eq(0).on('click',function(){
+			var $h1 = $('<h1>替换内容</h1>');
+			$('div').replaceWith($h1);
+		})
+		$('button').eq(1).on('click',function(){
+			$('div').replaceWith('<h1>替换内容</h1>');
+		})
+		$('button').eq(2).on('click',function(){
+			var $h1 = $('<h1>替换内容</h1>');
+			$h1.replaceAll(('div'));
+		})				
+	})
+</script>
+</html>

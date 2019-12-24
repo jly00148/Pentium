@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<button>clone</button>
+	<div>box</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+
+	$(function(){
+		$('div').on('click',function(){
+			alert('aa');
+		})
+		$('button').on('click',function(){
+			var $dom = $('div').clone(true);//true是克隆体有事件，false是没有事件,默认是false
+			$('body').append($dom);			
+		})
+
+	})
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<button>append</button>
+	<button>appendTo</button>
+	<button>prepend</button>
+	<button>prep</button>
+	<ul>
+		<li>内容</li>
+		<li>内容</li>
+		<li>内容</li>
+		<li>内容</li>
+	</ul>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').eq(0).on('click',function(){
+			$('ul').append('<li>插入的内容</li>');//插入父元素最后面
+		})
+		$('button').eq(1).on('click',function(){
+			var $dom = $('<li>插入的内容</li>');//插入父元素最后面
+			$dom.appendTo($('ul'));
+		})
+		$('button').eq(2).on('click',function(){
+			$('ul').prepend('<li>插入的内容</li>');//插入父元素最前面
+		})
+		$('button').eq(3).on('click',function(){
+			var $dom = $('<li>插入的内容</li>');//插入父元素最前面
+			$dom.prependTo($('ul'));
+		})				
+	})
+</script>
+</html>
