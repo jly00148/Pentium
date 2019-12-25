@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<button>按钮</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').on('click',function(){
+			$('div').delay(1000).animate({width:300},500);//延迟后面的一个动画
+			$('div').animate({height:300},500);
+			$('div').animate({opacity:0.5},500);
+		})
+	})
+</script>
+</html>
