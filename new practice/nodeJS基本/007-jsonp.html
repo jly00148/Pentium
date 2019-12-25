@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">按钮</button>
+	<input type="text" id="txt">
+</body>
+<script>
+	function handleCallback(obj){
+		console.log(obj);
+	}
+</script>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oTxt = document.getElementById('txt');
+	oTxt.oninput = function(){
+		var script = document.createElement('script');
+		//script.src = "http://127.0.0.1:3001/getData?callback=handleCallback";
+		//script.src = "https://suggest.taobao.com/sug?code=utf-8&q=nx&_ksTS=1546679450096_1039&callback=jsonp1040&k=1&area=c2c&bucketid=1";
+		script.src = "https://suggest.taobao.com/sug?code=utf-8&q=nx&_ksTS=1546679450096_1039&callback=handleCallback&k=1&area=c2c&bucketid=1";
+		document.body.appendChild(script);
+	}
+</script>
+</html>
