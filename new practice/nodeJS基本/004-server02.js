@@ -10,6 +10,8 @@ const server = http.createServer((req,res)=>{
 	res.setHeader('Content-Type','text/html');
 	res.setHeader('test-kuazhu','kuazhu');
 	res.setHeader('Access-Control-Expose-headers','Date,test-kuazhu,Access-Control-Allow-Origin');
+	res.setHeader('Access-Control-Allow-Methods','PUT,DELETE');
+	res.setHeader('Access-Control-Allow-Headers','Kuazhu-Test');
 	// console.log(req.url);
 	// console.log(req.method);
 	if(req.method == 'POST'){

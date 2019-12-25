@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!--CORS复杂请求-->
+	<button id="btn">获取数据</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+
+	function ajax(method,data,url,fnSuccess,fnFaild){
+
+		var oAjax = new XMLHttpRequest();
+		if(method.toUpperCase() == 'POST'){
+			oAjax.open(method,url,true);
+			oAjax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+
+			oAjax.send(data);			
+		}else if(method.toUpperCase() == 'GET'){
+			if(data){
+				url = url + '?' + data;
+				console.log('GET url::',url);
+			}
+			oAjax.open(method,url,true);
+
+			oAjax.send();
+		}else{
+			oAjax.open(method,url,true);
+			oAjax.setRequestHeader('Kuazhu-Test','hello-kuazhu');
+			oAjax.send();			
+		}
+
+
+		oAjax.onreadystatechange = function(){
+		if(oAjax.readyState == 4){
+			if(oAjax.status == 200){
+				console.log(oAjax.getResponseHeader('Content-Type'));
+				console.log(oAjax.getResponseHeader('test-kuazhu'));
+				console.log(oAjax.getResponseHeader('Date'));
+				console.log(oAjax.getResponseHeader('Access-Control-Allow-Origin'));
+				try{
+					//console.log('typeof oAjax.responseText:::',typeof oAjax.responseText); string
+					var obj = JSON.parse(oAjax.responseText);
+					//console.log('typeof obj:::',typeof obj); obj
+					typeof fnSuccess == 'function' && fnSuccess(obj);
+				}catch(e){
+					console.log(e);
+				}
+			}else{
+					typeof fnFaild == 'function' && fnFaild(oAjax.status);
+			}
+			oAjax.onerror = function(){
+				console.log('onerror...');
+			}
+		}
+
+	}
+
+
+	}
+
+
+
+	oBtn.onclick = function(){
+		/*
+		ajax(
+				'POST',
+				'{"name":"jly","age":18}',
+				'http://127.0.0.1:3000/data.json',
+				function(obj){
+					console.log(obj);
+				},
+				function(status){
+					console.log(status);
+				}
+			)
+			*/
+		
+		ajax(
+				'PUT',
+				'',
+				'http://127.0.0.1:3001/data.json',
+				function(obj){
+					console.log(obj);
+
+				},
+				function(status){
+					console.log(status);
+				}
+			)		
+		
+
+	}
+</script>
+</html>
