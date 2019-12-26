@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.container{
+			width: 501px;
+			margin: 100px auto;
+		}
+		.btn{
+			overflow: hidden;
+		}
+		.btn li{
+			float: left;
+			list-style: none;
+			width: 167px;
+			text-align: center;
+			line-height: 30px;
+			border: 1px solid #000;
+			box-sizing: border-box;
+			cursor: pointer;
+		}
+		.btn li:hover{
+			color: red;
+		}
+		.content{
+			width: 500px;
+			height: 313px;
+			position: relative;
+			top: 0px;
+			left: 0px;
+			border: 1px solid #000;
+		}
+		.content li{
+			position: absolute;
+			list-style: none;
+			display: none;
+		}
+		.item{
+			background-color: yellow;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="btn">
+			<li>图片1</li>
+			<li>图片2</li>
+			<li>图片3</li>
+		</ul>
+		<ul class="content">
+			<li><img src="images/p1.jpg" alt=""></li>
+			<li><img src="images/p2.jpg" alt=""></li>
+			<li><img src="images/p3.jpg" alt=""></li>
+		</ul>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('ul').find('li').on('click',function(){
+			$(this).addClass('item').parent().next().find('li:eq(0)').fadeIn('slow');
+		})
+	})
+</script>
+</html>
