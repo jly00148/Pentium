@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			float: left;
+		}
+		li{
+			width: 533px;
+			line-height: 50px;
+			list-style: none;
+			text-align: center;
+			box-sizing: border-box;			
+			font-size: 26px;
+			cursor: pointer;
+			border: 1px solid #000;			
+		}
+		li:hover{
+			color: red;
+		}
+		.container{
+			width: 1599px;
+			margin: 100px auto;
+		}
+		.item{
+			background-color: yellow;x
+		}
+		img{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul>
+			<li>图片1</li>
+			<img src="images/p1.jpg" alt="">
+		</ul>
+		<ul>
+			<li>图片2</li>
+			<img src="images/p2.jpg" alt="">
+		</ul>
+		<ul>
+			<li>图片3</li>
+			<img src="images/p3.jpg" alt="">
+		</ul>
+	</div>		
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$('ul').find('li:eq(0)').on('click',function(){
+		$(this).addClass('item').next().fadeIn(1000).parent().siblings().find('.item').removeClass('item').next().hide();
+	})
+</script>
+</html>
