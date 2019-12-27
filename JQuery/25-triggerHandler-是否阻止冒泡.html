@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.g{
+			width: 600px;
+			height: 600px;
+			background-color: purple;
+			border: 1px solid #000;
+			margin: 100px auto;
+		}
+		.f{
+			width: 400px;
+			height: 400px;
+			background-color: yellow;
+			margin: 100px auto;
+			border: 1px solid #000;
+		}
+		.s{
+			width: 200px;
+			height: 200px;
+			background-color: white;
+			border: 1px solid #000;
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="g">
+		<div class="f">
+			<div class="s"></div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('.s').on('click',function(ev){
+			alert('s');	
+		})
+		$('.f').on('click',function(ev){
+			alert('f');
+		})
+		$('.g').on('click',function(){
+			alert('g');
+		})
+		$('.s').triggerHandler('click');//阻止事件冒泡	
+	})
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="https://www.kuazhu.com">
+		<input type="text" name="username">
+		<input type="submit" value="提交">
+	</form>
+</body>
+<script src="js/jquery-1.12.4.min.js"></script>
+<script>
+	$(function(){
+		$('input').eq(1).on('click',function(){
+			alert('kuazhu...');
+			//return false;  阻止默认行为
+
+		})
+		$('input').eq(1).triggerHandler('click');//阻止默认行为
+	})
+</script>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<a href="https://www.kuazhu.com"><span>连接</span></a>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$('body').on('click',function(){
+		alert('body...');
+	})
+	$('a').on('click',function(){
+		alert('kuahzu...');
+	})
+	$('span').trigger('click');//不阻止冒泡但是阻止默认行为，可以通过触发a标签的子元素来触发
+</script>
+</html>
