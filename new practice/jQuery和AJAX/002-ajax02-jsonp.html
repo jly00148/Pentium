@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>获取数据</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').on('click',function(){
+			$.ajax({
+				url:'http://127.0.0.1:3001',
+				type:'GET',
+				dataType:'jsonp',
+				jsonp:'callback',
+				success:function(data,statuMsg,jqHXR){
+					console.log('success data:::',data);
+				},
+				error:function(jqHXR,statuMsg){		
+				},
+				complete:function(jqHXR,statuMsg){		
+				},
+				timeout:1000,
+				statusCode:{
+					404:function(){
+						console.log('404:::not found...');
+					},
+				},
+				headers:{
+					"test":"kuazhu"
+				}
+			})			
+		})		
+	})
+
+</script>
+</html>
