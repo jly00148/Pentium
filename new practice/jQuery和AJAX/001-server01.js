@@ -14,7 +14,8 @@ const server = http.createServer((req,res)=>{
 		})
 		req.on('end',()=>{
 			//console.log(body);  name=Amy&age=18
-			//console.log(typeof body); string
+			console.log(body);
+			console.log(typeof body);
 			res.end(body);
 		})
 	}else if(req.method == 'GET'){

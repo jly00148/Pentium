@@ -15,7 +15,8 @@
 				url:'data.json',
 				type:'POST',
 				dataType:'text',
-				data:{name:'Amy',age:18},
+				//data:'{"name":"Amy","age":18}'
+				data:{name:"Amy",age:18},
 				success:function(data,statuMsg,jqHXR){
 					console.log('success data:::',data);
 					//console.log(JSON.parse(data).name);
