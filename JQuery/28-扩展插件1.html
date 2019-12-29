@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin-bottom: 10px;
+
+		}
+	</style>
+</head>
+<body>
+	<button>按钮</button>
+	<div>div</div>
+	<div>div</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		//console.log($.prototype === $.fn);   true
+		//$.prototype.setColor = function(){
+		$.fn.setColor = function(options){
+			var res = this.each(function(index,ele){
+				//console.log(index,ele);
+
+
+				var DEFAULTS = {color:"red"};
+
+				options = $.extend({},DEFAULTS,options);
+
+				this.style.color = options.color;
+			})
+			return res;
+		};
+		$('button').on('click',function(){
+			$('div').setColor({color:"blue"}).animate({
+				width:400,
+				height:400
+			});
+		})
+	})
+</script>
+</html>
