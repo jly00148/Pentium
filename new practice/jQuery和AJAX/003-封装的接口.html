@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>GET请求</button>
+	<button>POST请求</button>
+	<button>获取数据</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').eq(0).on('click',function(){
+			$.get("data.json",{name:'Amy',age:18},function(data){
+				console.log(data);
+			},"json");			
+		})
+		$('button').eq(1).on('click',function(){
+			$.post("data.json",{name:'Amy',age:18},function(data){
+				console.log(data);
+			},"text");			
+		})
+		$('button').eq(2).on('click',function(){// 简化GET请求
+			$.getJSON("data.json",function(data){
+				console.log(typeof data);
+			});			
+		})				
+	})
+
+</script>
+</html>
