@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 100px;
+			border: 1px solid #000;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="div1">div1</div>
+	<div>div2</div>
+	<div style="display: none">div3</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		function fn(){
+			console.log(this);
+		}
+
+
+		//var fn1 = fn.bind({name:"jly",age:18});  原生改变this方法bind
+		//console.log(fn1);
+		//console.log(fn);
+
+
+
+		//var fn1 = $.proxy(fn,{name:"jly",age:18});// jquery方法改变this
+		//fn1();
+
+
+		//console.log($('div').is('.div1'));
+		//console.log($('div:hidden'));
+		//console.log($('div:visible'));
+
+		$('.div1').hover(function(){
+			console.log('in');
+		},function(){
+			console.log('out');
+		})
+	})
+
+</script>
+</html>
