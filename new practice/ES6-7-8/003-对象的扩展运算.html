@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var obj1 = {name:'jly',frienfs:{name:'amy'}};
+
+	var obj2 = {...obj1};
+	console.log(obj2);
+
+	obj2.name = 'mike';
+	console.log(obj2);
+
+	obj2.frienfs.name = 'sunny';
+
+	console.log(obj1);
+	console.log(obj2);
+</script>
+</html>

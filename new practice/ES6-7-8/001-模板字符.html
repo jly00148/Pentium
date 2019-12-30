@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">按钮</button>
+</body>
+<script>
+	var str = 'hello';
+
+	var oBtn = document.getElementById('btn');
+	//var oBtn = document.getElementsByTagName('button');
+	//console.log(oBtn);
+
+	oBtn.onclick = function(){
+		/*
+		var html='<ul>';
+			html+='<li>'+str+'</li>';
+			html+='<li>'+str+'</li>';
+			html+='<li>'+str+'</li>';
+			html+='<li>'+str+'</li>';
+		html+='</ul>';	
+		*/
+
+		var html = `<ul>
+			<li>${str}</li>
+			<li>${str}</li>
+			<li>${str}</li>
+			<li>${str}</li>
+			<li>${str}</li>
+		</ul>`
+
+
+		document.body.innerHTML = html;
+		
+	}
+</script>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [11,22,33];
+	//console.log(...11);
+
+
+
+	function sum(...arr){
+		console.log(arr);
+		//console.log(arguments);
+		var arguments = 0;
+		//var total = 0;
+		for(var i = 0;i<arr.length;i++){
+			arguments+=arr[i];
+			//total+=arr[i];
+		}
+		return arguments;
+		//return total;
+	}
+	//console.log(sum(11,22,33));
+
+
+	//求数组最大值
+	//console.log(Math.max(arr)); NaN 接收的必需是一个参数列表
+	//console.log(Math.max(11,22)); 22
+	//console.log(Math.max.apply(Math,arr)); 接收的必需是一个数组
+	//console.log(Math.max(...arr));  数组的扩展运算
+
+
+
+
+	/*指向同一数组
+	var arr1 = arr;
+	console.log(arr1);
+	arr1.push(44);
+	console.log(arr1);
+	console.log(arr === arr1);
+	*/
+
+
+	/*不同数组
+	var arr1 = [];
+	for(var i = 0;i<arr.length;i++){
+		arr1.push(arr[i]);
+	}
+	arr1.push(44);
+	console.log(arr);
+	console.log(arr1);
+
+	*/
+
+
+	/*voncat
+	var arr1 = arr.concat();
+	console.log(arr1);
+	arr1.push(44);
+	console.log(arr1);
+	console.log(arr);
+
+	*/
+
+
+	/*splice
+	var arr1  = arr.splice();
+	console.log(arr1);
+	arr1.push(44);
+	console.log(arr1);
+	console.log(arr);
+
+	*/
+</script>
+</html>

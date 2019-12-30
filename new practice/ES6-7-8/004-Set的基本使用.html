@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [11,22,33,22];
+	var s = new	Set();
+	s.add(11);
+	s.add(22);
+	s.add(33);
+	s.add(22);
+	console.log(typeof s);
+	//console.log(s.size);
+	//console.log(typeof s); object
+
+
+	let s1 = new Set(arr);
+	console.log(typeof s1);
+	let arr1 = [...s1];
+	console.log(arr1);
+</script>
+</html>
