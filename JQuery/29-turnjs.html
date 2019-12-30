@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 400px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="flipbook">
+		<div class="hard" style="background: url('images/p1.jpg')"> Turn.js </div>
+		<div class="hard" style="background: url('images/p2.jpg')"></div>
+		<div style="background: url('images/p3.jpg')"> Page 1 </div>
+		<div style="background: url('images/p1.jpg')"> Page 2 </div>
+		<div style="background: url('images/p2.jpg')"> Page 3 </div>
+		<div style="background: url('images/p3.jpg')"> Page 4 </div>
+		<div class="hard"></div>
+		<div class="hard"></div>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="js/turnjs4/lib/turn.js"></script>
+<script type="text/javascript">
+	$("#flipbook").turn({
+		width: 800,
+		height: 300,
+		autoCenter: true
+	});
+</script>
+
+</html>
