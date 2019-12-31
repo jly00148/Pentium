@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+	var img = new Image();
+	/*
+	img.src='../../JQuery/images/p1.jpg';
+
+	img.onload = function(){
+		console.log('image is loaded...');
+	}
+	img.onerror = function(){
+		console.log('image is load err...');
+	}
+	*/
+
+	/*
+	function handImg(url,success,faild){
+		img.src = url;
+		img.onload = function(){
+
+			typeof success == 'function' && success(url);
+			//console.log('image is loaded...');			
+		}
+		img.onerror = function(){
+			
+			typeof faild == 'function' && falid(url);
+			//console.log('image is load err...');
+		}
+	}
+	handImg(
+			'../../JQuery/images/p1.jpg',
+			function(url){
+				console.log(url + 'is loaded...');
+			},
+			function(url){
+				console.log(url + 'images is load err');
+			}
+
+		);
+		*/
+
+
+
+			let promise = new Promise((resolve,reject)=>{
+				var img = new Image();
+				img.src = '../../JQuery/images/p2.jpg';
+				img.onload = function(){
+					resolve('../../JQuery/images/p2.jpg');
+				}
+				img.onerror = function(){
+					reject('../../JQuery/images/p2.jpg');
+				}
+			})
+		promise.then((url)=>{
+			console.log(url);
+		},(err)=>{
+			console.log(err);
+		})
+
+		/*
+		function handPromiseImg(url){
+			let promise = new Promise((resolve,reject)=>{
+				var img = new Image();
+				img.src = url;
+				img.onload = function(){
+					resolve(url);
+				}
+				img.onerror = function(){
+					reject(url);
+				}
+			})
+			return promise;
+		}
+		handPromiseImg('../../JQuery/images/p2.jpg')
+		.then((url)=>{
+			console.log(url);
+		},(err)=>{
+			console.log(err);
+		})
+		*/
+</script>
+</html>
