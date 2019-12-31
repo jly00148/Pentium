@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	function Timer(id){
+		this.id = id;
+		setTimeout(function(){
+			console.log(this,this.id);
+		},1000);
+	}
+
+	var id = 100;
+	Timer(50);
+	*/
+	/*
+	function Timer(id){
+		this.id = id;
+		setTimeout(function(){
+			console.log(this,this.id);
+		},1000);
+	}
+
+	var id = 100;
+	new Timer(50);
+	*/
+	/*
+	function Timer(id){
+		this.id = id;
+		setTimeout(()=>{
+			console.log(this,this.id);
+		},1000);
+	}
+
+	var id = 100;
+	new Timer(50);
+	*/
+	function Timer(id){
+		this.id = id;
+		setTimeout(function(){
+			console.log(this,this.id);
+		}.bind(this),1000);
+	}
+
+	var id = 100;
+	new Timer(50);	
+</script>
+</html>
