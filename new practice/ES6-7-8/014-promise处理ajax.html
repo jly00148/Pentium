@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script src='../jQuery和AJAX/js/jquery-1.12.4.js'></script>
+<script>
+	let handPromise = (url)=>{
+		return new Promise((resolve,reject)=>{
+			$.get(url,(data1)=>{
+				//console.log(data);
+				resolve(data1);
+			})
+		})
+	}
+	let promise = handPromise('https://api.github.com/users/jly00148');
+	promise
+	.then((data1)=>{
+		//console.log(data);
+		handPromise(data1.followers_url)
+		.then((data2)=>{
+			console.log(data2);
+		})
+	})
+
+</script>
+</html>
