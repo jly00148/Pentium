@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let promise = new Promise((resolve,reject)=>{
+		setTimeout(function(){
+			resolve('hello');
+		},200)
+	})
+
+	/*
+	async function fn(){
+		await Promise.reject('出错了');
+		let async = await promise;
+		console.log(async);
+
+	}
+	fn()
+	.catch(err=>{
+		console.log(err);
+	})
+	*/
+	async function fn(){
+
+		try{
+			await Promise.reject('出错了');		
+		}catch(err){
+			console.log(err);
+		}
+
+		try{
+			let async = await promise;	
+
+			console.log(async);
+		}catch(err){
+			console.log(err);
+		}		
+
+	}
+
+	fn();
+
+
+
+	console.log('aa');
+
+</script>
+</html>
