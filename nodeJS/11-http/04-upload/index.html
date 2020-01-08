@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		form{
+			width: 200px;
+			border: 1px dotted #000;
+			margin: 100px auto;
+			padding: 20px;
+		}
+	</style>
+</head>
+<body>
+	<form action="http://127.0.0.1:3000" method="post" enctype="multipart/form-data">
+		<p>用户名:<input type="text" name='username'></p>
+		<p>密码:<input type="text" name='age'></p>
+		<p>用户头像<input type="file" name="avatar"></p>
+		<input type="submit" value="提交">
+	</form>
+</body>
+</html>
