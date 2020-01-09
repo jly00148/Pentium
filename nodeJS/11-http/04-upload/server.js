@@ -1,5 +1,6 @@
 const http = require('http');
 const url = require('url');
+const fs = require('fs');
 const querystring = require('querystring');
 const formidable = require('formidable');
 const port = 3000;
@@ -83,14 +84,26 @@ let server = http.createServer((req,res)=>{
 
 			//console.log(req);
 			//console.log(err,fields,files);
+			let oldPath = __dirname + '/' + files.avatar.path;
+			let extname = path.extname(oldPath);
+
+			let newPath = __dirname + 'upload/'+ Date.now() + parseInt(Math.random() * 10000).toString().padStart(4,'0');
+
+			fs.rename(oldPath,newPath,(err)=>{
+				if(err){
+					res.setHeader('Content-Type','text/plain;charset=utf-8');
+					res.end('err');					
+				}else{
+				res.setHeader('Content-Type','text/plain;charset=utf-8');
+				res.end('ok');					
+				}
+			})
 		})
 		
 	}
 	
 
-	
-	res.setHeader('Content-Type','text/plain;charset=utf-8');
-	res.end('hello');
+
 
 
 })
