@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const swig = require('swig');
 const port = 3000;
 const hostname = '127.0.0.1';
 const mime = require('./mime.json');
@@ -31,6 +32,9 @@ let server = http.createServer((req,res)=>{
             // console.log(data);
            res.setHeader('Content-Type','text/html;charset=utf-8');
        
+
+
+           /*
            let html = `<!DOCTYPE html>
                         <html lang="en">
                         <head>
@@ -66,7 +70,16 @@ let server = http.createServer((req,res)=>{
                         <script src="js/jquery.pep.js"></script>
                         <script src="js/index.js"></script>
                         </html>` 
-           res.end(html);           
+           res.end(html); 
+           
+           */
+
+
+           let template = swig.compileFile(__dirname + '/static/index.html');
+           let html = template({
+               data
+           })
+           res.end(html);
         })
 
     

@@ -6,7 +6,7 @@ const util = require('util');
 
 
 let filePath = ('./data/wish.json');
-console.log(filePath);
+//console.log(filePath);
 let readFile = util.promisify(fs.readFile);
 let writeFile = util.promisify(fs.writeFile);
 //console.log(''+fs.readFile);
