@@ -2,12 +2,12 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const swig = require('swig');
+const querystring = require('querystring');
 const port = 3000;
 const hostname = '127.0.0.1';
 const mime = require('./mime.json');
-const { getAll } = require('./module.js');
+const { getAll,add } = require('./module.js');
 //console.log(''+getAll);
-
 
 let server = http.createServer((req,res)=>{
     //console.log(req.url);
@@ -83,6 +83,44 @@ let server = http.createServer((req,res)=>{
         })
 
     
+
+    }else if(req.url == '/add' && req.method.toLowerCase() == 'post'){
+        //res.end('ok');
+        let body = '';
+        req.on('data',(chunk)=>{
+            body+=chunk;
+        })
+
+        req.on('end',()=>{
+            //console.log(body);
+            let obj = querystring.parse(body);
+            //console.log(obj);
+            add(obj)
+            .then(data=>{
+                //console.log(data);
+                //return endStr    [{"id":"15788241510927289","content":"aaa","color":"#70"}]
+                //return strArr    [ { id: '15788242184287368', content: 'aaa', color: '#141' } ]
+                //console.log(data);
+
+                let result = JSON.stringify({
+                    data:data,
+                    status:1
+                })
+                //console.log(result);
+                //let newResult = result.replace(/\[|]/g,'');
+               // console.log(newResult);            
+                res.end(result);
+
+            })
+            .catch(err=>{
+                let result = JSON.stringify({
+                    message:'添加失败',
+                    status:0
+                })
+                res.end(result);
+            })
+
+        })
 
     }else if(req.url == '/favicon.ico'){
         res.end('favicon');

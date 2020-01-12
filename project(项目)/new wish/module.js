@@ -5,14 +5,18 @@ const util = require('util');
 //console.log(util); object
 
 
+let getRandom = function(min,max){
+	return min + Math.round(parseInt((max-min)*(Math.random())));
+}
+//console.log(getRandom(0,225))
 let filePath = ('./data/wish.json');
 //console.log(filePath);
 let readFile = util.promisify(fs.readFile);
 let writeFile = util.promisify(fs.writeFile);
 //console.log(''+fs.readFile);
 //console.log(""+readFile);
-/*
-async function add(name){
+
+async function add(optins){
 	//1. 打开文件
 	let arr = await readFile(filePath);
 	
@@ -22,15 +26,19 @@ async function add(name){
 	//2. 写入文件
 	strArr.push({
 		id:Date.now().toString() + parseInt(Math.random() * 10000).toString().padStart(4,'0'),
-		name:name
+		content:optins.content,
+		color:'#'+getRandom(0,999)
 	})
 	//3. 保存文件
 
+
 	let endStr = JSON.stringify(strArr);
-	await writeFile(filePath,endStr);
+	 await writeFile(filePath,endStr);
 
 	return strArr;
 }
+
+/*
 add('Leo')
 .then(data=>{
 	console.log(data);
@@ -138,5 +146,6 @@ remove('15783879724635874')
 
 module.exports = {
     getAll,
-   	remove
+	remove,
+	add
 }
