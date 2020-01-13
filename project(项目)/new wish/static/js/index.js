@@ -50,46 +50,52 @@
 
 
     $btn.on('click',()=>{
-        $.ajax({
-            url:'/add',
-            type:'post',
-            dataType:'json',
-            data:{
-                content:$('#content').val()
-            }
-        })
-        .done(function(result){
-            /*
-            console.log('result:::::',result);
-            var  result = JSON.parse(result);
-            if(result.status == 0){
-                var $dom = $(`<div class="wish" style="background: ${result.data.color}">
-                <a href="javascript:;" class="close" data-id='${result.data.id}'></a>
-                ${result.data.content}
-            </div>`)                
-                $wall.append($dom);
-                $('#content').val('');
-            }else{
-                alert(result.message);
-            }
-            */
-
-            //console.log(result.data.length);
-            var i = result.data.length;
-           if(result.status == 1){
-                var $dom = $(`<div class="wish" style="background: ${result.data[i-1].color}">
-                <a href="javascript:;" class="close" data-id='${result.data[i-1].id}'></a>
-                ${result.data[i-1].content}
+        if($('#content').val() == '' || $('#content').val() == ' '){
+            alert('请输入愿望');
+            return
+        }else{
+            $.ajax({
+                url:'/add',
+                type:'post',
+                dataType:'json',
+                data:{
+                    content:$('#content').val()
+                }
+            })
+            .done(function(result){
+                /*
+                console.log('result:::::',result);
+                var  result = JSON.parse(result);
+                if(result.status == 0){
+                    var $dom = $(`<div class="wish" style="background: ${result.data.color}">
+                    <a href="javascript:;" class="close" data-id='${result.data.id}'></a>
+                    ${result.data.content}
                 </div>`)                
-                $wall.append($dom);
-                $('#content').val('');
-                drop($dom);
+                    $wall.append($dom);
+                    $('#content').val('');
+                }else{
+                    alert(result.message);
+                }
+                */
+    
+                //console.log(result.data.length);
+                var i = result.data.length;
+               if(result.status == 1){
+                    var $dom = $(`<div class="wish" style="background: ${result.data[i-1].color}">
+                    <a href="javascript:;" class="close" data-id='${result.data[i-1].id}'></a>
+                    ${result.data[i-1].content}
+                    </div>`)                
+                    $wall.append($dom);
+                    $('#content').val('');
+                    drop($dom);
+    
+               }else{
+                   console.log(result.message);
+               }
+    
+            })
+        }
 
-           }else{
-               console.log(result.message);
-           }
-
-        })
     })
 
 
