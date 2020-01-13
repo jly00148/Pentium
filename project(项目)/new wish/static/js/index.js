@@ -12,17 +12,13 @@
     //封装拖动函数
     function drop(target){
         target.pep({constrainTo:'.wall'});//限制卡片拖动在wall范围之内
-
-    }
-    drop($wish);
-
     //获取容器和元素wish自身的高度和宽度
-    let wishWidth = $wish.width();
-    let wishHeight = $wish.height();
+    let wishWidth = target.width();
+    let wishHeight = target.height();
     let wallhWidth = $wall.width();
     let wallHeight = $wall.height();
 
-    $wish.each(function(){
+    target.each(function(){
         //console.log(this);
         //获取随机数
         let x = getRandom(0,wallhWidth-wishWidth);
@@ -42,7 +38,12 @@
                 zIndex:0
             })
         })
-    })
+    })        
+
+    }
+    drop($wish);
+
+
     
     
     let $btn = $('.sub-btn');
