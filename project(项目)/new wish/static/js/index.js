@@ -91,4 +91,30 @@
         })
     })
 
+
+
+    $wall.on('click','.close',function(){
+       // console.log(this); a标签
+        //console.log(this.id)
+        let $this = $(this);
+        $.ajax({
+            url:'/del',
+            dataType:'json',
+            data:'id='+$this.data('id')
+        })
+        .done(function(result){
+            if(result.status == 1){
+                //console.log(result);
+                //console.log(this); a标签的
+
+            this.parentNode.remove();// js语法
+
+                $()
+
+            }else{
+               // console.log(result.message);
+            }
+        }.bind(this))
+    })
+
 })(jQuery);

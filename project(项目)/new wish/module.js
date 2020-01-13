@@ -125,16 +125,17 @@ async function remove(id){
 	let data = await readFile(filePath);
 	let arr = JSON.parse(data);
 
-	return newArr = arr.filter(val=>{
+	let newArr = arr.filter(val=>{
 		return val.id != id;
 	})
-	//console.log(newArr);
 
-
-
+	let strArr = JSON.stringify(newArr);
+	await writeFile(filePath,strArr);
+	return newArr;
 }
+
 /*
-remove('15783879724635874')
+remove('15788950101773365')
 .then(data=>{
 	console.log(data);
 })

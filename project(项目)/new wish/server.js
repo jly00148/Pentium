@@ -3,14 +3,17 @@ const fs = require('fs');
 const path = require('path');
 const swig = require('swig');
 const querystring = require('querystring');
+const url = require('url');
 const port = 3000;
 const hostname = '127.0.0.1';
 const mime = require('./mime.json');
-const { getAll,add } = require('./module.js');
+const { getAll,add,remove } = require('./module.js');
 //console.log(''+getAll);
 
 let server = http.createServer((req,res)=>{
-    //console.log(req.url);
+    // console.log(req.url);
+    let reqUrl = url.parse(req.url,true);
+    //console.log(reqUrl);
 
     if(req.url == '/' || req.url == '/index.html'){//获取首页
 
@@ -124,7 +127,25 @@ let server = http.createServer((req,res)=>{
 
     }else if(req.url == '/favicon.ico'){
         res.end('favicon');
-    }else{
+    }else if(reqUrl.pathname == '/del'){
+        let id = reqUrl.query.id;
+        remove(id)
+        .then(data=>{
+            let status = {
+                status:1,
+                data:data
+            }
+            res.end(JSON.stringify(status))
+        })
+        .catch(err=>{
+            let status = {
+                status:0,
+                message:'出错了'
+            }
+            res.end(JSON.stringify(status));
+        })
+    }
+    else{
         //获取static静态资源css、js、img等
         let staticFilePath = path.normalize(__dirname + '/static/' + req.url);
 
