@@ -8,97 +8,73 @@ const port = 3000;
 const hostname = '127.0.0.1';
 const mime = require('./mime.json');
 const { getAll,add,remove } = require('./module.js');
-//console.log(''+getAll);
-
 let server = http.createServer((req,res)=>{
-    //console.log(req.url);
-    // /    '/'
-    // /css/index.css   pathname: '/css/index.css'
-    // /css/reset.css   pathname:'/css/reset.css'
-    // /js/jquery-1.12.4.js  pathname:'/js/jquery-1.12.4.js'
-    // /js/jquery.pep.js   pathname:'/js/jquery.pep.js'
-    // /js/index.js  pathname:'/js/index.js'
-    // /favicon.ico  pathname:'/favicon.ico'
-    // /add     pathname:'/add'
-
-    
-
 
      let reqUrl = url.parse(req.url,true);
-     console.log(reqUrl);
+     let pathname = reqUrl.pathname;
+     //console.log(reqUrl);
 
-    if(req.url == '/' || req.url == '/index.html'){//获取首页
+     //约定：
+    //  /Controller/ation/
+    //  /wish/add添加
+    //  /wish/del 删除
+    //  /wish/static/ 请求的是静态资源
 
-        /*
-        fs.readFile('./static/index.html',(err,data)=>{
+    if(pathname.startsWith('/static/')){
+        let staticFilePath = path.normalize(__dirname + '/static/' + req.url);
+
+        let extname = path.extname(staticFilePath);//获取静态资源文件格式
+        //console.log(extname);
+        
+        fs.readFile(staticFilePath,(err,data)=>{
             if(err){
                 res.setHeader('Content-Type','text/html;charset=utf-8');
                 res.statusCode = 500;
-                res.end('<h1>服务器读取首页失败</h1>');             
+                res.end('<h1>服务器读取static失败</h1>');               
             }else{
-                res.setHeader('Content-Type','text/html;charset=utf-8');
-                res.end(data);
+                res.setHeader('Content-Type',mime[extname]+';charset=utf-8');
+                res.end(data);                
             }
-        });
-        */
+        })
+    }else if(req.url == '/favicon.ico'){
+        res.end('favicon.ico');
+    }
+    else{   //  路由：/Wish/index
+        let paths = pathname.split('/');
+        //console.log(paths); [ '', 'Wish', 'index' ]
+        let controller = paths[1] || 'wish';
+        let action = paths[2] || 'index';
 
+        let mode = require('./controller/'+ controller);
+        // let mode1 = require('./controller/Wish.js');
+       // console.log(mode); //wish {}
+        // console.log(mode1);
+        //console.log(mode == mode1); true
+
+        try{
+            mode[action] && mode[action]();
+        }catch(err){
+            console.log('err:::',err);
+            res.setHeader('Content-Type','text/html;charset=utf-8');
+            res.end('<h1>出错了</h1>')
+        }
+        res.end('ok');
+    }
+
+
+     /*
+    if(req.url == '/' || req.url == '/index.html'){//获取首页
         getAll()
         .then(data=>{
             // console.log('data:::',data);
            res.setHeader('Content-Type','text/html;charset=utf-8');
        
-
-
-           /*
-           let html = `<!DOCTYPE html>
-                        <html lang="en">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-                            <title>Document</title>
-                            <link rel="stylesheet" href="css/index.css">
-                            <link rel="stylesheet" href="css/reset.css">
-                        
-                        </head>
-                        <body>
-                            <div class="wall">`
-                            data.forEach(item=>{
-                                html+=`<div class="wish" style="background-color:${item.background};">
-                                    <a href="javascript:;" class="close" data-id='${item.id}'></a>
-                                    ${item.content}
-                                    </div>`
-
-                            })
-
-                           html+=` </div>
-                            <div class="form-box">
-                                <div>
-                                    <textarea name="content" id="content" cols="30" rows="20"></textarea>
-                                </div>
-                                <div>
-                                    <a href="javascript:;" class="sub-btn">许下心愿</a>
-                                </div>
-                            </div>
-                        </body>
-                        <script src="js/jquery-1.12.4.js"></script>
-                        <script src="js/jquery.pep.js"></script>
-                        <script src="js/index.js"></script>
-                        </html>` 
-           res.end(html); 
-           
-           */
-
-
            let template = swig.compileFile(__dirname + '/static/index.html');
            let html = template({
                data
            })
            res.end(html);
         })
-
-    
-
     }
     else if(req.url == '/add' && req.method.toLowerCase() == 'post'){
         //res.end('ok');
@@ -106,25 +82,16 @@ let server = http.createServer((req,res)=>{
         req.on('data',(chunk)=>{
             body+=chunk;
         })
-
         req.on('end',()=>{
             //console.log(body);
             let obj = querystring.parse(body);
             //console.log(obj);
             add(obj)
             .then(data=>{
-                //console.log(data);
-                //return endStr    [{"id":"15788241510927289","content":"aaa","color":"#70"}]
-                //return strArr    [ { id: '15788242184287368', content: 'aaa', color: '#141' } ]
-                //console.log(data);
-
                 let result = JSON.stringify({
                     data:data,
                     status:1
-                })
-                //console.log(result);
-                //let newResult = result.replace(/\[|]/g,'');
-               // console.log(newResult);            
+                })         
                 res.end(result);
 
             })
@@ -178,6 +145,7 @@ let server = http.createServer((req,res)=>{
             }
         })
     }
+    */
 })
 
 server.listen(port,hostname,function(){

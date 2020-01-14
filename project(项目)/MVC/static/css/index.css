@@ -58,7 +58,6 @@ texaarea{
 	width: 17px;
 	height: 17px;
 	overflow: hidden;
-	background: red;
 }
 .close:hover:before,
 .close:hover:after {
