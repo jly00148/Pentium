@@ -21,8 +21,8 @@ let server = http.createServer((req,res)=>{
     //  /wish/static/ 请求的是静态资源
 
     if(pathname.startsWith('/static/')){
-        let staticFilePath = path.normalize(__dirname + '/static/' + req.url);
-
+        let staticFilePath = path.normalize(__dirname + req.url);
+        console.log(staticFilePath);
         let extname = path.extname(staticFilePath);//获取静态资源文件格式
         //console.log(extname);
         
@@ -44,21 +44,23 @@ let server = http.createServer((req,res)=>{
         //console.log(paths); [ '', 'Wish', 'index' ]
         let controller = paths[1] || 'wish';
         let action = paths[2] || 'index';
+        let args = paths.slice(3);
 
-        let mode = require('./controller/'+ controller);
-        // let mode1 = require('./controller/Wish.js');
-       // console.log(mode); //wish {}
-        // console.log(mode1);
-        //console.log(mode == mode1); true
 
         try{
-            mode[action] && mode[action]();
+            let mode = require('./controller/'+ controller);
+            // let mode1 = require('./controller/Wish.js');
+            // console.log(mode); //wish {}
+            // console.log(mode1);
+            //console.log(mode == mode1); true 
+            mode[action] && mode[action].apply(null,[req,res].concat(args));
+
         }catch(err){
             console.log('err:::',err);
             res.setHeader('Content-Type','text/html;charset=utf-8');
             res.end('<h1>出错了</h1>')
         }
-        res.end('ok');
+   
     }
 
 
