@@ -22,7 +22,6 @@ let server = http.createServer((req,res)=>{
 
     if(pathname.startsWith('/static/')){
         let staticFilePath = path.normalize(__dirname + req.url);
-        console.log(staticFilePath);
         let extname = path.extname(staticFilePath);//获取静态资源文件格式
         //console.log(extname);
         
@@ -45,7 +44,7 @@ let server = http.createServer((req,res)=>{
         let controller = paths[1] || 'wish';
         let action = paths[2] || 'index';
         let args = paths.slice(3);
-
+        console.log(args);
 
         try{
             let mode = require('./controller/'+ controller);

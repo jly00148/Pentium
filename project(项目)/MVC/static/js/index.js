@@ -55,7 +55,7 @@
             return
         }else{
             $.ajax({
-                url:'/add',
+                url:'Wish/add',
                 type:'post',
                 dataType:'json',
                 data:{
@@ -105,9 +105,9 @@
         //console.log(this.id)
         let $this = $(this);
         $.ajax({
-            url:'/del',
-            dataType:'json',
-            data:'id='+$this.data('id')
+            url:'Wish/del/'+ $this.data('id'),
+            dataType:'json'
+            // data:'id='+$this.data('id')
         })
         .done(function(result){
             if(result.status == 1){

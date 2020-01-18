@@ -10,7 +10,6 @@ let getRandom = function(min,max){
 }
 //console.log(getRandom(0,225))
 let filePath = ('./data/wish.json');
-//console.log(filePath);
 let readFile = util.promisify(fs.readFile);
 let writeFile = util.promisify(fs.writeFile);
 //console.log(''+fs.readFile);
