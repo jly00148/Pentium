@@ -48,7 +48,7 @@ class wish{
     }
 
     del(req,res,...args){
-        remove(args[0])
+        remove(args)
         .then(data=>{
             let status = {
                 status:1,

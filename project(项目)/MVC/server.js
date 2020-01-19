@@ -44,7 +44,6 @@ let server = http.createServer((req,res)=>{
         let controller = paths[1] || 'wish';
         let action = paths[2] || 'index';
         let args = paths.slice(3);
-        console.log(args);
 
         try{
             let mode = require('./controller/'+ controller);
