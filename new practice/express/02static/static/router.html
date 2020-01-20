@@ -18,7 +18,8 @@
     $(function(){
         $('#get').on('click',function(){
             $.ajax({
-                url:'/',
+                // url:'/users/jly/age/18',
+                url:'/?users=jly&age=18',
                 type:'get'
             })
             .done(function(result){
