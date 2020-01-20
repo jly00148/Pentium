@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="get">get</button>
+    <button id="post">post</button>
+    <button id="put">put</button>
+    <button id="delete">delete</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+    $(function(){
+        $('#get').on('click',function(){
+            $.ajax({
+                url:"/router",
+                type:'get'
+            })
+            .done(function(result){
+                console.log(result);
+            })
+        })
+
+        $('#post').on('click',function(){
+            $.ajax({
+                url:"/router",
+                type:'post'
+            })
+            .done(function(result){
+                console.log(result);
+            })
+        })
+
+        $('#put').on('click',function(){
+            $.ajax({
+                url:"/router",
+                type:'put'
+            }) 
+            .done(function(result){
+                console.log(result);
+            }) 
+        })
+
+        $('#delete').on('click',function(){
+            $.ajax({
+                url:"/router",
+                type:'delete'
+            })
+            .done(function(result){
+                console.log(result);
+            })
+        })
+    })
+</script>
+</html>
