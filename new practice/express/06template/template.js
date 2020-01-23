@@ -22,11 +22,20 @@ app.set('view engine','html');//第一个参数必需是view engine，第二个�
 app.get('/',(req,res)=>{
     res.render('index',{
         title:'跨猪网',
-        content:'我是内容'
+        content:'我是内容',
+        obj:{
+            name:'jly',
+            age:18
+        },
+        name:'tom',
+        arr:['apple','orange','pear']
     });
 })
 
+app.get('/extend',(req,res)=>{
+    res.render('extend');
+})
 
 app.listen(port,()=>{
-    console.log('app is running at 127.0.0.1:30000');
+    console.log('app is running at 127.0.0.1:3000');
 })

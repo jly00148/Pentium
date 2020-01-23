@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .container{
+            width: 800px;
+            height: 500px;
+            background-color: yellow;
+        }
+        .left{
+            width: 100px;
+            height: 200px;
+            background-color: green;
+            float: left;
+        }
+        .right{
+            width: 100px;
+            height: 200px;
+            background-color: red;
+            float: right;
+        }
+        h4{
+            background-color: lightblue;
+        }        
+    </style>
+    <link rel="stylesheet" href="../css/common.css">
+    {% block head %}{% endblock %}
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+</head>
+<body>
+    <div class="container">
+        <h4>hello worlds</h4>
+        <div class="left">
+            left
+        </div>
+        <div class="right">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <div class="footer">
+        footer
+    </div>    
+</body>
+<script src="../js/test.js"></script>
+{% block footer %}{% endblock %}
+</html>
