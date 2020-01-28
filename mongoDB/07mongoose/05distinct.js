@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const userModel = require('./module/module.js');
 
 mongoose.connect('mongodb://localhost/kuazhu',{ useNewUrlParser: true });
 
@@ -10,14 +11,6 @@ db.on('error',(err)=>{
 
 db.on('open',()=>{
     console.log('connect successful');
-
-    const userSchema = new mongoose.Schema({
-        name:String,
-        age:Number,
-        major:String
-    })
-
-    const userModel = mongoose.model('user',userSchema);
 
     userModel.distinct('name',{age:{$gt:20}},(err,result)=>{
         if(err){
