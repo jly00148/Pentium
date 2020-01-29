@@ -1,0 +1,105 @@
+#kuazhu{
+	opacity: 0.9;
+}
+.link:hover{
+	color: #f65a8a !important;
+	text-decoration: none;
+}
+#kuazhu .navbar-nav .active a{
+	color: #f65a8a;
+}
+.navbar-nav li{
+	font-size: 16px;
+	text-align: center;	
+}
+.navbar-nav li a{
+	margin-right: 20px;
+
+}
+#kuazhu .navbar-nav li a:hover{
+	color: #f65a8a;
+}
+main{
+	margin-top: 80px;
+}
+main .row .carousel-inner{
+	margin-bottom: 20px;
+}
+main .row .carousel-inner img{
+	height: 506px;
+}
+.ad .thumbnail{
+	border: none;
+	height: 243px;
+	padding: 0;`
+}
+.ad .thumbnail img{
+	width: 100%;
+	height: 100%;
+}
+.ad:hover{
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6)
+}
+.panel-body{
+	text-indent: 32px;
+}
+.panel-body1{
+	text-indent: 0px;
+	padding: 0px;
+}
+.panel-body1 #news .new-item a{
+	display: block;
+	text-align: center;
+}
+.new-item{
+	list-style: none;
+	line-height: 30px;
+}
+.text-ellipsis{
+	text-overflow: ellipsis;
+	overflow: hidden;	
+	white-space: nowrap;
+}
+.text-ellipsis,.link{
+	list-style: none;
+}
+.panel-heading{
+	padding-left: 0px;
+}
+.panel-title1{
+	border-left: 5px solid #f65a8a;
+	padding-left: 15px;
+}
+.panel-title{
+	padding-left: 15px;
+}
+.panel-body img{
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	float: left;
+	padding: 10px;
+}
+.panel-body .ewm{
+	width: 100%;
+	height: 100%;
+}
+.panel-default .panel-body{
+	padding: 5px;
+}
+.panel-default .panel-body #wyz{
+	margin-left: 0px;
+}
+.panel-footer .text-muted{
+	margin-right: 15px;
+}
+.panel-footer .text-muted:hover{
+	color: #f65a8a;
+	cursor: pointer;
+}
+.pagination li:hover a{
+	color: #f65a8a;
+}
+footer{
+	text-align: center;
+}
