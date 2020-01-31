@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var str = 'abc abc abc';
+
+    var reg1 = RegExp('a');
+    var reg2 = /a/g;
+
+    var strend1 = str.replace(reg1,'*');
+    console.log(strend1);
+
+    var strend2 = str.replace(reg2,'*');
+    console.log(strend2);    
+</script>
+</html>
