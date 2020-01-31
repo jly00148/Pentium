@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var str = '123abc456egd4789asdsf94@';
+    var reg = /[0-9]/g;   //  等价 var reg = /\d/g;
+    var reg1 = /[^0-9]/g; //取反，0-9以外的字符， 等价 var reg1 = /\D/g;
+    var reg2 = /0-9a-z_/g;// 等价 var reg2 = /\w/g;
+    var reg3 = /^0-9a-z_/g;// 等价 var reg3 = /\W/g;
+    var reg4 = /\t\n\f\r/g;// 等价 var reg4 = /\s/g;
+    var reg5 = /^\t\n\f\r/g;// 等价 var reg5= /\S/g;
+    console.log(str.replace(reg,'a'));
+    console.log(str.replace(reg1,'a'));
+</script>
+</html>

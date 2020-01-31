@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var str = 'a 243dgs 48 a 77735 1';
+    console.log(str);
+
+    var reg = /\d{3}/g;
+    var reg1 = /\d{2}/g;
+    var reg2 = /\d{2,}/g;
+    var reg3 = /\d{2,4}/g;
+    console.log(str.replace(reg,'*')); // a * dgs 48 a *
+    console.log(str.replace(reg1,'*'));// a *5 dgs * a *7
+    console.log(str.replace(reg2,'*'));// a * dgs * a * 1
+    console.log(str.replace(reg3,'*'));// a *dgs * a *5 1
+
+
+</script>
+</html>

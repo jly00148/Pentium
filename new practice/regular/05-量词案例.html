@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="text">
+    <button id="btn">按钮</button>
+</body>
+<script>
+    /*
+    //验证1000-2999年
+    var oBtn = document.getElementById('btn');
+    var oText = document.getElementById('text');
+    oBtn.onclick = function(){
+        var reg = /^[1|2]\d{3}$/g;
+        console.log(reg.test(oText.value));
+    }
+    */
+
+    //验证手机号
+    var oBtn = document.getElementById('btn');
+    var oText = document.getElementById('text');
+    oBtn.onclick = function(){
+        var reg = /^1[5|8|3|]\d{9}$/g;
+        console.log(reg.test(oText.value));
+    }    
+</script>
+</html>
