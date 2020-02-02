@@ -5,18 +5,27 @@
     let $goLogin = $('#go-login');
     let $subRegister = $('#sub-register');
     let $textDanger = $('.err');
+    let $subLogin = $('#sub-login');
 
     //切换注册页面
-    $goRegister.on('click',function(){
+    function toLogin(){
+        $login.show();
+        $register.hide(); 
+    }
+    function toRegister(){
         $login.hide();
         $register.show();
+    }
+    $goRegister.on('click',function(){
+        $textDanger.html('');
+        toRegister();
     })
     $goLogin.on('click',function(){
-        $login.show();
-        $register.hide();
+        $textDanger.html('');
+        toLogin();
     })
 
-
+    //注册验证逻辑
     $subRegister.on('click',function(){
         var username = $register.find('[name="username"]').val();
         var password = $register.find('[name="password"]').val();
@@ -48,13 +57,22 @@
             })
             .done(function(result){
                 // console.log(result);
-                if(result.status == 1){
+                if(result.status == '1'){
                     $textDanger.html(result.msg);
+                }else if(result.status == '2'){
+                    $textDanger.html(result.msg);
+                    toLogin();
                 }
             })
             .fail(function(err){
                 $textDanger.html('请求失败,请稍后再试！');
             })
         }
+    })
+
+
+    //登录逻辑
+    $subLogin.on('click',function(){
+        alert('aa');
     })
 })(jQuery);
