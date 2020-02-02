@@ -1,6 +1,15 @@
 const express = require('express');
-const userModel = require('../modules/user.js');
 const router = express.Router();
+const userModel = require('../modules/user.js');
+const hmac = require('../util/hmac.js');
+// console.log(hmac + '');
+/*
+(str)=>{
+    const hmac = crypto.createHmac('sha512','jly');
+    hmac.update(str);
+    return hmac.digest('hex');
+}
+*/
 
 router.post('/register',(req,res)=>{
     //console.log(req.body);//  [Object: null prototype] { username: 'a4444', password: '123' }
@@ -24,7 +33,7 @@ router.post('/register',(req,res)=>{
             }else{
                 userModel.insertMany({
                     username,
-                    password
+                    password:hmac(password)
                 },(err,data)=>{
                     if(err){
                         console.log('insertMany err',err);
