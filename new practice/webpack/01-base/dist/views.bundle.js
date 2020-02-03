@@ -81,19 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/about.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/views.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/about.js":
+/***/ "./src/views.js":
 /*!**********************!*\
-  !*** ./src/about.js ***!
+  !*** ./src/views.js ***!
   \**********************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("console.log('about...');\n\n//# sourceURL=webpack:///./src/about.js?");
+eval("console.log('views...');\n\n//# sourceURL=webpack:///./src/views.js?");
 
 /***/ })
 
