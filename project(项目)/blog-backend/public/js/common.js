@@ -5,6 +5,7 @@
     let $goLogin = $('#go-login');
     let $subRegister = $('#sub-register');
     let $textDanger = $('.err');
+    let $loginerr = $('.loginerr');
     let $subLogin = $('#sub-login');
 
     //切换注册页面
@@ -73,6 +74,40 @@
 
     //登录逻辑
     $subLogin.on('click',function(){
-        alert('aa');
+        var username = $register.find('[name="username"]').val();
+        var password = $register.find('[name="password"]').val();
+
+        //验证用户名和密码和重复密码
+        var errMsg = '';
+        if(!/^[a-z][0-9a-z]{3,6}$/i.test(username)){
+            errMsg = '以首字母开头，共4-7位';
+            $loginerr.html(errMsg);
+        }
+        else if(!/^\w{3,6}$/i.test(password)){
+            errMsg = '密码3-6位';
+            $loginerr.html(errMsg);
+        }else{
+            $.ajax({
+                url:'/user/login',
+                type:'post',
+                dataType:'json',
+                data:{
+                    username:username,
+                    password:password
+                }
+            })
+            .done(function(result){
+                // console.log(result);
+                if(result.status == '1'){
+                    $textDanger.html(result.msg);
+                }else if(result.status == '2'){
+                    $textDanger.html(result.msg);
+                    toLogin();
+                }
+            })
+            .fail(function(err){
+                $textDanger.html('请求失败,请稍后再试！');
+            })
+        }
     })
 })(jQuery);
