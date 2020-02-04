@@ -11,6 +11,8 @@ const hmac = require('../util/hmac.js');
 }
 */
 
+
+
 router.post('/register',(req,res)=>{
     //console.log(req.body);//  [Object: null prototype] { username: 'a4444', password: '123' }
     const {username,password} = req.body;
@@ -49,5 +51,33 @@ router.post('/register',(req,res)=>{
         }
     })
 })
+
+
+router.post('/login',(req,res)=>{
+    const {username,password} = req.body;
+
+    const result = {
+        status:'',
+        msg:''
+    }
+  
+    userModel.findOne({username,password:hmac(password)},(err,data)=>{
+        if(err){
+            console.log('findOne err',err);
+        }else{
+            if(!data){
+                result.status = '1';
+                result.msg = '用户不存在';
+                res.json(result);
+            }else{
+                result.status = '2';
+                result.msg = '登录成功';
+                res.json(result);
+            }
+        }
+    })
+})
+
+
 
 module.exports = router;
