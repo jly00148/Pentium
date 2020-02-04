@@ -1,5 +1,7 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');// 新用法
+// console.log(CleanWebpackPlugin);
 module.exports = {
     mode:'development',
     entry:{// 入口
@@ -38,7 +40,8 @@ module.exports = {
             filename:'index1.html',
             inject:true,
             hash:true
-        })
+        }),
+        new CleanWebpackPlugin()
     ]
 
 }
