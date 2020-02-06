@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Person{
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+
+        sayAge(){
+            console.log('i am is ' + this.age +' years old');
+        }
+
+        static sayHi(){// 类上面的静态方法
+            console.log('hi...');
+        }
+
+    }
+
+    // var p1 = new Person('jly',18);
+    // p1.sayAge();
+    // Person.sayHi();
+
+    
+    class Student extends Person{
+
+        constructor(name,age,major){
+            super(name,age);//使用继承constructor
+            this.major = major;
+        }
+        showMajor(){
+            console.log('my major is '+ this.major);
+        }
+    }
+
+    var s1 = new Student('jly',18,'computer');
+
+    console.log('s1:::',s1);
+    s1.sayAge();
+    s1.showMajor();
+</script>
+</html>
