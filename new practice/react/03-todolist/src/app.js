@@ -43,4 +43,38 @@ export default a;
 */
 
 //写法六
+/*
 export default 11;
+*/
+
+import React,{ Component,Fragment } from 'react';
+
+import './app.css';
+class App extends Component{
+    render(){
+
+        //添加注释
+        {
+            //todolist
+            /*
+                *******
+             */
+        }
+
+        // return <div><input /><button>新增</button></div>
+        // return <Fragment><input /><button>新增</button></Fragment>
+        return(
+            // <div style={{ background:'red' }}> //添加css方法一，下为二
+            <div className="App">
+                <input /><button>新增</button>
+                <ul>
+                    <li>li1</li>
+                    <li>li2</li>
+                </ul>
+            </div>
+        )
+
+    }
+}
+
+module.exports = App;

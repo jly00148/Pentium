@@ -1,0 +1,9 @@
+.App{
+    width: 600px;
+    background-color: red;
+    margin:100px auto;
+}
+
+.App li{
+    border-bottom: 1px dotted #fff;
+}

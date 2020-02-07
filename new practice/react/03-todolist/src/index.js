@@ -1,7 +1,8 @@
 import React from 'react';
 
 import ReactDOM from 'react-dom';
-import './app.js';
+
+import App from'./app.js';
 
 //写法一
 /*
@@ -34,7 +35,10 @@ console.log(b);
 */
 
 //写法六
+/*
 import b from "./app.js";;
 console.log(b);
+*/
 
-ReactDOM.render(<div><input/><button>按钮</button></div>,document.getElementById('root'));
+
+ReactDOM.render(<App />,document.getElementById('root'));

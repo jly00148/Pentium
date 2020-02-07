@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+    }
+
+    var p1 = new Person('jly',18);
+
+    Person.prototype.sayAge = function(){
+        console.log('i am ' + this.age + ' years old');
+    }
+    // console.log('p1:::',p1);
+    // p1.sayAge();
+
+
+
+
+    // Student 构造函数继承Person构造函数的prototype上的方法
+    class Student extends Person{
+
+    }
+
+    var s1 = new Student('leo',28);
+
+    console.log('s1:::',s1);
+
+    s1.sayAge();
+
+    // console.log(s1.__proto__ === Student.prototype); true
+    
+</script>
+</html>
