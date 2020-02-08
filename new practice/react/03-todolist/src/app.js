@@ -51,6 +51,13 @@ import React,{ Component,Fragment } from 'react';
 
 import './app.css';
 class App extends Component{
+    handAdd(){
+        console.log('handAdd...');
+    }
+    handChange(ev){
+       // console.log(ev.target);//input
+        console.log(ev.target.value);
+    }
     render(){
 
         //添加注释
@@ -66,7 +73,10 @@ class App extends Component{
         return(
             // <div style={{ background:'red' }}> //添加css方法一，下为二
             <div className="App">
-                <input /><button>新增</button>
+            {
+                //console.log('this:::',this)
+            }
+                <input onChange = {this.handChange}/><button onClick = {this.handAdd}>新增</button>
                 <ul>
                     <li>li1</li>
                     <li>li2</li>
