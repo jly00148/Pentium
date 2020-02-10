@@ -57,7 +57,7 @@ class App extends Component{
         super(props);
         // console.log(this); App
         this.state = {
-            list:["三国杀"],
+            list:["吃饭","睡觉","写程序"],
             val:''
         }
         this.handChange = this.handChange.bind(this);
@@ -90,14 +90,12 @@ class App extends Component{
          val:'',               
         }
         */
-       this.setState(preState=>({// 异步操作
-            list:[...preState.list,preState.val],
-            val:'', 
-        }),()=>{
-            console.log(this.ul.querySelectorAll('li'));
-        }
-    );
-    // console.log(this.ul.querySelectorAll('li'));
+
+       this.setState(preState=>({
+        list:[...preState.list,preState.val],
+        val:'',  
+    }));
+       
     }
 
     handChange(ev){
@@ -109,10 +107,8 @@ class App extends Component{
             val:ev.target.value
         })
         */
-        
-        // const val = ev.target.value;
-        const val = this.input.value;
-        // console.log(val);
+
+        const val = ev.target.value;
         this.setState(()=>({
             val
        }))
@@ -135,7 +131,7 @@ class App extends Component{
     }
 
     getItem(){
-        return (this.state.list.map((item,index)=>{
+        return this.state.list.map((item,index)=>{
 
             /*
             return <li key={index} 
@@ -149,11 +145,10 @@ class App extends Component{
                         index={index}
                         list = {this.state.list}
                         handDel = {this.handDel.bind(this,index)}/>
-        })) 
+        })    
     }
 
     render(){
-        // console.log('app render...');
         // console.log(this); App
         // return <div><input /><button>新增</button></div>
         // return <Fragment><input /><button>新增</button></Fragment>
@@ -161,18 +156,9 @@ class App extends Component{
         return(
             // <div style={{ background:'red' }}> //添加css方法一，下为二
             <div className="App">
-                <input onChange = { this.handChange } 
-                value={this.state.val} 
-                ref={(input)=>{
-                    // console.log(typeof input);// object
-                    this.input = input;
-                }}
-                />
+                <input onChange = { this.handChange } value={this.state.val} />
                 <button onClick = { this.handAdd }>新增</button>
-                <ul ref={(ul)=>{
-                    this.ul = ul;
-                }}
-                >
+                <ul>
                     {
                         this.getItem()
                     }
