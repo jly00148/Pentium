@@ -21,9 +21,9 @@ class App extends Component{
         }
     }
 
-    // componentDidMount(){
-    //     console.log('componentDidMount...');
-    // }
+    componentDidMount(){
+        console.log('componentDidMount...');
+    }
 
     handAdd(){
 
