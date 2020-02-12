@@ -31,13 +31,16 @@ module.exports = {
                     }
                 ]
             },
+
+            //babel
             {
                 test:/\.js$/,
                 exclude:/(node_modules)/,
                 use:{
                     loader:'babel-loader',
                     options:{
-                        presets:['env','react']
+                        presets:['env','react'],
+                        plugins:[["import",{"libraryName":"antd","libraryDirectory":"es","style":"css"}]] //antd 按需索取css，不必加载全部css
                     }
                 }
             }

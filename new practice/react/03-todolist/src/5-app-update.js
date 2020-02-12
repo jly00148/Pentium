@@ -1,9 +1,7 @@
 import React,{ Component,Fragment } from 'react';
-import {DatePicker,Button} from 'antd';
 import './index.js';
 import Item from './Item.js'; 
 import './app.css';
-// import 'antd/dist/antd.css';
 
 class App extends Component{
     constructor(props){
@@ -18,6 +16,28 @@ class App extends Component{
     }
     
     
+    static getDerivedStateFromProps(nextProps,prevState){
+        console.log('getDerivedStateFromProps::',nextProps,prevState);
+        return {
+            // list:['谁是卧底']
+        }
+    }
+   
+    shouldComponentUpdate(nextProps,prevState){
+        // return false;
+        console.log('shouldComponentUpdate',nextProps,prevState);
+        return true;
+    }
+
+    getSnapshotBeforeUpdate(prevProps,prevState){
+        console.log('getSnapshotBeforeUpdate::',prevProps,prevState);
+        return 123;
+    }
+
+    componentDidUpdate(prevProps,prevState,snapshot){
+        console.log('componentDidUpdate::',prevProps,prevState,snapshot);
+    }
+
     handAdd(){
        this.setState(preState=>({// 异步操作
             list:[...preState.list,preState.val],
@@ -66,8 +86,6 @@ class App extends Component{
                         this.getItem()
                     }
                 </ul>
-                <Button type="primary">button</Button>
-                <DatePicker/>
             </div>
         )
 
