@@ -2,43 +2,77 @@ import React,{ Component,Fragment } from 'react';
 import {DatePicker,Button,Col,Row,Input,List} from 'antd';
 import './index.js';
 import './app.css';
+import store from './store/index.js';
 
 class App extends Component{
     constructor(props){
         console.log('App constructor...');
         super(props);
+        /*
         this.state = {
             list:["三国杀"],
             val:''
         }
+        */
+    //    console.log(store);
+        // console.log(store.getState());
+        this.state = store.getState();
+        store.subscribe(()=>{
+            this.setState(()=>{
+                return store.getState();
+            })
+        })
         this.handChange = this.handChange.bind(this);
         this.handAdd = this.handAdd.bind(this);
     }
     
     
     handAdd(){
+        /*
        this.setState(preState=>({// 异步操作
             list:[...preState.list,preState.val],
             val:'', 
             })
         );
+        */
+    //    const val = ev.target.value;
+       const action = {
+           type:'add_item'
+       }
+       store.dispatch(action);
     }
 
     handChange(ev){
+        /*
         const val = ev.target.value;
         this.setState(()=>({
             val
        }))
+       */
+      const val = ev.target.value;
+      const action = {
+          type:'change_item',
+          payload:val
+      }
+
+      store.dispatch(action);
 
     }
 
     handDel(index){
+        /*
         const list = [...this.state.list];
         list.splice(index,1);
        this.setState(()=>({
            list
        }))
+    */
 
+    const action = {
+        type:"del_item",
+        payload:index
+    }
+    store.dispatch(action);
     }
 
     render(){
