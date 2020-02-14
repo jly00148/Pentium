@@ -3,6 +3,8 @@ import {DatePicker,Button,Col,Row,Input,List} from 'antd';
 import './index.js';
 import './app.css';
 import store from './store/index.js';
+import {ADD_ITEM,CHANGE_ITEM,DEL_ITEM} from './store/actionType.js';
+import { getAddItemAction,getChangeItemAction,getDelItemAction } from './store/actionCreate.js';
 
 class App extends Component{
     constructor(props){
@@ -36,9 +38,12 @@ class App extends Component{
         );
         */
     //    const val = ev.target.value;
+    /*
        const action = {
-           type:'add_item'
+           type:ADD_ITEM
        }
+       */
+      const action = getAddItemAction();
        store.dispatch(action);
     }
 
@@ -49,12 +54,16 @@ class App extends Component{
             val
        }))
        */
+      /*
+
       const val = ev.target.value;
       const action = {
-          type:'change_item',
+          type:CHANGE_ITEM,
           payload:val
       }
+      */
 
+     const action = getChangeItemAction(ev);
       store.dispatch(action);
 
     }
@@ -68,10 +77,13 @@ class App extends Component{
        }))
     */
 
+    /*
     const action = {
-        type:"del_item",
+        type:DEL_ITEM,
         payload:index
     }
+    */
+   const action = getDelItemAction(index);
     store.dispatch(action);
     }
 
