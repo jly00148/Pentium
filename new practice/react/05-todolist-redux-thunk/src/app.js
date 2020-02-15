@@ -1,8 +1,7 @@
-import React,{ Component,Fragment } from 'react';
+import React,{ Component } from 'react';
 import {DatePicker,Button,Col,Row,Input,List} from 'antd';
-import axios from 'axios';
 import store from './store/index.js';
-import { getAddItemAction,getChangeItemAction,getDelItemAction,loadInitDataAction } from './store/actionCreate.js';
+import { getAddItemAction,getChangeItemAction,getDelItemAction,loadInitDataAction,getInitReduxThunk } from './store/actionCreate.js';
 import AppUI from './appUI.js';
 import './app.css';
 
@@ -23,12 +22,16 @@ class App extends Component{
     
     // 发送ajax
     componentDidMount(){
+        /*
         axios.get('http://127.0.0.1:3000')
         .then(result=>{
             // console.log('result:::',result.data);   ["learn react", "learn nodejs"]
             const action = loadInitDataAction(result.data);
             store.dispatch(action);
         })
+        */
+       const action = getInitReduxThunk();
+       store.dispatch(action);
     }
     
     handAdd(){
