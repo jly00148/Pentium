@@ -1,12 +1,10 @@
 import React,{ Component } from 'react';
 import {Button,Col,Row,Input,List} from 'antd';
-import {connect} from 'react-redux';
 import './app.css';
 
 
 class App extends Component{
     render(){
-        console.log('App render...');     
         return(
 
              <div className="App">
@@ -32,12 +30,4 @@ class App extends Component{
     }
 }
 
-
-const mapStateToProps = (state)=>{
-    console.log(state);
-    return {
-        val:state.val,
-        list:state.list
-    }
-}
-module.exports = connect(mapStateToProps,null)(App);
+module.exports = App;
