@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #000;
+        }
+        #timer{
+            width: 120px;
+            font-size: 32px;
+            margin: 200px auto;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="timer"></div>
+</body>
+<script>
+    var oTimer = document.getElementById('timer');
+
+    function rule(num){
+
+            if(num < 10){
+                '0' + num;
+            }else{
+                '' + num;
+            }
+            return num;
+     }
+
+
+    function handTimer(){
+        var date = new Date();
+        var iHour = date.getHours();
+        var iMinute = date.getMinutes();
+        var iSecond = date.getSeconds();
+        var time = rule(iHour) + ":" + rule(iMinute) + ":" + rule(iSecond);
+        oTimer.innerText = time;
+    }
+
+     setInterval(handTimer,1000);
+     handTimer()
+</script>
+</html>
