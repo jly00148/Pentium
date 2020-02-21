@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 区别一：箭头函数不绑定this，会捕获其所在的上下文的this值，作为自己的this值
+    // function foo(){
+    //     this.bar = 1;
+    //     return this.f = ()=>{
+    //         return this.bar; 
+    //     }
+    // }
+    // console.log(foo()());
+
+    // console.log(this);
+
+
+
+    // 区别二：箭头函数的匿名函数，不能作为构造函数，不能使用new
+//     let FunConstructor = () => {
+//     console.log('lll');
+// }
+
+// let fc = new FunConstructor(); // Uncaught TypeError: FunConstructor is not a constructor
+
+// 区别三：普通函数用arguments获取，而箭头函数用...参数获取
+// function foo(){
+//     console.log(arguments);
+// }
+// foo(11,22,33,44,55);
+
+// let foo = (...arr)=>{
+//     console.log(arr);
+// }
+
+// foo(11,22,33,44,55);
+
+
+// 区别四：箭头函数没有原型对象
+// let foo = ()=>{
+
+// }
+
+// console.log(foo.prototype); // undefined
+
+// 区别五：
+</script>
+</html>
