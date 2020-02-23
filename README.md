@@ -1,1 +1,1 @@
-Daily practice for web
+# `Daily practice demo`
