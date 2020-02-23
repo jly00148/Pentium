@@ -1,6 +1,5 @@
 import React,{ Component,Fragment } from 'react';
 import {DatePicker,Button} from 'antd';
-import './index.js';
 import Item from './Item.js'; 
 import './app.css';
 // import 'antd/dist/antd.css';

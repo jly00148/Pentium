@@ -48,10 +48,11 @@ module.exports = {
             template:'./src/index.html',//模板文件
             filename:'react.html',//输出的文件名
             inject:true,//脚本写在哪个标签里，默认是true，在body之后
-            hash:true//给生成的js/css文件添加唯一一个的hash
+            hash:false //给生成的js/css文件添加唯一一个的hash
         }),
         new CleanWebpackPlugin()
     ],
+    // webpack-dev-server提供了一个简单的基于node express的web服务器,能够实时重新加载页面
     devServer:{
         contentBase:'./dist',//内容的目录
         port:8080//服务器运行的端口

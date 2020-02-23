@@ -3,50 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 <body>
-    
+
 </body>
 <script>
-    // class Person{
-    //     constructor(name,age){
-    //         this.name = name;
-    //         this.age = age;
-    //     }
-    // }
-
-    // var p1 = new Person('jly',18);
-    // console.log(p1);
-
-
-
-    function Person(name,age){
-        this.name = name;
-        this.age = age;
-    }
-    var p1 = new Person('jly',18);
-    Person.prototype.sayAge = function(){
-        console.log('i am ' + this.age + ' years old');
-    }
-    // console.log(p1);
-    // p1.sayAge();
-
-    class Student extends Person{
-        constructor(name,age,major){
-            super(name,age);
-            this.major = major;
-        }
-        showName(){
-            console.log(this);// s1实例
-            console.log('my name is ' + this.name);
-        }
-    }
-
-    var s1 = new Student('JLY',18,'computer');
-    console.log(s1);
-    s1.sayAge();
-    s1.showName();
+    
 </script>
 </html>

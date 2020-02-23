@@ -49,7 +49,6 @@ export default 11;
 
 import React,{ Component,Fragment } from 'react';
 
-import './index.js';
 import Item from './Item.js'; 
 import './app.css';
 class App extends Component{
