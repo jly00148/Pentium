@@ -51,10 +51,12 @@ module.exports = {
             template:'./src/index.html',
             filename:'index.html',
             inject:true,
-            hash:true
+            hash:false // //给生成的js/css文件添加唯一一个的hash,true是生成,false是关闭
         }),
         new CleanWebpackPlugin()
     ],
+
+    // webpack-dev-server提供了一个简单的基于node express的web服务器,能够实时重新加载页面
     devServer:{
         contentBase:'./dist',//内容的目录
         port:8080//服务器运行的端口

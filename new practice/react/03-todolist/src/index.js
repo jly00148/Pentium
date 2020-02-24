@@ -2,7 +2,7 @@ import React from 'react';
 
 import ReactDOM from 'react-dom';
 
-import App from './app.js';
+import App from './1_app-base.js';
 
 //写法一
 /*

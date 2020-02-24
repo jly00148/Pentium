@@ -5,6 +5,7 @@ class Item extends Component{
     constructor(props){
         super(props);
         console.log('Item constructor...');
+        console.log('this.props:::',this.props);
     }
 
     handDel(){
