@@ -55,6 +55,7 @@ class App extends Component{
     constructor(props){
         super(props);
         // console.log(this); App
+        console.log('App constructor...');
         this.state = {
             list:["吃饭","睡觉","写程序"],
             val:''
@@ -91,7 +92,7 @@ class App extends Component{
         // console.log(this); App
         // return <div><input /><button>新增</button></div>
         // return <Fragment><input /><button>新增</button></Fragment>
-        
+        console.log('App render...');
         return(
             // <div style={{ background:'red' }}> //添加css方法一，下为二
             <div className="App">

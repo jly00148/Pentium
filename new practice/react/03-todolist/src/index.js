@@ -2,7 +2,7 @@ import React from 'react';
 
 import ReactDOM from 'react-dom';
 
-import App from './1_app-base.js';
+import App from './2_app-optimize.js';
 
 //写法一
 /*
@@ -39,6 +39,5 @@ console.log(b);
 import b from "./app.js";;
 console.log(b);
 */
-
 
 ReactDOM.render(<App />,document.getElementById('root'));

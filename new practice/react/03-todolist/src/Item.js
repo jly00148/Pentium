@@ -5,7 +5,7 @@ class Item extends Component{
     constructor(props){
         super(props);
         console.log('Item constructor...');
-        console.log('this.props:::',this.props);
+        // console.log('this.props:::',this.props);
     }
 
     handDel(){
@@ -14,7 +14,7 @@ class Item extends Component{
     }
     render(){
         console.log('Item render...');
-        const {handDel,content} = this.props;
+        // const {handDel,content} = this.props;
         return(<li onClick={this.props.handDel}>
                     {this.props.content}
              </li>)
@@ -25,7 +25,7 @@ class Item extends Component{
 // 类型检查
 Item.propTypes = {
     handDel:propTypes.func,
-    content:propTypes.string.isRequired    
+    content:propTypes.string.isRequired  //isRequired意思代表是必须项
 }
 
 Item.defaultProps = {
