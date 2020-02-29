@@ -10,7 +10,7 @@ class App extends Component{
         console.log('app constructor...');
         this.state = {
             list:["写代码"],
-            val:''
+            val:'11'
         }
         this.handChange = this.handChange.bind(this);
         this.handAdd = this.handAdd.bind(this);
