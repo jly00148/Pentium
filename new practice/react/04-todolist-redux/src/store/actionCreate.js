@@ -11,10 +11,10 @@ export const getAddItemAction = ()=>{
 //handChange
 export const getChangeItemAction = (ev)=>{
     const val = ev.target.value;
-    return {
-        type:CHANGE_ITEM,
-        payload:val
-    }
+        return {
+            type:CHANGE_ITEM,
+            payload:val
+        }
 }
 
 // handDel

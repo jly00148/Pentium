@@ -35,15 +35,13 @@ class App extends Component{
     }
 
     handChange(ev){
-
-     const action = getChangeItemAction(ev);
-      store.dispatch(action);
-
+        const action = getChangeItemAction(ev);
+        store.dispatch(action);
     }
 
     handDel(index){
-   const action = getDelItemAction(index);
-    store.dispatch(action);
+        const action = getDelItemAction(index);
+        store.dispatch(action);
     }
 
     render(){
