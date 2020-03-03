@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+//JSON.stringify()的作用是将 JavaScript 对象转换为 JSON 字符串，而JSON.parse()可以将JSON字符串转为一个对象。
+
+
+var str = '[1,2,3]';
+var str1 = '["1","2","3"]';
+var str2 = "[1,2,3]";
+var str3 = "['1','2','3']";// x
+var str4 = [1,2,3];
+console.log(JSON.parse(str));
+console.log(JSON.parse(str1));
+console.log(JSON.parse(str2));
+console.log(JSON.parse(str3));
+console.log(JSON.stringify(str4));
+
+</script>
+</html>
