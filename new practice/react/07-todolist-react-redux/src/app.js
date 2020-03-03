@@ -8,15 +8,15 @@ class App extends Component{
         return(
 
              <div className="App">
-             <Row>
-                <Col span={12}>
-                    <Input
-                    />
-                </Col>
-                <Col span={12}> 
-                    <Button type="primary">新增</Button>
-                </Col>
-             </Row>
+                <Row>
+                    <Col span={12}>
+                        <Input
+                        />
+                    </Col>
+                    <Col span={12}> 
+                        <Button type="primary">新增</Button>
+                    </Col>
+                </Row>
             
                 <List
                     style = {{marginTop:10}}
