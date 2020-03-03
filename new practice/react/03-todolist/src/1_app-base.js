@@ -57,8 +57,8 @@ class App extends Component{
         // console.log(this); App
         console.log('App constructor...');
         this.state = {
-            list:["吃饭","睡觉","写程序"],
-            val:''
+            list:["吃饭"],
+            val:'11'
         }
     }
 
@@ -67,7 +67,7 @@ class App extends Component{
         // this.state.list.push(this.state.val);
         this.setState({
             list:[...this.state.list,this.state.val],
-            val:'',
+            val:''
         })  
     }
 

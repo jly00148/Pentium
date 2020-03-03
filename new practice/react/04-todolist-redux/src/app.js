@@ -5,6 +5,7 @@ import { getAddItemAction,getChangeItemAction,getDelItemAction } from './store/a
 import AppUI from './appUI.js';
 import './app.css';
 
+// 容器主件
 class App extends Component{
     constructor(props){
         console.log('App constructor...');

@@ -85,7 +85,7 @@ class App extends Component{
     }
 
     render(){
-        console.log('App render...');     
+        console.log('App render...');
         return(
 
              <div className="App">
@@ -100,23 +100,13 @@ class App extends Component{
                 </Col>
              </Row>
              
-                {/* <ul>
-                    {
-                        this.state.list.map((item,index)=>{
-                            return <li key={index} 
-                                onClick={this.handDel.bind(this,index)}>
-                                {item}
-                            </li>
-                            
-                        })
-                    }
-                </ul> */}
-            
+
                 <List
-                    style = {{marginTop:10}}
+                    style = {{marginTop:5}}
                     bordered
                     dataSource = {this.state.list}
                     renderItem = {(item,index)=>(<List.Item onClick={this.handDel.bind(this,index)}>{item}</List.Item>)}
+                    
                 />
 
             </div>
