@@ -1,6 +1,9 @@
 import React,{ Component } from 'react';
 import {Button,Col,Row,Input,List} from 'antd';
+import {connect} from 'react-redux';
 import './app.css';
+import store from './store/index.js';
+import { getAddItemAction,getChangeItemAction,getDelItemAction,loadInitDataAction,getInitReduxThunk } from './store/actionCreate.js';
 
 
 class App extends Component{
@@ -11,23 +14,58 @@ class App extends Component{
                 <Row>
                     <Col span={12}>
                         <Input
+                            value={this.props.val}
+                            onChange = {this.props.handChange}
                         />
                     </Col>
-                    <Col span={12}> 
-                        <Button type="primary">新增</Button>
+                    <Col span={12}>
+                        <Button type="primary" onClick={this.props.handAdd}>新增</Button>
                     </Col>
                 </Row>
             
                 <List
                     style = {{marginTop:10}}
                     bordered
-                    dataSource = {[]}
-                    renderItem = {(item,index)=>(<List.Item>{item}</List.Item>)}
+                    dataSource = {this.props.list}
+                    renderItem = {(item)=>(<List.Item onClick={this.props.handDel}>{item}</List.Item>)}
                 />
             </div>
         )
 
     }
+
+    componentDidMount(){
+        const action = getInitReduxThunk();
+        store.dispatch(action);
+    }
 }
 
-module.exports = App;
+const mapStateTopProps = (state)=>{
+    // console.log('::::',state); {list: Array(1), val: "谁是卧底"}
+    return {
+        list:state.list,
+        val:state.val
+    }
+}
+
+const mapDispatchToProps = (dispatch)=>{
+    return {
+        handChange:(ev)=>{
+            const val = ev.target.value;
+            const action = getChangeItemAction(val);
+            dispatch(action);
+        },
+
+        handAdd:()=>{
+            const action = getAddItemAction()
+            dispatch(action);
+        },
+
+        handDel:(index)=>{
+            const action = getDelItemAction(index);
+            dispatch(action);
+        }
+    }
+}
+
+module.exports = connect(mapStateTopProps,mapDispatchToProps)(App);

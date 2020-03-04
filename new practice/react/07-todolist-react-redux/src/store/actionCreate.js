@@ -1,7 +1,7 @@
 import {ADD_ITEM,CHANGE_ITEM,DEL_ITEM,LOAD_DATA} from './actionType.js';
 import store from './index.js';
-
 import axios from 'axios';
+
 // handAdd
 export const getAddItemAction = ()=>{
     return {
@@ -10,19 +10,18 @@ export const getAddItemAction = ()=>{
 }
 
 //handChange
-export const getChangeItemAction = (ev)=>{
-    const val = ev.target.value;
+export const getChangeItemAction = (payload)=>{
     return {
         type:CHANGE_ITEM,
-        payload:val
+        payload:payload
     }
 }
 
 // handDel
-export const getDelItemAction = (index)=>{
+export const getDelItemAction = (payload)=>{
     return {
         type:DEL_ITEM,
-        payload:index
+        payload
     }
 }
 
