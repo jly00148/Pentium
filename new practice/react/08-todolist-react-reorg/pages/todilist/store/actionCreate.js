@@ -1,5 +1,4 @@
 import {ADD_ITEM,CHANGE_ITEM,DEL_ITEM,LOAD_DATA} from './actionType.js';
-import store from './index.js';
 import axios from 'axios';
 
 // handAdd
@@ -40,7 +39,7 @@ export const getInitReduxThunk = ()=>{
         .get('http://127.0.0.1:3000/')
         .then(result=>{
             const action = loadInitDataAction(result.data);
-            store.dispatch(action);
+            dispatch(action);
         })
     }
 }
