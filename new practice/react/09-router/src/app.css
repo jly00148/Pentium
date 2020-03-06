@@ -3,8 +3,7 @@
     padding: 0;
 }
 
-.App h1{
-    width: 600px;
-    margin:100px auto;
-    color: red;
-}    
+.App li{
+    float: left;
+    list-style: none;
+}

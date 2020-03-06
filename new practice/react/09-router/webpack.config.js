@@ -9,6 +9,7 @@ module.exports = {
     },
     output:{
         filename:'[name].[hash].bundle.js',
+        publicPath:"/",
         path:path.resolve(__dirname,'dist')
     },
     module:{
@@ -57,7 +58,8 @@ module.exports = {
     ],
     devServer:{
         contentBase:'./dist',//内容的目录
-        port:8080//服务器运行的端口
+        port:8080,//服务器运行的端口
+        historyApiFallback:true
     }
 
 }

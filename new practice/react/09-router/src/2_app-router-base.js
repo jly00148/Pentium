@@ -1,7 +1,7 @@
 import React,{ Component } from 'react';
 import { 
-    BrowserRouter as Router, //BrowserRouter:H5路由,刷新页面会向后台发送请求
-    // HashRouter as Router, //HashRouter:Hash路由,刷新页面不会向后台发送请求
+    // BrowserRouter as Router, //BrowserRouter:H5路由,刷新页面会向后台发送请求
+    HashRouter as Router, //HashRouter:Hash路由,刷新页面不会向后台发送请求
     Route,
     Link,
     Switch 
@@ -14,6 +14,7 @@ class Home extends Component{
     }
 }
 
+
 // function About(){
 //     return <h1>this is about title</h1>
 // }
@@ -23,13 +24,6 @@ class About extends Component{
         return <h1>this is about title</h1>
     }
 }
-
-class Users extends Component{
-    render(){
-        return <h1>the Usersname is {this.props.match.params.id}</h1>
-    }
-}
-
 class App extends Component{
     render(){
         return(
@@ -41,16 +35,12 @@ class App extends Component{
                         </li>
                         <li>
                             <Link to="/About">/about</Link>
-                        </li>
-                        <li>
-                            <Link to="/Users/123">/Users123</Link>
-                        </li>                                            
+                        </li>                        
                     </ul>
                     {/* <Route exact path="/"><Home /></Route> */}
                     <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route path="/About" component={About} />
-                        <Route path="/Users/:id" component={Users} />
+                    <Route exact path="/" component={Home} />
+                    <Route path="/About" component={About} />
                     </Switch>
                 </div>
             </Router>
