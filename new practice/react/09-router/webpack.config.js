@@ -2,6 +2,7 @@ const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');// 新用法
 // console.log(CleanWebpackPlugin);
+const publicPath = "/";
 module.exports = {
     mode:'development',
     entry:{// 入口
@@ -9,7 +10,7 @@ module.exports = {
     },
     output:{
         filename:'[name].[hash].bundle.js',
-        publicPath:"/",
+        publicPath:publicPath,
         path:path.resolve(__dirname,'dist')
     },
     module:{
@@ -59,7 +60,7 @@ module.exports = {
     devServer:{
         contentBase:'./dist',//内容的目录
         port:8080,//服务器运行的端口
-        historyApiFallback:true
+        historyApiFallback:true // H5路由刷新页面不用向后台发送数据
     }
 
 }
