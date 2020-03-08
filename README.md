@@ -1,1 +1,1 @@
-# `Daily practice demo`
+# `The daily practice of a novice`
