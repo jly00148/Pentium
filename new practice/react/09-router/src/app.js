@@ -19,7 +19,6 @@ class Home extends Component{
 // function About(){
 //     return <h1>this is about title</h1>
 // }
-
 class About extends Component{
     render(){
         return <h1>this is about title</h1>
@@ -44,8 +43,38 @@ class Users extends Component{
     }
 }
 
-class App extends Component{
+class Login extends Component{
     render(){
+        return <h1>this is login page</h1>
+    }
+}
+
+class Info extends Component{
+    render(){
+        return <h1>this is Info page</h1>
+    }
+}
+
+class App extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            Logined:false
+        }
+    }
+    render(){
+        const ProtectRoute = ({component:Component,...rest})=>(
+            <Route 
+                {...rest}
+                // component={Component}
+                // render={()=>(<Component />)}
+                // render={()=>(<Login />)}
+                // render={(props)=>this.state.Logined ? <Component {...props}/> : <Login />} // 传参数props在Component中使用
+                render={()=>this.state.Logined ? <Component /> : <Login />}
+
+            />
+        )
+        
         return(
             <Router>
                 <div className='App'>
@@ -57,6 +86,9 @@ class App extends Component{
                         <li>
                             <Link to="/About">/about</Link>
                         </li>
+                        <li>
+                            <Link to="/Info">/Info</Link>
+                        </li>                        
                         <li>
                             <Link to="/Users">/Users</Link>
                         </li>
@@ -75,7 +107,10 @@ class App extends Component{
                         {/* <Route path="/About" render={()=><h1>this is about title</h1>} /> */}
                         <Route path="/About" component={About} />
                         
-                        <Route path="/Users/" component={Users} />
+                        <ProtectRoute path="/Users" component={Users} />
+
+                        <ProtectRoute path="/Info" component={Info} />
+
                 </div>
             </Router>
         )
