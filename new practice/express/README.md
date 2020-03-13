@@ -31,3 +31,43 @@ router.get('/',(req,res)=>{
 })
 
 module.exports = router;
+
+---------------------------------------------------------------------------------
+
+### `模板引擎`：npm i swig
+
+1.设置缓存：
+// 开发阶段不走缓存
+swig.setDefaults({
+    cache:false //开发阶段设置false，上线阶段设置true
+})
+
+2.配制应用模板：
+app.engine('html',swig.renderFile); // 前者参数html是模板引擎名称，同时也是文件的扩展名，后者是解析模板的方法
+
+3.配制模板文件存放目录：
+app.set('views','./views') //前者参数必需写，后者是配制模板文件存放文件夹。
+
+4.注册模板引擎：
+app.set('view engine','html') //前者参数必需是view engine，后者参数是模板名称，同上。
+
+5.渲染：
+app.get('/',(req,res)=>{
+    //渲染模板
+    //第一个参数是模板目录文件
+    //第二个参数是传递给模板的数据
+    res.render('index',{ // 请求'/',去views文件下去找index.html,并将index.html并且将页面返给前台
+        title:'xxx',
+        content:'xxx'
+    })
+})
+
+app.get('/list',(req,res)=>{
+    //渲染模板
+    //第一个参数是模板目录文件
+    //第二个参数是传递给模板的数据
+    res.render('list',{ // 请求'/list',去views文件下去找index.html,list.html并且将页面返给前台
+        title:'xxx',
+        content:'xxx'
+    })
+})
