@@ -49,7 +49,7 @@ $not:db.xxxs.find($not:{$gte:{age:18}})
 
 查看数据库下集合：show collections = show tables
 插入集合：db.xxxs.insert({price:18})
-删除集合：db.xxxs.drop()
+删除数据库下的所有集合：db.xxxs.drop()
 
 更新数据：
 $set：db.xxxs.update({name:'jly'},{$set:{age:10}}) 找到name为jly的用户，修改他的年龄为10,前一个对象参数为空的时候只匹配第一个数据，增加age:10字段，不能设置所有的数据
@@ -62,4 +62,4 @@ remove:db.users.remove({age:18},true) 加true是删除一条符合条件的一�
 deleteOne:db.users.deleteOne({age:18})
 
 ### `启动指定数据存储路径`：
-example --dbpath pentium/mongodb/base/db/
+example mongod --dbpath pentium/mongodb/base/db/
