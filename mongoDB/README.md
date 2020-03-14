@@ -52,10 +52,11 @@ $not:db.xxxs.find($not:{$gte:{age:18}})
 删除数据库下的所有集合：db.xxxs.drop()
 
 更新数据：
-$set：db.xxxs.update({name:'jly'},{$set:{age:10}}) 找到name为jly的用户，修改他的年龄为10,前一个对象参数为空的时候只匹配第一个数据，增加age:10字段，不能设置所有的数据
+$set:db.xxxs.update({name:'jly'},{$set:{age:10}}) 找到name为jly的用户，修改他的年龄为10,前一个对象参数为空的时候只匹配第一个数据，更新age:10字段，不能设置所有的数据
+$set:db.users.update({},{$set:{age:88}}) 找到第一条数据，只增加age：88，如果数据有age，就更新，没有就增加
 $inc:db.users.update({name:'jly'},{$inc:{age:11}}) 找到name为jly的用户，在原来的基础上增加11，同理前一个对象参数为空的时候只匹配第一个数据，不能设置所有的数据
-$unset:db.users.update({},{$unset:{age:''}}) 即可删除age字段
-$updateMany:db.users.update({},{$set:{age:88}}) 更新多条数据
+$unset:db.users.update({},{$unset:{age:''}}) 删除第一条数据的age字段，其他保留
+$updateMany:db.users.updateMany({},{$set:{age88}}) 更新多条
 
 删除数据：
 remove:db.users.remove({age:18},true) 加true是删除一条符合条件的一条数据，不加true是删除所有的符合条件的整条数据
