@@ -71,3 +71,8 @@ app.get('/list',(req,res)=>{
         content:'xxx'
     })
 })
+
+### `中间件`：
+定义：中间件其实就是一个函数，在收到请求和返回响应之间处理一些操作，这个函数可以访问请求对象req，响应对象res；
+express常用中间件：body-parser;
+写法：app.use(bodyParser.urlencoded({ extended:false })); app.use(bodyParser.json()) //要写在请求前
