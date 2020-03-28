@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="https://www.kuazhu.com/">
+		<p>
+			<label for="username">用户名:</label>
+			<input type="text" name="username" value="tom" id="username">
+		</p>
+		<p>
+			<label for="password">密码:</label>
+			<input type="text" name="password" id="password">
+		</p>
+		<p><!-- value值是发送后台的数据 -->
+			<input type="radio" name="sex" value="male">男
+			<input type="radio" name="sex" value="female">女
+			<input type="radio" name="sex" value="secret">保密
+		</p>
+		<p><!-- value值是发送后台的数据 -->
+			<input type="checkbox" name="hobby" checked value="basketball">篮球
+			<input type="checkbox" name="hobby" value="read">读书
+			<input type="checkbox" name="hobby" value="white">写字
+		</p>
+		<p><!-- 定义图片按钮,src属性用来指定图片的位置,图片按钮可以提交表单,并且会把点击图片的坐标以参数的形式发送给服务器,一般配合js操作 -->
+			<input type="file">
+			<input type="email">
+			<input type="date">
+			<input type="color">
+		</p>
+		<p>
+			所在城市:
+			<select name="city" id="">
+				<optgroup label="一线城市">
+					<option value="bj">北京</option>
+					<option value="sh">上海</option>					
+				</optgroup>
+
+				<optgroup label="省会城市">
+					<option value="wh">武汉</option>
+					<option value="cs" selected>长沙</option>					
+				</optgroup>
+			</select>
+		</p>
+		<p>
+		<!-- 在选中的输入框时点击重置会回到初始状态 -->
+			<input type="reset" value="重置">
+			<input type="number">只能输入数字
+			<input type="email">自动校验邮箱的合法性
+			<input type="button" value="按钮">
+			<input type="submit" value="提交">
+		</p>
+	</form>
+</body>
+</html>
