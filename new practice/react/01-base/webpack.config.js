@@ -3,7 +3,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');// 新用法
 // console.log(CleanWebpackPlugin);
 module.exports = {
-    mode:'development',
+    mode:'development', //开发阶段用开发环境development,上线阶段用压缩的生产环境production。
     entry:{// 入口
         index:'./src/index.js'
     },
