@@ -8,9 +8,16 @@
 	
 </body>
 <script>
+	/*
 	function sum(...arr){
 		console.log(arr);
 	}
 	sum(11,22,33,44)
+	*/
+	
+	function rest(lang,...rest) {
+		console.log(rest);
+	}
+	rest('javascript','html','css'); // 打印结果为["html", "css"]。ES6引入rest参数,用于获取函数多余的参数,返回一个数组
 </script>
 </html>
