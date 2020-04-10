@@ -1,7 +1,7 @@
 # todolist notes
 
 ## 1.类型检查PropTypes: 定义父组件传入子组件数据的检验规则。
-[learn more](https://reactjs.org/docs/typechecking-with-proptypes.html)
+[learn more 类型检查PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html)
 
 ### 1.1 使用步骤:
 ```
@@ -39,15 +39,31 @@ Item.defaultProps = {
 
 ### 3.2.2 顺序(新版)
 * 初始挂载:
-*  组件挂载完成(包括子组件)时触发的函数：componentDidMount
+*	组件挂载完成(包括子组件)时触发的函数：componentDidMount
 
 * 更新时:
-*  static getDerivedStateFormProps(nextProps,prevState);
-   属性发生变化,例如输入框输入内容,val值发生变化该方法就会被调用。多用于如果props有变化,需要更新state的场景。
-   该方法返回state的更新。
-*  shouldComponentUpdate(nextProps,prevState):该方法放回一个布尔值,false不执行render方法,true则执行render方法。
-*  render():执行render方法。
-*  getSnapshotBeforeUpdate(prevProps,prevState):React真正更新dom和ref之前保存一个状态,该方法返回一个值,该值会当做与此函数(下)必须配套使用函数作为参数snapshot。
-*  componentDidUpdate(prevProps,prevState,snapshot):组件更新完成后执行,与前者函数必需配套使用。
+*	static getDerivedStateFormProps(nextProps,prevState);
+    属性发生变化,例如输入框输入内容,val值发生变化该方法就会被调用。多用于如果props有变化,需要更新state的场景。
+    该方法返回state的更新。
+*	shouldComponentUpdate(nextProps,prevState):该方法放回一个布尔值,false不执行render方法,true则执行render方法。
+*	render():执行render方法。
+*	getSnapshotBeforeUpdate(prevProps,prevState):React真正更新dom和ref之前保存一个状态,该方法返回一个值,该值会当做与此函数(下)必须配套使用函数作为参数snapshot。
+*	componentDidUpdate(prevProps,prevState,snapshot):组件更新完成后执行,与前者函数必需配套使用。
 
-* 卸载:当组件从dom中的移除时会调用:在子组件中调用componentWillUnmount()。
+*	卸载:当组件从dom中的移除时会调用:在子组件中调用componentWillUnmount()。
+
+## antd:reactUI组件
+
+### 安装步骤:(在根组件内)
+```
+npm install antd --save;
+```
+```
+import { DatePicker,Button } from 'antd';
+```
+```
+import 'antd/dist/antd.css';(引入了antd所有css,此css文件在目录中不存在,安装antd会自动有这个文件);
+```
+```
+改进按需求引入css:npm install babel-plugin-import save-dev  还需要在配置文件内配置插件
+```
