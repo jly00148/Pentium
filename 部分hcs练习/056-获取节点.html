@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+</body>
+<script>
+	var oUl = document.getElementById('ul');
+	console.log(oUl.childNodes);//返回一个数组，获取所有子节点，包括文本节点和元素节点
+	console.log(oUl.firstChild);
+	console.log(oUl.lastChild);
+
+	console.log(oUl.children);//返回一个数组，包括所有元素节点
+	console.log(oUl.firstElementChild);
+	console.log(oUl.lastElementChild);
+</script>
+</html>
