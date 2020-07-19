@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+		body{
+			height: 3000px;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+	var i = 0;
+	function throttle(fn,wait){
+		var lastTime = Date.now();
+		return function(){
+			var now = Date.now();
+			if(now - lastTime > wait){
+				fn();
+				lastTime = Date.now();
+			}
+		}
+	}
+	window.onscroll = throttle(function(){
+		console.log(i++);
+	},1000);
+</script>
+</html>
