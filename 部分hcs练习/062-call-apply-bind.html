@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+var p1 = {
+	name:"隔壁老王",
+}
+ 
+function eat(str,drinkstr) {
+	console.log(this.name+"在吃"+str+",同时在喝"+drinkstr);
+}
+ 
+//1、bind：
+let f1 = eat.bind(p1);//f1是个函数。即，用bind把eat函数和p1对象绑死，产生新的函数叫作f1
+f1("油条","豆浆");//调用f1，就相当于 p1.eat();，内部的this就是p1，永远都是p1，不会是window
+ 
+//2、call：
+eat.call(p1,"油泼面","面汤");//不会产生新的函数，只是临时把eat函数和p1对象绑定一下。
+ 
+//3、apply：(与bind的意思一样，只是第二个参数是数组，是原函数eat的参数)
+eat.apply(p1,["油泼面","面汤"]);//不会产生新的函数，只是临时把eat函数和p1对象绑定一下。
+</script>
+</html>
