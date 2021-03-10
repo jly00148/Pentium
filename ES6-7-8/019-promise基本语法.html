@@ -8,11 +8,24 @@
 	
 </body>
 <script>
-	let promise = new Promise((resolve,reject)=>{
-		//resolve('hello');
-		reject('出错了');
-	});
+	// let promise = new Promise((resolve,reject)=>{
+	// 	//resolve('hello');
+	// 	reject('出错了');
+	// });
 
-	console.log(promise);
+	// console.log(promise);
+
+	const p1 = new Promise((resolve,reject)=>{
+		console.log('a')
+		resolve('aa')
+	})
+
+	console.log(p1)
+
+	const p2 = p1.then(res=>{
+		return 'rs'
+	})
+
+console.log(p2)
 </script>
 </html>
