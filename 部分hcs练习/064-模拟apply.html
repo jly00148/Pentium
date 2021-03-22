@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+	//模拟call方法:
+	var obj = {
+		name:'tom',
+	}
+
+	function sayHi(name,age){
+		console.log(this)
+		console.log('my name is ' + name+ ' and my age is '+ age)
+	}
+
+	Function.prototype.myApply = function(newObj){
+
+		// 处理第参数不传或者为null
+		var newObj = newObj || window;
+
+		var arr = [...arguments].splice(1)[0]
+
+		newObj.fn = this;
+
+		//调用函数改变this
+		newObj.fn(...arr)
+
+		//删除属性
+		delete newObj.fn
+	}
+
+
+	sayHi.myApply(obj,['tomx',18])
+
+</script>
+</html>
