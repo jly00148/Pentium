@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+	//模拟call方法:
+	var obj = {
+		name:'tom',
+	}
+
+	function sayHi(name,age){
+		console.log('my name is ' + name+ ' and my age is '+ age)
+		return 22
+	}
+
+	Function.prototype.myBind = function(newObj){
+
+		// 处理第参数不传或者为null
+		var newObj = newObj || window;
+
+		var arr = [...arguments].splice(1)
+		var fn = this;
+
+		return function(){
+			return fn.call(newObj,...arr)
+		}
+
+	}
+
+
+	var result = sayHi.myBind(obj,'tomx',18)
+	console.log(result())
+</script>
+</html>
