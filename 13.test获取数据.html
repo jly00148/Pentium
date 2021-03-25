@@ -1,97 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
 </head>
 <body>
-	<select name="1" id="">1</select>
+	<dl>
+		<dt>发</dt>
+		<dd>1</dd>
+		<dd>1</dd>
+		<dd>1</dd>不不不不不不不
+		<dd>1</dd>
+	</dl>
+	<dl>
+		<dt>发</dt>
+		<dd>1</dd>
+		<dd>1</dd>
+		<dd>1</dd>
+		<dd>1</dd>
+	</dl>	
 </body>
 <script>
-
-//  function Person(name,age){
-//         this.name = name;
-//         this.age = age;
-//     }
-    
-//     var p1 = new Person('jly',18);
-
-//     console.log(p1);
-
-//  Person.prototype.sayHi = function(){
-//     console.log('say hi');
-//  }
-
-
-
-
-
-// class Student extends Person{
-//     constructor(name,age,major){
-//         super(name,age);
-//         this.major = major;
-//     }
-// }
-
-// var s1 = new Student('leo',28,'computer');
-
-// console.log(s1);
-// s1.sayHi();
-// // console.log(s1.__proto__ === Student.prototype); // true
-
-// var obj = {
-//     name:'jly',
-//     age:18
-// }
-
-// var {name,age} = obj;
-
-// console.log(name,age);
-
-// var obj = ['1','2','3'];
-// console.log(typeof JSON.stringify(obj));
-
-// var str = '[1,2,3]';
-// var str1 = '["1","2","3"]';
-// var str2 = "[1,2,3]";
-// var str3 = "['1','2','3']";// x
-
-// console.log(JSON.parse(str));
-// console.log(JSON.parse(str1));
-// console.log(JSON.parse(str2));
-// console.log(JSON.parse(str3));
-// var name = 'jly';
-// var age = 18;
-// var person = {name,age};
-// console.log(person);
-// var person = {
-//     name:'jly',
-//     age:18
-// }
-
-// var {name,age} = person;
-// console.log(name,age);
-
-
-// let promise = new Promise((resolve,reject)=>{
-// 	resolve('awa');
-// })
-
-// async function fn(){
-// 	console.log('zz');
-// 	let result = await promise;
-// 	console.log(result);
-// 	console.log('bb');
-// }
-// fn()
-
-// console.log('cc');
-
-
-
-
-
-
+	var str = 'aaa bb'
+	var arr = str.split(' ')
+	console.log(arr.slice(1).join(' '))
 </script>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+	function Person(){
+
+	}
+
+	function Teacher(){
+		
+	}
+
+	function Student(){
+		
+	}
+
+
+
+	function Factor(type){
+		switch(type){
+			case 'person': return new Person()
+			break
+
+			case 'teacher' : return new Teacher()
+			break
+
+			case 'student' : return new Student()
+			break
+
+			default:
+			null				
+		}
+	}
+
+	var F = Factor('student')
+
+	console.log(F)
+</script>
+</html>
