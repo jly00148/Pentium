@@ -9,8 +9,10 @@ const server = http.createServer((req,res)=>{
 		var filePath = '../'+urlStr
 		var data = fs.readFileSync(filePath)
 	}
-	//强缓存方式一
+	//强缓存方式一:
 	// res.setHeader("expires",new Date(Date.now() + 10000))
+
+	//强缓存方式二(推荐):
 	res.setHeader("Cache-control",'max-age =10')//3秒
 	res.end(data);
 })
