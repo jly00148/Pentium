@@ -8,6 +8,16 @@ var server = http.createServer((req,res)=>{
 	var extIndex = urlStr.indexOf('.')
 	var exct = urlStr.slice(extIndex)
 
+	res.setHeader('Access-Control-Allow-Origin','http://127.0.0.1:3000')
+	// res.setHeader('Access-Control-Allow-Origin','http://127.0.0.1:*')允许所有的源
+
+	res.setHeader('Access-Control-Allow-Credentials',true)
+	// console.log(req.headers['cookie']) //跨域获取cookie,需要三个条件：...
+
+
+	res.setHeader('Tese-Res-Headers','AAAAA')//自定义字段
+	res.setHeader('Access-Control-Expose-Headers','Date,Tese-Res-Headers')//允许前端获取字段Date
+
 	if(req.method === 'GET'){
 		if(exct === '.html'){
 			var data = fs.readFileSync(filePath)
@@ -45,6 +55,6 @@ var server = http.createServer((req,res)=>{
 })
 
 
-server.listen('3000','127.0.0.1',()=>{
-	console.log('server 127.0.0.1. is running at port 3000')
+server.listen('3001','127.0.0.1',()=>{
+	console.log('server 127.0.0.1. is running at port 3001')
 })
