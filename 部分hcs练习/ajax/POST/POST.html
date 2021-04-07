@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="css/test-ajax1.css">
 </head>
 <body>
-	<button id="btn">GET请求</button>
+	<button id="btn">POST请求</button>
 </body>
 <script>
 	var btn = document.getElementById('btn');
@@ -20,12 +20,12 @@
 
 		xhr.withCredentials = true//允许跨域发送cookie
 		//2.拨号
-		xhr.open('GET','http://127.0.0.1:3000/getData?name=jly&age=18',true)//true代表异步，反之不是异步
+		xhr.open('POST','http://127.0.0.1:3000/',true)//true代表异步，反之不是异步
 
-		xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')//默认编码方式，get请求时把form数据转换称为逆个一个字符串:?name=jly&age=18形式，post请求时浏览器把form数据封装到http body中然后发送到server
+		xhr.setRequestHeader('Content-Type','application/json')//默认编码方式，get请求时把form数据转换称为逆个一个字符串:?name=jly&age=18形式，post请求时浏览器把form数据封装到http body中然后发送到server
 
 		//3.说话(发送请求)
-		xhr.send()
+		xhr.send('{"name":"jly","age":"18","address":"北京"}')
 
 		//4.听(介绍响应)
 		xhr.onreadystatechange = function(){
