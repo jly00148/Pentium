@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/test-ajax1.css">
+</head>
+<body>
+	<button id="btn">请求</button>
+</body>
+<script>
+	var btn = document.getElementById('btn');
+
+	function ajax(options){
+		var method = options.method || 'GET';
+		var url = options.url
+		var data = options.data || {}
+		var xhr = new XMLHttpRequest()
+
+		if(method === 'GET'){
+			for(var index in data){
+				url += '?'+ index + '=' + data[index] + '&'
+			}
+			url = url.slice(0,-1)
+			data = '';//是get请求把xhr.send(data)中的参数清空
+		}
+
+
+		xhr.withCredentials = true;//允许携带cookie
+		xhr.open(method,url,true)
+
+		var mime = '';
+		if(method === 'GET'){
+			mime = 'application/x-www-form-urlencoded';//设置get请求的Content-Type
+		}else if(method === 'POST'){
+			mime = 'application/json';//设置post请求的Content-Type
+			data = JSON.stringify(data);
+		}
+
+		xhr.setRequestHeader('Content-Type',mime)
+
+		xhr.send(data)
+
+		//4.听(介绍响应)
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				console.log(xhr.getResponseHeader('Content-Type'))//获取默认可获取字段
+				console.log(xhr.getResponseHeader('Date'))//获取非可获取字段Date
+				console.log(xhr.getResponseHeader('Test-Res-Header'))//获取非可获取字段
+				 if(xhr.status == 200){
+				 	try{
+				 		var obj = JSON.parse(xhr.responseText)
+				 		options.success(obj)
+				 	}catch(e){
+				 		options.error(e)
+				 	}
+				 }else{
+				 		options.error(xhr.status)
+				 }
+			}
+		}
+
+		console.log('do something')
+	}
+
+
+	btn.onclick = function(){
+		ajax({
+			method:'POST',
+			url:'http://127.0.0.1:3001/getData',
+			data:{
+				name:"jly",
+				age:18,
+				address:"北京"
+			},
+			success:function(obj){
+				// console.log(obj)
+			},
+			error:function(e){
+				if(typeof e === 'number'){
+				 		console.log('failed request,state code = '+e)
+				}else{
+					console.log(e)
+				}
+			}
+		})
+	}
+
+</script>
+</html>
