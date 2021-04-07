@@ -7,21 +7,22 @@
 	<link rel="stylesheet" href="css/test-ajax1.css">
 </head>
 <body>
-	<button id="btn">按钮</button>
+	<button id="btn">GET请求</button>
 </body>
 <script>
-	var oBtn = document.getElementById('btn');
+	var btn = document.getElementById('btn');
 
-	oBtn.onclick = function(){
+	btn.onclick = function(){
 		//XMLHttpRequest
 
 		//1.购买电话
 		var xhr = new XMLHttpRequest()
 
+		xhr.withCredentials = true//允许跨域发送cookie
 		//2.拨号
-		xhr.open('GET','http://127.0.0.1:3000/getData?name=tom&age=18&city=beijing',true)//true代表异步，反之不是异步
+		xhr.open('GET','http://127.0.0.1:3000/getData?name=jly&age=18',true)//true代表异步，反之不是异步
 
-		xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+		xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')//默认编码方式，get请求时把form数据转换称为逆个一个字符串:?name=jly&age=18形式，post请求时浏览器把form数据封装到http body中然后发送到server
 
 		//3.说话(发送请求)
 		xhr.send()
@@ -30,14 +31,16 @@
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4){
 				 if(xhr.status == 200){
+				 	// console.log(xhr.getResponseHeader('Content-Type'))//获取Content-Type字段,默认允许获取
+				 	// console.log(xhr.getResponseHeader('Tese-Res-Headers'))
+				 	// console.log(xhr.getResponseHeader('Date'))
 				 	try{
 				 		var obj = JSON.parse(xhr.responseText)
+				 		console.log(obj)
 				 	}catch(e){
 				 		console.log(e)//捕获防止服务器返回的数据不是json而解析出错
 				 	}
-
 				 }else{
-				 	console.log(xhr.status)
 				 		console.log('failed request,state code = '+xhr.status)
 				 }
 			}
