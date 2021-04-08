@@ -4,7 +4,6 @@ const url = require('url')
 
 var server = http.createServer((req,res)=>{
 	var urlStr = req.url;
-
 	res.setHeader('Access-Control-Allow-Origin','http://127.0.0.1:3000')
 
 	//允许跨域携带cookie(有三个条件分别是：
@@ -23,6 +22,12 @@ var server = http.createServer((req,res)=>{
 
 	//设置可允许前端非默认字段
 	res.setHeader('Access-Control-Expose-Headers','date,Test-Res-Header')
+
+	//POST复杂请求允许字段Content-Type
+	res.setHeader('Access-Control-Allow-Headers','Content-Type')
+
+	//POST复杂请求允许请求方法
+	res.setHeader('Access-Control-Allow-Methods','PUT')
 
 
 	if(req.method === 'GET'){
@@ -61,6 +66,10 @@ var server = http.createServer((req,res)=>{
 			res.setHeader('Content-Type','application/json')
 			res.end(body)
 		})
+	}else if(req.method === 'OPTIONS'){
+		res.end('OPTIONS OK')
+	}else if(req.method === 'PUT'){
+		res.end('PUT OK')
 	}
 
 
