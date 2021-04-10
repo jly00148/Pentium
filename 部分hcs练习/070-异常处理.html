@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// try catch不会阻断后续代码的执行
+	try{
+	var obj = JSON.parse('test=1')
+	}catch(e){
+		console.log(e)		
+	}finally{
+		console.log('finanly..')
+	}
+</script>
+</html>
