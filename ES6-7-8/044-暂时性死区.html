@@ -9,18 +9,16 @@
 	
 </body>
 <script>
-	// var a = 'aa'
+	var a = 'aa'
 
-	// function fn(){
+	function fn(){
 		//DTZ暂时性死区
-		// console.log(a)
-		// let a = 'bb'
-	// }
-	// fn()
+		console.log(a)
+		let a = 'bb'
+	}
+	fn()
 
-	var p1 = new Promise((resolve,reject)=>{
-			resolve('aa')
-	})
+
 
 
 	console.log(p1)

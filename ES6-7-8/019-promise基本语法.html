@@ -16,16 +16,23 @@
 	// console.log(promise);
 
 	const p1 = new Promise((resolve,reject)=>{
-		console.log('a')
-		resolve('aa')
+		setTimeout(function(){
+			resolve('aa')
+		},1000)
+		console.log('bb')
+	})
+	.then(result=>{
+		console.log(result)
+		console.log('xxx')
+		
 	})
 
-	console.log(p1)
+	// console.log(p1)
 
-	const p2 = p1.then(res=>{
-		return 'rs'
-	})
+// 	const p2 = p1.then(res=>{
+// 		return 'rs'
+// 	})
 
-console.log(p2)
+// console.log(p2)
 </script>
 </html>
