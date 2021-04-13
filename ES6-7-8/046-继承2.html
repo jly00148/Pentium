@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+ 	function Teacher(name,age){
+ 		this.name = name;
+ 		this.age = age;
+ 	}
+
+ 	Teacher.prototype =	{
+ 		constructor:Person,
+ 		sayName:function(){
+ 			console.log('my name is '+this.name )
+
+ 		},
+ 		sayAge:function(){
+ 			console.log('my age is ' + this.age)
+ 		} 		
+ 	}
+
+//------------------------------分割线--------------------------------------
+
+
+ 	function Person(name,age){
+ 		Teacher.call(this,name,age)
+ 	}
+
+
+ 	for(var attr in Teacher.prototype){
+ 		Person.prototype[attr] = Teacher.prototype[attr]
+ 	}
+
+ 	var p1 = new Person('jly',18)
+
+ 	// p1.sayName()
+ 	// p1.sayAge()
+
+ 
+ 	console.log(Teacher.prototype) 
+ 	console.log(Person.prototype)
+
+ 	// Person.prototype.sayHello = function(){
+ 	// 	console.log('sayHello .....')
+ 	// }
+
+
+ 	// //父类不能调用子类的原型对象上的方法，原则上是可行的，但是又出现新的问题
+ 	// var t1 = new Teacher('amy',99)
+ 	// t1.sayHello()
+</script>
+</html> 
