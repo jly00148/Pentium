@@ -1,5 +1,5 @@
 //自定义可读流
-const {Readable} = require('stream');
+const { Readable } = require('stream');
 
 /*
 const rs = new Readable();
@@ -7,6 +7,9 @@ rs.on('data',(chunk)=>{
 	console.log(chunk);
 })//The _read() method is not implemented
 */
+
+
+
 class MyReader extends Readable{
 	constructor(){
 		super();
