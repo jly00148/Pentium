@@ -4,9 +4,18 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<link rel="stylesheet" href="./test.css">
+	<link rel="stylesheet" href="./css/test.css">
 </head>
 <body>
-	<h1>web测试</h1>
+	<div class="container">
+		<input type="" name="" id="todo-input">
+		<ul class="todo-warp">
+			{% for item in data1 %}
+			<li class="todo-item" data-id="{{ item.id }}">{{ item.task }}</li>
+			{% endfor %}
+		</ul>
+	</div>
 </body>
+<script src="./js/jquery-1.12.4.js"></script>
+<script src="js/test.js"></script>
 </html>
