@@ -4,6 +4,7 @@ var fs = require('fs')
 const url = require('url')
 const mine = require('./mine.json')
 const swig =require('swig')
+const { get,del } = require('./model/data.js')
 
 
 const server = http.createServer((req,res)=>{
@@ -27,15 +28,30 @@ const server = http.createServer((req,res)=>{
 		//2.swig用法：
 		const htmlFilePath = path.normalize(__dirname+ '/static/' + 'test.html');
 		const template = swig.compileFile(htmlFilePath)
-		const html = template({
-			data:[{id:1,task:'吃饭'},{id:2,task:'睡觉'}]
+
+		get()
+		.then(data=>{
+			const html = template({
+				datass:JSON.parse(data.toString())// or data+ ''
+			})
+			res.end(html)
 		})
-		res.end(html)
+		.catch(err=>{
+			console.log(err)
+		})
+
 
 	}else if(pathname === '/add'){
 		var obj = {code:0,msg:'添加成功...'}
 		var json = JSON.stringify(obj)
 		res.end(json)
+	}else if(pathname === '/del'){
+		const query= url.parse(req.url,true).query
+		const id = query.id
+		del(id)
+		.then(result=>{
+			res.end(JSON.stringify(result))
+		})
 	}
 	else{
 		//静态资源
