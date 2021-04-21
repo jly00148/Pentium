@@ -1,21 +1,30 @@
 ;(function($){
 	var $todoInput = $('#todo-input')
 	var $todoItem = $('.todo-item')
+	var $todoWrap = $('.todo-wrap')
+	var $btn = $('#btn')
 
-	$todoInput.on('keydown',function(ev){
-		if(ev.keyCode == 13){
-			$.ajax({
-				url:'/add?text=123',
-				type:'POST',
-				data:{
-					task:$todoInput.val()
-				},
-				dataType:'json',
-				success:function(result){
-					console.log(result)
+
+
+	$btn.on('click',function(){
+		$.ajax({
+			url:'/add',
+			type:'POST',
+			data:JSON.stringify({
+				task:$todoInput.val()
+			}),
+			dataType:'json',
+			success:function(result){
+					if(result.code == 1){
+						var li = document.createElement('li')
+						var $li = $(li)
+						$li.val(result.task)
+						var domLi = $li.get(0)
+						console.log(domLi)
+						$todoWrap.append('<div></div>')
 				}
-			})
-		}
+			}
+		})
 	})
 
 	//删除操作

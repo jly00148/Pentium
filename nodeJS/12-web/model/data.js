@@ -31,15 +31,32 @@ async function del(id){
 			code:1,
 			msg:'删除成功'
 		}
-	}else{
-		return {
-			code:0,
-			msg:'删除失败'
-		}
+		return
+	}
+	return {
+		code:0,
+		msg:'删除失败'
+	}
+}
+
+async function add(body){
+	const result = await readFile(filePath)
+	const newArr = JSON.parse(result.toString())
+	const newBody = JSON.parse(body)
+	newBody.id = Date.now().toString()
+	newArr.push(newBody)
+
+	await writeFile(filePath,JSON.stringify(newArr))
+	return {
+		code:1,
+		msg:'删除成功',
+		id:newBody.id,
+		task:newBody.task
 	}
 }
 
 module.exports = {
 	get:get,
-	del:del
+	del:del,
+	add:add
 }

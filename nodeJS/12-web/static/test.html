@@ -9,8 +9,9 @@
 <body>
 	<div class="container">
 		<input type="" name="" id="todo-input">
-		<ul class="todo-warp">
-			{% for item in datass %}
+		<button id="btn">添加</button>
+		<ul class="todo-wrap">
+			{% for item in data %}
 			<li class="todo-item" data-id="{{ item.id }}">{{ item.task }}</li>
 			{% endfor %}
 		</ul>

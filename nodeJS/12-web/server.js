@@ -4,7 +4,7 @@ var fs = require('fs')
 const url = require('url')
 const mine = require('./mine.json')
 const swig =require('swig')
-const { get,del } = require('./model/data.js')
+const { get,del,add } = require('./model/data.js')
 
 
 const server = http.createServer((req,res)=>{
@@ -32,7 +32,7 @@ const server = http.createServer((req,res)=>{
 		get()
 		.then(data=>{
 			const html = template({
-				datass:JSON.parse(data.toString())// or data+ ''
+  				data:JSON.parse(data.toString())// or data+ ''
 			})
 			res.end(html)
 		})
@@ -42,9 +42,17 @@ const server = http.createServer((req,res)=>{
 
 
 	}else if(pathname === '/add'){
-		var obj = {code:0,msg:'添加成功...'}
-		var json = JSON.stringify(obj)
-		res.end(json)
+		var body = '';
+		req.on('data',(chunk)=>{
+			body+=chunk;
+		})
+		req.on('end',()=>{
+			add(body)
+			.then(result=>{
+				res.end(JSON.stringify(result))
+			})
+
+		})
 	}else if(pathname === '/del'){
 		const query= url.parse(req.url,true).query
 		const id = query.id
