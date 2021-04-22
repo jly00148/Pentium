@@ -8,6 +8,9 @@ const port = 3000;
 const hostname = '127.0.0.1';
 const mime = require('./mime.json');
 const { getAll,add,remove } = require('./module.js');
+
+
+
 let server = http.createServer((req,res)=>{
 
      let reqUrl = url.parse(req.url,true);
@@ -22,8 +25,7 @@ let server = http.createServer((req,res)=>{
 
     if(pathname.startsWith('/static/')){
         let staticFilePath = path.normalize(__dirname + req.url);
-        let extname = path.extname(staticFilePath);//获取静态资源文件格式
-        //console.log(extname);
+        let extname = path.extname(staticFilePath);//获取静态资源文件格式(如：.css或者.js)
         
         fs.readFile(staticFilePath,(err,data)=>{
             if(err){
@@ -35,18 +37,20 @@ let server = http.createServer((req,res)=>{
                 res.end(data);                
             }
         })
-    }else if(req.url == '/favicon.ico'){
-        res.end('favicon.ico');
+    }else if(pathname === '/favicon.ico'){
+        res.end('favicon.ico')
     }
-    else{   //  路由：/Wish/index
+    else{   //  例如路由：/Wish/index
         let paths = pathname.split('/');
-        //console.log(paths); [ '', 'Wish', 'index' ]
+        //console.log(paths); 将路由转为[ '', 'Wish', 'index' ]
+
         let controller = paths[1] || 'wish';
         let action = paths[2] || 'index';
         let args = paths.slice(3);
 
         try{
             let mode = require('./controller/'+ controller);
+            console.log(mode)
             // let mode1 = require('./controller/Wish.js');
             // console.log(mode); //wish {}
             // console.log(mode1);
