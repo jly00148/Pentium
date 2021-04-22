@@ -1,7 +1,6 @@
 ;(function($){
 	var $todoInput = $('#todo-input')
 	var $todoItem = $('.todo-item')
-	var $todoWrap = $('.todo-wrap')
 	var $btn = $('#btn')
 
 
@@ -15,20 +14,21 @@
 			}),
 			dataType:'json',
 			success:function(result){
+				console.log(result)
 					if(result.code == 1){
+						var todoWrap = document.getElementsByClassName('todo-wrap')[0]
 						var li = document.createElement('li')
 						var $li = $(li)
-						$li.val(result.task)
-						var domLi = $li.get(0)
-						console.log(domLi)
-						$todoWrap.append('<div></div>')
+						$li.addClass('todo-item').data('id', result.id).val('text')
+						var domLi = $li[0]
+						todoWrap.appendChild(domLi)
 				}
 			}
 		})
 	})
 
 	//删除操作
-	$('.todo-warp').on('click','li',function(){
+	$('.todo-wrap').on('click','li',function(){
 		var $this = $(this)
 		$.ajax({
 			url:'/del',
