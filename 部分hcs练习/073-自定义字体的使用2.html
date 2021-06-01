@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <title>Document</title>
+    <style>
+        /* 自定义字体的方法：
+            1.准备自定义字体文件，通常在网上下载
+            2.使用@font-face定义新字体
+            3.例如一般格式：
+                @font-face{
+                    font-family：自定义字体名称（例：testFont）；
+                    src：url(字体文件1路径);
+                    url(字体文件2)
+                    [font-weight：bold]
+                    [font-family：italic]
+                }
+            4.src中的src可以是本地文件也可以是网络上的字体文件，如果是网络上注意跨域问题
+            5.自定义字体font-weight和font-family默认是normal
+            6.font-weight和font-family是可选项
+         */
+
+        
+        /* 定义字体 */
+        @font-face{
+            font-family: testFont;
+            src:url('./fonts/Sansation_Light.eot'),url('./fonts/Sansation_Light.ttf')
+        }
+
+        @font-face{
+            font-family: testFont;
+            src:url('./fonts/Sansation_Bold.eot'),url('./fonts/Sansation_Bold.ttf');
+            font-weight: bold;
+        } 
+        .icon{
+            font-family: testFont;
+            /* 通过  font-weight: bold去找@font-face下的加粗文件*/
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="icon">字体1</div>
+</body>
+</html>
