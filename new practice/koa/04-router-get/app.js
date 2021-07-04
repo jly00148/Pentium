@@ -7,11 +7,11 @@ router.get('/',async (ctx)=>{
 
 // 第一种query方式：(备:前端URL：http://127.0.0.1:3000/?name=jly&age=18)
     //ctx.query = ctx.request.query
-    console.log(ctx.query) //获取的对象：{ name: 'jly', age: '18' }
+    console.log(ctx.query) //获取的是对象：{ name: 'jly', age: '18' }
 
 // 第二种querystring方式：
     //ctx.query = ctx.request.querystring
-    console.log(ctx.querystring) //获取的字符串：name=jly&age=18
+    console.log(ctx.querystring) //获取的是字符串：name=jly&age=18
 
     ctx.body="首页" ;
 })
