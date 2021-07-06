@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ejs绑定绑定 -->
+    这是ejs文件:<%=title%>
+
+<!-- ------------------------------------------- -->
+
+    <!-- ejs for循环 -->
+    <ul>
+        <%for(var i = 0;i<list.length;i++){%>
+            <li><%=list[i]%></li>
+        <%}%>
+    </ul>
+    
+<!-- ------------------------------------------- -->
+
+<!-- ejs引入模板 -->
+<%-include ('public/header.ejs') %>
+
+<!-- ------------------------------------------- -->
+
+<!-- 条件判断语句 -->
+<% if(num > 12) {%>
+    大于12
+
+    <%}else{%>
+
+        小于12
+<%}%>
+<!-- ------------------------------------------- -->
+
+<!-- ejs渲染html -->
+<%-content%>
+<!-- ------------------------------------------- -->
+
+<!-- 渲染公共部分数据 -->
+<%=userInfo %>
+</body>
+</html>
