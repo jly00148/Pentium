@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .box {
+            margin: 200px 0 0 200px;
+            width: 1200px;
+            height: 200px;
+            background-color: orange;
+    
+            background-image: linear-gradient(
+                to right
+                , red 0
+                , red 50px
+                , yellow 50px
+                , yellow 100px
+                , red 100px
+                , red 150px
+                , yellow 150px
+                , yellow 200px
+            );
+            /**与上面重复写渐变有相同的效果*/
+            background-image: repeating-linear-gradient(
+                    to right
+                    , red 0
+                    , red 50px
+                    , yellow 50px
+                    , yellow 100px
+            );
+ 
+ 
+ 
+        }
+ 
+
+    </style>
+</head>
+<body>
+ 
+<div class="box"></div>
+ 
+<script type="text/javascript">
+</script>
+</body>
+</html>
